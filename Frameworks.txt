@@ -1,0 +1,120 @@
+🗂️ Core Topics for TeachMeAI.in Framework
+
+1. Self-Learning Foundations
+	•	Self-Regulated Learning (SRL) – goal setting, monitoring, reflection, adaptation
+	•	Master Adaptive Learner (MAL) model
+	•	Andragogy (adult learning principles, Knowles)
+	•	Psychological Capital (hope, resilience, efficacy, optimism)
+	•	Motivation theories (Intrinsic vs Extrinsic, Self-Determination Theory)
+	•	Reflection & Metacognition habits
+
+2. Personal Knowledge Management (PKM)
+	•	Note-taking systems (Zettelkasten, PARA, Second Brain)
+	•	Knowledge capture & curation workflows
+	•	Sensemaking practices (maps, synthesis, storytelling)
+	•	AI-assisted PKM (NotebookLM, Obsidian + AI, etc.)
+	•	Digital minimalism & attention management
+
+3. Mentoring Models
+	•	Traditional 1:1 mentoring
+	•	Self-Mentoring (emerging trend)
+	•	Micro-mentoring (short, focused bursts)
+	•	Reverse mentoring (junior → senior, esp. tech)
+	•	Mutual mentoring (two-way value exchange)
+	•	Group mentoring / mentoring circles (for reference)
+	•	AI-augmented mentoring (matching, reflection scaffolding, assistants)
+
+4. Learner Typologies & Styles
+	•	Kolb’s Experiential Learning Cycle + Honey & Mumford’s 4 styles
+	•	VARK model (Visual, Auditory, Reading/Writing, Kinesthetic — for preference)
+	•	Dreyfus Model of Skill Acquisition (Novice → Expert)
+	•	Learning preferences vs evidence (what’s useful, what’s myth)
+
+5. Frameworks & Roadmaps
+	•	IMPACT Framework (Iterative coaching cycle: Initiate → Map → Prioritize → Act → Consolidate → Transition)
+	•	Capability Academies (capability > courses)
+	•	70:20:10 Learning Model (formal vs informal vs experiential learning)
+	•	AFERR (Activation–Forecast–Experiment–Realization–Reflection)
+	•	ADAPT & TTI frameworks (innovation & transformation) — when contextualizing AI adoption
+
+6. AI in Learning & Mentoring
+	•	GenAI for self-learning (roadmap generation, summarization, questioning)
+	•	AI as co-pilot in mentoring (resource finder, reflection prompts)
+	•	Risks: bias, over-reliance, hallucination → role of human mentor
+	•	Tools landscape: ChatGPT, Gemini, NotebookLM, WebLLM, Flowise, Ollama
+
+7. Designing Self-Learning Pathways
+	•	Intake diagnostics (Profile, Aspirations, Pains, Gains)
+	•	Scales & indices (SRL Index, Confidence Index, Time Friction score)
+	•	Personalization by learner type (Theorist vs Pragmatist etc.)
+	•	30/60/90-day action planning
+	•	Reflection prompts & tracking dashboards
+
+8. Impact & Measurement
+	•	KPIs (learning, work, artifacts, confidence)
+	•	Micro-artifacts (prompt pack, SOP, demo)
+	•	ROI of short-cycle learning engagements
+	•	Transition pathways (independent growth vs deeper mentoring)
+
+
+
+IMPACT as the Core Framework
+1. Intake → IMPACT Mapping
+
+I – Initiate Assessment
+Intake form responses (Profile, Aspirations, Pains, Gains, Learner Type, Skill Stage) = Client Profile & Focus Areas.
+
+M – Map Opportunities
+Agent analyzes responses + role/industry → shortlist 2–3 AI use cases/workflows directly relevant to the client.
+
+P – Prioritize Actions
+Agent weighs motivation, time friction, and skill stage → 1–2 realistic first steps with specific tools + timeline.
+
+A – Act & Adjust
+Suggest first tasks / hands-on trials (aligned to learner type e.g. Pragmatist = problem-first mini project). Propose feedback loops (weekly check-in or async reflection prompts).
+
+C – Consolidate Learning
+Provide reflection prompts and a short synthesis of what success/struggles reveal. Reinforce confidence + habits.
+
+T – Transition Forward
+Outline what’s next: further learning resources, community links, next 30–60–90 roadmap, or follow-up service.
+
+2. Analysis & Output Structure
+
+When the custom agent processes a user’s intake, it should always output in this structure:
+
+Initiate Assessment
+
+Client Snapshot (Profile, Learner Type, Motivation, SRL index, Dreyfus stage)
+
+Top 2–3 Focus Areas
+
+Map Opportunities
+
+List 2–3 AI opportunities in their work/life context
+
+Note why each matches profile & aspirations
+
+Prioritize Actions
+
+Recommended 1–2 first steps (tools, workflows, weekly time commitment)
+
+Quick wins vs. long-term goals
+
+Act & Adjust
+
+First assignment/practice (hands-on)
+
+Reflection questions / progress tracker outline
+
+Consolidate Learning
+
+Key takeaways (skills gained, habits formed)
+
+Confidence/competence uplift
+
+Transition Forward
+
+Next steps (independent learning, curated resources, or extended program)
+
+Suggested mentoring cadence

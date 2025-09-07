@@ -1,0 +1,318 @@
+Stage-1 PRD — TeachMeAI Homepage (MVP)
+
+Owner: Irfan Khalid
+Version: v1.0 (07 Sep 2025, IST)
+Goal of Stage-1: Ship a fast, clear, conversion-focused homepage that moves visitors to (a) book a 70-minute Clarity Call (Topmate) and (b) subscribe for ongoing value. Includes a minimal AI Readiness Quiz (non-automated) to capture leads.
+
+1) Scope (Stage-1 Only)
+In-scope (must-have)
+
+Hero section with clear value prop + 2 CTAs (Book Call, Start Quiz).
+
+Programs block (Single / Starter / Growth) with concise blurbs + one “Compare details” expandable area.
+
+Mini AI Readiness Quiz (3 questions incl. “Expected Impact on Work/Career/Confidence”) → stores to Google Sheet; thank-you message.
+
+About Irfan (compact): 3-line bio + badges (certs/orgs).
+
+Newsletter signup (email capture).
+
+FAQ (5–7 items) addressing objections.
+
+Footer with contact, social, privacy/terms placeholders.
+
+Top navigation (sticky) with anchors: Home, Programs, About, FAQ, Book.
+
+Analytics & SEO basics (events + metadata + schema).
+
+Explicitly out-of-scope for Stage-1 (defer)
+
+Automated roadmap generation via LLM.
+
+Workshop catalog, case studies carousel, resources library.
+
+Segment-specific pages (Students/Educators/Professionals).
+
+Payments on-site (Stripe/Razorpay). Keep Topmate.
+
+2) Users & Primary Journeys
+Primary personas
+
+Professionals/Leaders seeking 30/90-day AI adoption.
+
+Educators/Institutions seeking AI-infused teaching support.
+
+Students/Early-career seeking clarity and portfolio projects.
+
+Key flows
+
+Book flow (primary): Hero → “Book a 70-minute Clarity Call” → Topmate page.
+
+Quiz → nurture flow (secondary): Hero/Programs → “Check AI readiness” → Submit → Thank-you → Prompt to book call.
+
+Newsletter flow: Any section → “Get weekly tactics” → Email capture → Confirmation.
+
+Success metrics (Stage-1)
+
+Hero → Topmate CTR ≥ 3–7% (baseline to track).
+
+Quiz start rate ≥ 15% of unique visitors; completion ≥ 60% of starters.
+
+Newsletter signups ≥ 1–3% of unique visitors.
+
+Lighthouse ≥ 90 (mobile/desktop).
+
+3) Information Architecture (Stage-1)
+
+/ (single scrolling page)
+
+Hero (value + CTAs)
+
+Programs (3 cards + details expander)
+
+Mini Quiz
+
+About (compact)
+
+Newsletter
+
+FAQ
+
+Footer
+
+/book → 302 redirect to Topmate booking URL
+
+/privacy, /terms (stub pages; copy to be added later)
+
+4) Content Requirements (ready-to-use copy skeletons)
+4.1 Hero
+
+H1: Build real AI capability in 30–90 days—without the hype.
+
+Subhead: Personalized roadmaps, hands-on practice, and measurable outcomes for students, educators, and professionals.
+
+Primary CTA: Book a 70-minute Clarity Call
+
+Secondary CTA: Check your AI readiness (3 minutes)
+
+Trust strip (one line): Trusted by teams at IBM, NPCI, Indus Trust (adjust logos later)
+
+4.2 Programs (cards)
+
+Single (70-minute) Clarity Call
+Rapid diagnosis, quick-win tactics, and a one-page action sheet.
+CTA: Book now
+
+Starter (30 days)
+Compact evaluation, weekly milestones, and a curated tool/prompt list.
+CTA: Start your 30-day plan
+
+Growth (90 days / 4 sessions)
+Deeper mentorship, hands-on practice, KPIs, and an ROI review.
+CTA: Build your 90-day roadmap
+
+Expander (“What’s included?”): bullet list with 4–6 items per package (keep concise).
+
+4.3 Mini AI Readiness Quiz (Stage-1 form)
+
+Q1 (Multiple choice): Your primary goal right now?
+Options: Career shift • Upskill in current role • Teaching with AI • Startup/entrepreneurship
+
+Q2 (Short text): Expected Impact on Work/Career/Confidence (three short fields)
+
+Q3 (Scale 1–5): Current AI tool confidence (1 = new, 5 = advanced)
+
+Capture: Name, Email, Role/Industry (required)
+
+Post-submit message: Thanks! You’ll get a short summary in your inbox. Want to fast-track? → Button: Book a 70-minute Clarity Call
+
+4.4 About (compact)
+
+3-line bio: Irfan Khalid—Innovation & Agility Facilitator, AI Educator, Professor of Practice. 19+ years in IT (IBM, Netsurion) and 7+ in academia. I design AI-infused curricula and 30/90-day adoption roadmaps for real results.
+
+Badges (text): Certified ScrumMaster • Enterprise Design Thinking • IBM Recognized Teacher/Educator
+
+4.5 Newsletter
+
+Pitch: One practical AI tactic each week—ready to apply on Monday.
+
+Field: Email + consent checkbox
+
+Button: Subscribe
+
+4.6 FAQ (examples)
+
+Who is this for?
+
+What happens in the 70-minute call?
+
+What tools do we use?
+
+Refund/reschedule policy? (Topmate link)
+
+Privacy—what happens to my quiz data?
+
+5) UX & Visual Requirements
+
+Tone: Warm, encouraging, practical.
+
+Layout: Above-the-fold clarity; skimmable sections; expanders for depth.
+
+Responsive: Mobile-first (≤390px), tablet (768px), desktop (≥1200px).
+
+Brand hints: Subtle framework chips (IMPACT, ADAPT) as small badges in Programs.
+
+Accessibility: WCAG 2.1 AA (focus states, alt text, headings order, form labels).
+
+Performance budget: First Contentful Paint ≤ 2.0s on 4G; images ≤ 200KB each.
+
+6) Functional Specs
+6.1 Components
+
+Navbar (sticky): site logo (text OK), anchor links, “Book” button (Topmate).
+
+Hero: headline, subhead, 2 CTAs, trust strip.
+
+Programs: 3 cards + expander; each card includes CTA button (Topmate deep link to the right product where possible).
+
+Quiz: inline form, client-side validation, submit to Google Sheet via webhook; success message area; no page reload.
+
+Newsletter: email field + provider embed/API (Mailerlite/Buttondown); double opt-in if available.
+
+FAQ: accordion (expand/collapse).
+
+Footer: contact email, social (LinkedIn), links to /privacy /terms.
+
+6.2 Integrations
+
+Topmate: external booking links; open in same tab.
+
+Quiz → Google Sheets: via Tally webhook or custom API route forwarding to Google Apps Script webhook.
+
+Newsletter: Mailerlite or Buttondown embed (free tier).
+
+Analytics: Plausible or GA4 + LinkedIn Insight Tag.
+
+6.3 SEO & Schema
+
+Meta: title, description, canonical, OG image.
+
+Schema.org: Organization, Person, FAQPage.
+
+Open Graph/Twitter cards: hero image and summary.
+
+7) Tech Stack & Repo Conventions
+
+Framework: Next.js (App Router) + Tailwind + shadcn/ui.
+
+Deployment: Vercel (Preview → Production).
+
+Content config: JSON or MDX for Programs, FAQ.
+
+Env vars:
+
+NEXT_PUBLIC_ANALYTICS_ID (if GA4) or Plausible domain.
+
+NEWSLETTER_API_KEY (if required).
+
+QUIZ_WEBHOOK_URL (Google Apps Script / Tally).
+
+Directory hints:
+
+/app/page.tsx (home), /app/book/route.ts (redirect), /app/privacy, /app/terms
+
+/components/* (Hero, Programs, Quiz, Newsletter, FAQ, Footer)
+
+/content/programs.json, /content/faq.json
+
+8) Analytics Events (names & when to fire)
+
+cta_book_clicked (props: location=hero|program_card, program=single|starter|growth)
+
+quiz_started / quiz_submitted (props: goal, confidence_level)
+
+newsletter_submitted
+
+expander_programs_opened
+
+9) Acceptance Criteria (testable)
+
+A. Navigation & CTAs
+
+Clicking Book in navbar or hero opens Topmate URL in ≤ 500ms.
+
+Programs card CTAs use distinct Topmate deep links (or the same booking URL with UTM params).
+
+B. Quiz
+
+All fields validate (required: name, email, role/industry; 3 questions).
+
+On submit, a new row appears in the configured Google Sheet with timestamp and UTM params.
+
+Success message appears without page reload; offers Book Call CTA.
+
+C. Newsletter
+
+Valid email required; on success, provider confirmation message appears.
+
+Duplicate emails handled gracefully (provider message).
+
+D. Performance & A11y
+
+Lighthouse mobile & desktop scores ≥ 90.
+
+All images have descriptive alt.
+
+Keyboard-only navigation covers all interactive elements.
+
+E. SEO
+
+Homepage has unique title/description; OG image renders on link preview.
+
+JSON-LD for Organization, Person, and FAQPage validates (Rich Results test).
+
+F. Reliability
+
+If newsletter or quiz webhook fails, user sees a friendly fallback and an email contact.
+
+10) Risks & Mitigations
+
+Webhook failures → Retry once + show fallback notice + log error.
+
+Overlong copy → Use expanders; cap hero to two lines.
+
+Asset bloat → Enforce image compression and lazy loading.
+
+11) Timeline & Deliverables (Stage-1)
+
+Dev window: 08–14 Sep 2025
+
+Deliverables:
+
+Deployed site on Vercel (prod domain connected).
+
+Working quiz to Google Sheet + newsletter embed live.
+
+Analytics & LinkedIn tag installed.
+
+/privacy & /terms stubs.
+
+README with env setup + how to update /content/*.json.
+
+12) Open Questions (answer once, then build)
+
+Newsletter tool preference (Mailerlite vs Buttondown)?
+
+Quiz: Tally embed or custom React + webhook?
+
+Topmate deep links per package available? (If not, we’ll use a single booking link with UTMs.)
+
+13) Definition of Done (Stage-1)
+
+All Acceptance Criteria pass on mobile & desktop.
+
+Production build deployed at the root domain (no Topmate forwarding).
+
+Topmate booking path, quiz submissions, and newsletter signups verified end-to-end.
+
+Metrics are visible in analytics within 24 hours of go-live.
