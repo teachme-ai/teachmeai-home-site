@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { track } from '@vercel/analytics'
 
 export function Quiz() {
   const [formData, setFormData] = useState({
@@ -24,6 +25,12 @@ export function Quiz() {
     setIsSubmitting(true)
     
     try {
+      track('quiz_submitted', { 
+        goal: formData.goal,
+        confidence: formData.confidence,
+        industry: formData.industry
+      })
+      
       const webhookUrl = process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL
       
       if (webhookUrl) {

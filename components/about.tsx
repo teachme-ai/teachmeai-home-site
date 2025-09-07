@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { track } from '@vercel/analytics'
 
 export function About() {
   return (
@@ -41,7 +42,10 @@ export function About() {
           
             <div className="flex gap-4 mt-8">
               <button
-                onClick={() => window.open('https://topmate.io/khalidirfan/1622786', '_blank')}
+                onClick={() => {
+                  track('cta_book_clicked', { location: 'about' })
+                  window.open('https://topmate.io/khalidirfan/1622786', '_blank')
+                }}
                 className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
               >
                 Start Your AI Journey Today
@@ -51,6 +55,7 @@ export function About() {
                 href="https://www.linkedin.com/in/irfankhalid/" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                onClick={() => track('linkedin_clicked', { location: 'about' })}
                 className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-lg transition-colors duration-200"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

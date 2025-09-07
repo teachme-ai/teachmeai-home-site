@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { track } from '@vercel/analytics'
 import Image from "next/image"
 
 export function Hero() {
@@ -34,13 +35,19 @@ export function Hero() {
             
             <div className="flex flex-col sm:flex-row gap-6 mb-8">
               <button
-                onClick={() => window.open('https://topmate.io/khalidirfan/1622786', '_blank')}
+                onClick={() => {
+                  track('cta_book_clicked', { location: 'hero' })
+                  window.open('https://topmate.io/khalidirfan/1622786', '_blank')
+                }}
                 className="text-lg px-10 py-4 bg-white text-gray-900 hover:bg-gray-100 font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200 rounded-md h-14 inline-flex items-center justify-center"
               >
                 Book a 70-minute Clarity Call
               </button>
               <button
-                onClick={scrollToQuiz}
+                onClick={() => {
+                  track('quiz_cta_clicked', { location: 'hero' })
+                  scrollToQuiz()
+                }}
                 className="text-lg px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm font-semibold transform hover:scale-105 transition-all duration-200 rounded-md h-14 inline-flex items-center justify-center"
               >
                 Check your AI readiness (3 minutes)
