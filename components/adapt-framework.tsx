@@ -55,9 +55,16 @@ export function AdaptFramework() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             The ADAPT Framework
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            <strong>Skill Development:</strong> Our systematic approach to building individual AI capabilities - hover over each phase to explore
-          </p>
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm border border-gray-200 inline-block mb-4">
+              <p className="text-lg font-medium text-gray-700">
+                <span className="text-blue-600">ADAPT</span> = capability building
+              </p>
+            </div>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Our systematic approach to building individual AI capabilities - hover over each phase to explore
+            </p>
+          </div>
         </div>
         
         <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-6">

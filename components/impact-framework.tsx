@@ -39,9 +39,16 @@ export function ImpactFramework() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             The IMPACT Framework
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            <strong>Project Management:</strong> Our 6-step coaching methodology for systematic AI adoption and measurable results
-          </p>
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm border border-gray-200 inline-block mb-4">
+              <p className="text-lg font-medium text-gray-700">
+                <span className="text-purple-600">IMPACT</span> = 1:1 adoption
+              </p>
+            </div>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Our 6-step coaching methodology for systematic AI adoption and measurable results
+            </p>
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
