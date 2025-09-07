@@ -39,7 +39,7 @@ export function Hero() {
                   track('cta_book_clicked', { location: 'hero' })
                   window.open('https://topmate.io/khalidirfan/1622786', '_blank')
                 }}
-                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 bg-white text-gray-900 hover:bg-gray-100 font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center">
+                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 bg-white text-gray-900 hover:bg-gray-100 font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center"
               >
                 Book a 70-minute Clarity Call
               </button>
@@ -48,7 +48,7 @@ export function Hero() {
                   track('quiz_cta_clicked', { location: 'hero' })
                   scrollToQuiz()
                 }}
-                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm font-semibold transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center">
+                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm font-semibold transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center"
               >
                 Check your AI readiness (3 minutes)
               </button>
