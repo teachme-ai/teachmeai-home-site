@@ -7,7 +7,7 @@ A conversion-focused homepage built with Next.js, Tailwind CSS, and shadcn/ui.
 - Hero section with clear value proposition
 - Programs showcase with expandable details
 - AI Readiness Quiz with form validation
-- Newsletter signup
+- IMPACT & ADAPT Framework sections
 - FAQ section with accordion
 - Responsive design (mobile-first)
 - SEO optimized
@@ -34,8 +34,7 @@ npm run dev
 ## Environment Variables
 
 - `NEXT_PUBLIC_ANALYTICS_ID`: Google Analytics or Plausible tracking ID
-- `NEWSLETTER_API_KEY`: Newsletter service API key (Mailerlite/Buttondown)
-- `QUIZ_WEBHOOK_URL`: Google Apps Script webhook URL for quiz submissions
+- `NEXT_PUBLIC_QUIZ_WEBHOOK_URL`: Google Apps Script webhook URL for quiz submissions
 
 ## Content Management
 
@@ -66,5 +65,4 @@ The following events are tracked:
 - `cta_book_clicked`: Book call button clicks
 - `quiz_started`: Quiz form started
 - `quiz_submitted`: Quiz form completed
-- `newsletter_submitted`: Newsletter signup
 - `expander_programs_opened`: Program details expanded
