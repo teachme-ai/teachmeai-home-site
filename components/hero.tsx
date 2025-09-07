@@ -55,7 +55,7 @@ export function Hero() {
             </div>
           </div>
           
-          <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
+          <div className="flex justify-center lg:justify-end mt-6 md:mt-8 lg:mt-0">
             <div className="animate-float w-full lg:w-auto">
               <Image 
                 src="/images/logo.png" 
