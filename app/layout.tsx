@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: "TeachMeAI - Build Real AI Capability in 30-90 Days",
   description: "1-to-1 Personalised AI Coaching. Personalized roadmaps, hands-on practice, and measurable outcomes for working professionals and learners. Skip the hype, build real AI skills.",
   keywords: "AI training, AI education, AI mentorship, AI coaching, AI skills, professional development, AI tools, machine learning, artificial intelligence",
-  authors: [{ name: "Irfan Khalid" }],
-  creator: "Irfan Khalid",
+  authors: [{ name: "Khalid Irfan" }],
+  creator: "Khalid Irfan",
   publisher: "TeachMeAI",
   metadataBase: new URL('https://teachmeai.in'),
   alternates: {
@@ -76,7 +76,7 @@ export default function RootLayout({
               "description": "1-to-1 Personalised AI Coaching. Build real AI capability in 30-90 days with personalized roadmaps and hands-on practice.",
               "founder": {
                 "@type": "Person",
-                "name": "Irfan Khalid"
+                "name": "Khalid Irfan"
               },
               "serviceType": "AI Training and Coaching",
               "areaServed": "Worldwide",
