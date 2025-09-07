@@ -33,7 +33,7 @@ export function Hero() {
               Personalized roadmaps, hands-on practice, and measurable outcomes for students, educators, and professionals.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-6 md:mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-2 md:mb-4">
               <button
                 onClick={() => {
                   track('cta_book_clicked', { location: 'hero' })
@@ -55,7 +55,7 @@ export function Hero() {
             </div>
           </div>
           
-          <div className="flex justify-center lg:justify-end mt-1 lg:mt-0">
+          <div className="flex justify-center lg:justify-end mt-0 lg:mt-0">
             <div className="animate-float w-full lg:w-auto">
               <Image 
                 src="/images/logo.png" 
