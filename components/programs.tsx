@@ -5,7 +5,7 @@ import programs from "@/content/programs.json"
 
 export function Programs() {
   return (
-    <section id="programs" className="py-12 px-4 bg-gradient-to-br from-gray-50 to-white">
+    <section id="programs" className="py-12 px-4 bg-gradient-to-br from-gray-50 to-white scroll-mt-20">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">

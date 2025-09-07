@@ -8,7 +8,7 @@ import faqData from "@/content/faq.json"
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-12 px-4">
+    <section id="faq" className="py-12 px-4 scroll-mt-20">
       <div className="container mx-auto max-w-3xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           Frequently Asked Questions
