@@ -15,15 +15,8 @@ export function About() {
             I'm Khalid Irfan, founder of TeachMeAI.in and Ai4Education.in. With 19+ years in IT and 7+ years in academia, I help professionals, educators, and entrepreneurs adopt AI with clarity, confidence, and measurable impact.
           </p>
           
-          <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-2xl mb-8 border border-purple-100">
-            <p className="text-2xl font-bold leading-relaxed" style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-              filter: 'drop-shadow(1px 1px 2px rgba(102, 126, 234, 0.3))'
-            }}>
+          <div className="bg-gray-50 p-6 rounded-xl mb-8 border border-gray-200">
+            <p className="text-xl font-medium leading-relaxed text-gray-700">
               You're not alone. Many feel overwhelmed by the hype yet uncertain about how to use AI meaningfully in their work.
               <br /><br />
               I help you cut through the AI noise — and grow your career with confidence. Struggling to make sense of AI?
