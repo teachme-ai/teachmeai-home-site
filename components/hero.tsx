@@ -10,7 +10,7 @@ export function Hero() {
   }
 
   return (
-    <section id="home" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20 pb-8">
+    <section id="home" className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20 pb-6 md:pb-8">
       {/* Gradient Background */}
       <div className="absolute inset-0 gradient-bg opacity-90"></div>
       
@@ -21,25 +21,25 @@ export function Hero() {
       </div>
       
       <div className="relative z-10 container mx-auto max-w-7xl px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="text-left">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight text-white">
               Build real AI capability in 
               <span className="block text-yellow-300">30–90 days</span>
               <span className="text-3xl md:text-4xl font-normal block mt-2 text-white/90">without the hype</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed">
               Personalized roadmaps, hands-on practice, and measurable outcomes for students, educators, and professionals.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-6 md:mb-8">
               <button
                 onClick={() => {
                   track('cta_book_clicked', { location: 'hero' })
                   window.open('https://topmate.io/khalidirfan/1622786', '_blank')
                 }}
-                className="text-lg px-10 py-4 bg-white text-gray-900 hover:bg-gray-100 font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200 rounded-md h-14 inline-flex items-center justify-center"
+                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 bg-white text-gray-900 hover:bg-gray-100 font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center">
               >
                 Book a 70-minute Clarity Call
               </button>
@@ -48,21 +48,21 @@ export function Hero() {
                   track('quiz_cta_clicked', { location: 'hero' })
                   scrollToQuiz()
                 }}
-                className="text-lg px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm font-semibold transform hover:scale-105 transition-all duration-200 rounded-md h-14 inline-flex items-center justify-center"
+                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm font-semibold transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center">
               >
                 Check your AI readiness (3 minutes)
               </button>
             </div>
           </div>
           
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
             <div className="animate-float">
               <Image 
                 src="/images/logo.png" 
                 alt="TeachMeAI Logo" 
-                width={450} 
-                height={450}
-                className="rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm p-12"
+                width={250} 
+                height={250}
+                className="rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm p-6 sm:w-[300px] sm:h-[300px] lg:w-[450px] lg:h-[450px] lg:p-12"
               />
             </div>
           </div>
