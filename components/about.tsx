@@ -17,9 +17,9 @@ export function About() {
           
           <div className="bg-gray-50 p-6 rounded-xl mb-8 border border-gray-200">
             <p className="text-xl font-medium leading-relaxed text-gray-700">
-              You're not alone. Many feel overwhelmed by the hype yet uncertain about how to use AI meaningfully in their work.
+              Struggling to make sense of AI? - You're not alone. Many feel overwhelmed by the hype yet uncertain about how to use AI meaningfully in their work.
               <br /><br />
-              I help you cut through the AI noise — and grow your career with confidence. Struggling to make sense of AI?
+              I help you cut through the AI noise — and grow your career with confidence.
             </p>
           </div>
           
