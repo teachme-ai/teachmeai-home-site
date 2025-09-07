@@ -30,7 +30,7 @@ export function Hero() {
             </h1>
             
             <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed">
-              <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-lg font-semibold text-white shadow-lg border border-white/30">1-to-1 Personalised Coaching</span>, Personalized roadmaps, hands-on practice, and measurable outcomes for students, educators, and professionals.
+              <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-lg font-semibold text-white shadow-lg border border-white/30">1-to-1 Personalised Coaching</span>, Personalized roadmaps, hands-on practice, and measurable outcomes for working professionals and learners.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-2 md:mb-4">
