@@ -2,12 +2,40 @@
 
 import { Button } from "@/components/ui/button"
 import { track } from '@vercel/analytics'
+import { useState, useEffect } from 'react'
 import Image from "next/image"
 
 export function Hero() {
+  const images = [
+    '/images/logo.png',
+    '/images/Gemini_Generated_Image_1j16nc1j16nc1j16.png',
+    '/images/Gemini_Generated_Image_28qhwl28qhwl28qh.png',
+    '/images/Gemini_Generated_Image_n60v5xn60v5xn60v (1).png',
+    '/images/Gemini_Generated_Image_vf1nkkvf1nkkvf1n.png'
+  ]
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  
   const scrollToQuiz = () => {
     document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })
   }
+  
+  // Preload images for smooth transitions
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
+  
+  // Rotate images every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length)
+    }, 3000)
+    
+    return () => clearInterval(interval)
+  }, [images.length])
 
   return (
     <section id="home" className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-20 pb-6 md:pb-8">
@@ -58,11 +86,12 @@ export function Hero() {
           <div className="flex justify-center lg:justify-end mt-0 lg:mt-0">
             <div className="animate-float w-full lg:w-auto">
               <Image 
-                src="/images/logo.png" 
+                src={images[currentImageIndex]} 
                 alt="TeachMeAI Logo" 
                 width={450} 
                 height={450}
-                className="rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm p-6 w-full h-auto max-w-[300px] sm:max-w-[350px] md:max-w-[400px] lg:max-w-[450px] xl:max-w-[500px] mx-auto lg:mx-0 object-contain"
+                className="rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm p-6 w-full h-auto max-w-[300px] sm:max-w-[350px] md:max-w-[400px] lg:max-w-[450px] xl:max-w-[500px] mx-auto lg:mx-0 object-contain transition-opacity duration-500"
+                priority
               />
             </div>
           </div>
