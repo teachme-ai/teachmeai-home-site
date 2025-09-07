@@ -55,14 +55,14 @@ export function Hero() {
             </div>
           </div>
           
-          <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <div className="animate-float">
+          <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
+            <div className="animate-float w-full lg:w-auto">
               <Image 
                 src="/images/logo.png" 
                 alt="TeachMeAI Logo" 
                 width={250} 
                 height={250}
-                className="rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm p-6 sm:w-[300px] sm:h-[300px] lg:w-[450px] lg:h-[450px] lg:p-12"
+                className="rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm p-6 w-full h-auto max-w-none sm:max-w-[300px] sm:w-[300px] sm:h-[300px] lg:w-[450px] lg:h-[450px] lg:p-12 mx-auto lg:mx-0"
               />
             </div>
           </div>
