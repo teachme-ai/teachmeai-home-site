@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     title: "TeachMeAI - Build Real AI Capability in 30-90 Days",
     description: "Personalized roadmaps, hands-on practice, and measurable outcomes for students, educators, and professionals.",
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/icon.png',
+  },
 }
 
 export default function RootLayout({
@@ -30,6 +34,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+      </head>
       <body className={inter.className}>
         {children}
         <Analytics />
