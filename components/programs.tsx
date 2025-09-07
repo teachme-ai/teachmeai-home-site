@@ -4,8 +4,35 @@ import { Button } from "@/components/ui/button"
 import programs from "@/content/programs.json"
 
 export function Programs() {
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": programs.map((program, index) => ({
+      "@type": "Course",
+      "position": index + 1,
+      "name": program.title,
+      "description": program.description,
+      "provider": {
+        "@type": "Organization",
+        "name": "TeachMeAI",
+        "url": "https://teachmeai.in"
+      },
+      "courseMode": "online",
+      "educationalLevel": "Professional",
+      "teaches": "Artificial Intelligence Skills",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Working Professionals"
+      }
+    }))
+  }
+
   return (
     <section id="programs" className="py-12 px-4 bg-gradient-to-br from-gray-50 to-white scroll-mt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">

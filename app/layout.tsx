@@ -15,6 +15,20 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://teachmeai.in'),
   alternates: {
     canonical: 'https://teachmeai.in',
+    languages: {
+      'en': 'https://teachmeai.in',
+      'en-US': 'https://teachmeai.in',
+      'en-GB': 'https://teachmeai.in',
+      'en-IN': 'https://teachmeai.in',
+      'en-CA': 'https://teachmeai.in',
+      'en-AU': 'https://teachmeai.in',
+    },
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.country': 'India',
+    'geo.placename': 'India',
+    'ICBM': '20.5937, 78.9629',
   },
   openGraph: {
     title: "TeachMeAI - Build Real AI Capability in 30-90 Days",
@@ -64,12 +78,27 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/icon.png" />
+        <link rel="alternate" hrefLang="en" href="https://teachmeai.in" />
+        <link rel="alternate" hrefLang="en-US" href="https://teachmeai.in" />
+        <link rel="alternate" hrefLang="en-GB" href="https://teachmeai.in" />
+        <link rel="alternate" hrefLang="en-IN" href="https://teachmeai.in" />
+        <link rel="alternate" hrefLang="x-default" href="https://teachmeai.in" />
+        <meta name="theme-color" content="#667eea" />
+        <meta name="msapplication-TileColor" content="#667eea" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://topmate.io" />
+        <link rel="dns-prefetch" href="https://vercel.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
+              "@type": ["EducationalOrganization", "LocalBusiness"],
               "name": "TeachMeAI",
               "url": "https://teachmeai.in",
               "logo": "https://teachmeai.in/images/logo.png",
@@ -79,7 +108,22 @@ export default function RootLayout({
                 "name": "Khalid Irfan"
               },
               "serviceType": "AI Training and Coaching",
-              "areaServed": "Worldwide",
+              "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN",
+                "addressRegion": "India"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "20.5937",
+                "longitude": "78.9629"
+              },
+              "telephone": "+91-XXXXXXXXXX",
+              "email": "reachirfan@gmail.com",
+              "priceRange": "$$",
+              "currenciesAccepted": ["USD", "INR", "EUR", "GBP"],
+              "paymentAccepted": ["Credit Card", "PayPal", "Bank Transfer"],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "AI Coaching Programs",
