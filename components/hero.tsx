@@ -10,7 +10,7 @@ export function Hero() {
   }
 
   return (
-    <section id="home" className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20 pb-6 md:pb-8">
+    <section id="home" className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-20 pb-6 md:pb-8">
       {/* Gradient Background */}
       <div className="absolute inset-0 gradient-bg opacity-90"></div>
       
