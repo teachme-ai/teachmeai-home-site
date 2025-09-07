@@ -120,7 +120,6 @@ export default function RootLayout({
                 "longitude": "78.9629"
               },
               "telephone": "+91-XXXXXXXXXX",
-              "email": "reachirfan@gmail.com",
               "priceRange": "$$",
               "currenciesAccepted": ["USD", "INR", "EUR", "GBP"],
               "paymentAccepted": ["Credit Card", "PayPal", "Bank Transfer"],

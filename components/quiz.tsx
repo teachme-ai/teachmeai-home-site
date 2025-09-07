@@ -19,6 +19,7 @@ export function Quiz() {
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,7 +50,7 @@ export function Quiz() {
       setIsSubmitted(true)
     } catch (error) {
       console.error('Quiz submission error:', error)
-      setIsSubmitted(true) // Still show success to user
+      setSubmitError('Failed to submit quiz. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -87,6 +88,12 @@ export function Quiz() {
         <p className="text-center text-muted-foreground mb-8">
           3 quick questions to assess your AI journey
         </p>
+        
+        {submitError && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-700">{submitError}</p>
+          </div>
+        )}
         
         <form onSubmit={handleSubmit} className="space-y-8">
           <div className="grid md:grid-cols-4 gap-4">

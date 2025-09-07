@@ -11,6 +11,10 @@ export function About() {
         
         <div className="grid lg:grid-cols-3 gap-12 items-start">
           <div className="lg:col-span-2 text-left">
+          <p className="text-xl font-medium text-gray-900 mb-6 leading-relaxed">
+            At TeachMeAI, we make AI adoption clear, personal, ethical, and impactful — building confidence through action and measurable outcomes.
+          </p>
+          
           <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
             I'm Khalid Irfan, founder of TeachMeAI.in and Ai4Education.in. With 19+ years in IT and 7+ years in academia, I help professionals, educators, and entrepreneurs adopt AI with clarity, confidence, and measurable impact.
           </p>
