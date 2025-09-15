@@ -58,7 +58,7 @@ export function AdaptFramework() {
           <div className="max-w-3xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm border border-gray-200 inline-block mb-4">
               <p className="text-lg font-medium text-gray-700">
-                <span className="text-blue-600">ADAPT</span> = capability building
+                <span className="text-green-600">ADAPT</span> = capability building
               </p>
             </div>
             <p className="text-xl text-gray-600 leading-relaxed">
@@ -78,33 +78,33 @@ export function AdaptFramework() {
               {/* Main Card */}
               <div className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer h-full ${
                 hoveredStep === `${step.letter}-${index}` 
-                  ? 'border-purple-400 shadow-2xl transform -translate-y-2 z-10' 
-                  : 'border-gray-200 hover:border-purple-200'
+                  ? 'border-green-400 shadow-2xl transform -translate-y-2 z-10' 
+                  : 'border-gray-200 hover:border-green-200'
               }`}>
                 <div className="text-center">
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center font-bold text-2xl transition-all duration-300 ${
                     hoveredStep === `${step.letter}-${index}`
-                      ? 'bg-gradient-to-br from-purple-500 to-blue-500 text-white scale-110'
-                      : 'bg-gradient-to-br from-purple-100 to-blue-100 text-purple-600'
+                      ? 'bg-gradient-to-br from-green-500 to-emerald-500 text-white scale-110'
+                      : 'bg-gradient-to-br from-green-100 to-emerald-100 text-green-600'
                   }`}>
                     {step.letter}
                   </div>
                   <h3 className="font-bold text-xl text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-sm text-purple-600 font-medium mb-3">{step.subtitle}</p>
+                  <p className="text-sm text-green-600 font-medium mb-3">{step.subtitle}</p>
                   <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>
 
               {/* Hover Details Card */}
               {hoveredStep === `${step.letter}-${index}` && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-80 bg-white rounded-2xl shadow-2xl border-2 border-purple-200 p-6 z-20 animate-in fade-in duration-200">
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-l-2 border-t-2 border-purple-200 rotate-45"></div>
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-80 bg-white rounded-2xl shadow-2xl border-2 border-green-200 p-6 z-20 animate-in fade-in duration-200">
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-l-2 border-t-2 border-green-200 rotate-45"></div>
                   
                   <h4 className="font-bold text-lg text-gray-900 mb-4">Key Outcomes</h4>
                   <ul className="space-y-2 mb-6">
                     {step.outcomes.map((outcome, idx) => (
                       <li key={idx} className="flex items-start text-sm">
-                        <span className="text-purple-500 mr-2 mt-1">•</span>
+                        <span className="text-green-500 mr-2 mt-1">•</span>
                         <span className="text-gray-700">{outcome}</span>
                       </li>
                     ))}
@@ -113,7 +113,7 @@ export function AdaptFramework() {
                   <h4 className="font-bold text-lg text-gray-900 mb-3">Program Connection</h4>
                   <div className="space-y-2">
                     {step.programs.map((program, idx) => (
-                      <div key={idx} className="bg-purple-50 text-purple-700 text-xs px-3 py-2 rounded-full inline-block mr-2 mb-2">
+                      <div key={idx} className="bg-green-50 text-green-700 text-xs px-3 py-2 rounded-full inline-block mr-2 mb-2">
                         {program}
                       </div>
                     ))}

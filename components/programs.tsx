@@ -46,10 +46,10 @@ export function Programs() {
         <div className="grid md:grid-cols-3 gap-6 mb-4">
           {programs.map((program, index) => (
             <div key={program.id} className={`bg-white rounded-2xl p-8 shadow-xl border-2 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${
-              index === 1 ? 'border-purple-200 ring-2 ring-purple-100' : 'border-gray-100'
+              index === 1 ? 'border-emerald-200 ring-2 ring-emerald-100' : 'border-gray-100'
             }`}>
               {index === 1 && (
-                <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-full inline-block mb-4">
+                <div className="bg-gradient-to-r from-emerald-500 to-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full inline-block mb-4">
                   Most Popular
                 </div>
               )}
@@ -59,7 +59,7 @@ export function Programs() {
               <Button 
                 className={`w-full mb-6 py-3 font-semibold text-lg transition-all duration-200 ${
                   index === 1 
-                    ? 'bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg' 
+                    ? 'bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 shadow-lg' 
                     : 'shadow-md hover:shadow-lg'
                 }`}
                 onClick={() => window.open(program.id === 'growth' ? 'https://topmate.io/khalidirfan/1697252' : 'https://topmate.io/khalidirfan/1622786', '_blank')}
@@ -72,7 +72,7 @@ export function Programs() {
                 <ul className="space-y-2 text-sm text-gray-600">
                   {program.includes.map((item, itemIndex) => (
                     <li key={itemIndex} className="flex items-start">
-                      <span className="text-purple-500 mr-3 mt-0.5 text-xs">✓</span>
+                      <span className="text-emerald-500 mr-3 mt-0.5 text-xs">✓</span>
                       <span className="leading-relaxed">{item}</span>
                     </li>
                   ))}

@@ -43,7 +43,7 @@ export function About() {
                   track('cta_book_clicked', { location: 'about' })
                   window.open('https://topmate.io/khalidirfan/1622786', '_blank')
                 }}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
+                className="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
               >
                 Start Your AI Journey Today
               </button>
