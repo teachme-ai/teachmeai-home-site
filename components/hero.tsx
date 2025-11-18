@@ -44,9 +44,6 @@ export function Hero() {
               Check Your AI Readiness
             </button>
           </div>
-          <p className="text-xs text-slate-500">
-            Trusted by learners from IBM, NPCI, Indus Trust & more.
-          </p>
         </div>
         <div className="hidden md:flex justify-end">
           <div className="bg-white rounded-2xl shadow-lg p-5 border border-brand-border w-full max-w-sm space-y-4">
