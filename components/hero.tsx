@@ -30,7 +30,7 @@ export function Hero() {
   }
 
   return (
-    <section className="bg-gradient-to-br from-brand-secondary/10 to-brand-primary/5 py-20">
+    <section className="bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5 py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
         <div>
           <p className="text-xs font-semibold tracking-wide uppercase text-slate-500 mb-3">
@@ -48,7 +48,7 @@ export function Hero() {
                 track('cta_book_clicked', { location: 'hero' })
                 window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
               }}
-              className="bg-brand-primary hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-150"
+              className="bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-150"
             >
               Book a 70-minute Clarity Call
             </button>
@@ -57,7 +57,7 @@ export function Hero() {
                 track('quiz_cta_clicked', { location: 'hero' })
                 scrollToQuiz()
               }}
-              className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-150"
+              className="border-2 border-brand-primary text-brand-primary hover:bg-gradient-to-r hover:from-brand-primary hover:to-sky-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-150"
             >
               Check Your AI Readiness
             </button>

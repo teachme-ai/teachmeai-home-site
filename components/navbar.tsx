@@ -18,6 +18,7 @@ export function Navbar() {
     <header className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-brand-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div className="flex items-center gap-2">
+          <img src="/images/logo.png" alt="TeachMeAI" className="w-8 h-8 rounded-lg" />
           <span className="text-xl font-extrabold text-brand-primary">TeachMeAI</span>
         </div>
         
@@ -34,7 +35,7 @@ export function Navbar() {
           <button onClick={() => scrollToSection('faq')} className="hover:text-brand-primary transition-all duration-150">
             FAQ
           </button>
-          <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-all duration-150">
+          <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-150">
             Book Call
           </a>
         </nav>
@@ -65,7 +66,7 @@ export function Navbar() {
             <button onClick={() => scrollToSection('faq')} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
               FAQ
             </button>
-            <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="block bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 text-center">
+            <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold text-center transition-all duration-150">
               Book Call
             </a>
           </div>

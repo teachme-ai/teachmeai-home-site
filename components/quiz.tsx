@@ -171,7 +171,7 @@ export function Quiz() {
           <button 
             type="submit" 
             disabled={isSubmitting}
-            className="bg-brand-primary text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-sky-600 transition-all duration-150 disabled:opacity-50"
+            className="bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-150 disabled:opacity-50"
           >
             {isSubmitting ? 'Submitting...' : 'Submit & See Next Steps'}
           </button>

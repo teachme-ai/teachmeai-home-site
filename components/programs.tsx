@@ -27,7 +27,7 @@ export function Programs() {
               </ul>
               <button 
                 onClick={() => window.open(program.id === 'growth' ? 'https://topmate.io/khalidirfan/1697252' : 'https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')}
-                className="mt-auto bg-brand-primary text-white py-2.5 px-4 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-all duration-150"
+                className="mt-auto bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white py-2.5 px-4 rounded-lg text-sm font-semibold transition-all duration-150"
               >
                 {program.cta}
               </button>
