@@ -19,6 +19,14 @@ const config: Config = {
     },
     extend: {
       colors: {
+        brand: {
+          primary: '#0EA5E9',
+          secondary: '#3B82F6',
+          dark: '#1E293B',
+          light: '#F8FAFC',
+          border: '#E2E8F0',
+          muted: '#64748B',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

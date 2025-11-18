@@ -1,8 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import Image from "next/image"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,64 +15,32 @@ export function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-200 shadow-sm">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <Image 
-            src="/images/logo.png" 
-            alt="TeachMeAI Logo" 
-            width={40} 
-            height={40}
-            className="rounded-lg"
-          />
-          <span className="text-2xl font-bold text-gray-900">TeachMeAI</span>
+    <header className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-brand-border">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <div className="flex items-center gap-2">
+          <span className="text-lg font-bold text-brand-dark">TeachMeAI</span>
+          <span className="text-xs text-slate-500 hidden sm:inline">with Irfan Khalid</span>
         </div>
         
-        <div className="hidden md:flex items-center space-x-8">
-          <button 
-            onClick={() => scrollToSection('home')}
-            className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-          >
-            Home
-          </button>
-          <button 
-            onClick={() => scrollToSection('programs')}
-            className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-          >
+        <nav className="hidden md:flex items-center gap-6 text-sm text-slate-600">
+          <button onClick={() => scrollToSection('programs')} className="hover:text-brand-primary transition-all duration-150">
             Programs
           </button>
-          <button 
-            onClick={() => scrollToSection('about')}
-            className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-          >
+          <button onClick={() => scrollToSection('about')} className="hover:text-brand-primary transition-all duration-150">
             About
           </button>
-          <button 
-            onClick={() => scrollToSection('faq')}
-            className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-          >
+          <button onClick={() => scrollToSection('quiz')} className="hover:text-brand-primary transition-all duration-150">
+            AI Readiness
+          </button>
+          <button onClick={() => scrollToSection('faq')} className="hover:text-brand-primary transition-all duration-150">
             FAQ
           </button>
-          <Button 
-            onClick={() => {
-              try {
-                window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
-              } catch (error) {
-                console.error('Error opening booking link:', error)
-              }
-            }}
-            size="sm"
-            className="bg-gray-900 text-white hover:bg-gray-800 font-semibold shadow-lg"
-          >
+          <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-all duration-150">
             Book Call
-          </Button>
-        </div>
+          </a>
+        </nav>
         
-        {/* Mobile menu button */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-gray-600 hover:text-gray-900"
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-slate-600 hover:text-brand-dark">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -85,50 +51,27 @@ export function Navbar() {
         </button>
       </div>
       
-      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="px-6 py-4 space-y-4">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('programs')}
-              className="block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
+        <div className="md:hidden bg-white border-t border-brand-border">
+          <div className="px-4 py-4 space-y-3">
+            <button onClick={() => scrollToSection('programs')} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
               Programs
             </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
+            <button onClick={() => scrollToSection('about')} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
               About
             </button>
-            <button 
-              onClick={() => scrollToSection('faq')}
-              className="block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
+            <button onClick={() => scrollToSection('quiz')} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
+              AI Readiness
+            </button>
+            <button onClick={() => scrollToSection('faq')} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
               FAQ
             </button>
-            <Button 
-              onClick={() => {
-                try {
-                  window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
-                } catch (error) {
-                  console.error('Error opening booking link:', error)
-                }
-              }}
-              size="sm"
-              className="bg-gray-900 text-white hover:bg-gray-800 font-semibold shadow-lg w-full"
-            >
+            <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="block bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 text-center">
               Book Call
-            </Button>
+            </a>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   )
 }

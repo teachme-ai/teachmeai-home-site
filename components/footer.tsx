@@ -1,47 +1,16 @@
-import Link from "next/link"
-
 export function Footer() {
   return (
-    <footer className="bg-muted py-8 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="font-semibold mb-4">TeachMeAI</h3>
-            <p className="text-sm text-muted-foreground">
-              Building real AI capability without the hype.
-            </p>
-          </div>
-          
-          <div>
-            <h4 className="font-medium mb-4">Contact</h4>
-            <p className="text-sm text-muted-foreground mb-2">
-              Email: irfan@teachmeai.in
-            </p>
-            <a 
-              href="https://linkedin.com/in/irfankhalid" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              LinkedIn
-            </a>
-          </div>
-          
-          <div>
-            <h4 className="font-medium mb-4">Legal</h4>
-            <div className="space-y-2">
-              <Link href="/privacy" className="block text-sm text-muted-foreground hover:text-foreground">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="block text-sm text-muted-foreground hover:text-foreground">
-                Terms of Service
-              </Link>
-            </div>
-          </div>
+    <footer className="border-t border-brand-border py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-sm text-slate-500">
+        <div>
+          <p className="font-semibold text-brand-dark">TeachMeAI</p>
+          <p>© 2025 Irfan Khalid. All rights reserved.</p>
         </div>
-        
-        <div className="border-t mt-6 pt-6 text-center text-sm text-muted-foreground">
-          © 2024 TeachMeAI. All rights reserved.
+        <div className="flex gap-4">
+          <a href="mailto:reachirfan@gmail.com" className="hover:text-brand-primary transition-all duration-150">Contact</a>
+          <a href="https://www.linkedin.com/in/irfankhalid" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-all duration-150">LinkedIn</a>
+          <a href="/privacy" className="hover:text-brand-primary transition-all duration-150">Privacy</a>
+          <a href="/terms" className="hover:text-brand-primary transition-all duration-150">Terms</a>
         </div>
       </div>
     </footer>

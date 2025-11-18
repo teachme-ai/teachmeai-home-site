@@ -7,37 +7,17 @@ import {
 import faqData from "@/content/faq.json"
 
 export function FAQ() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  }
-
   return (
-    <section id="faq" className="py-12 px-4 scroll-mt-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="container mx-auto max-w-3xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          Frequently Asked Questions
-        </h2>
-        
+    <section id="faq" className="py-20 bg-brand-light">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-brand-dark mb-6">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="w-full">
           {faqData.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left">
+            <AccordionItem key={index} value={`item-${index}`} className="border-b border-brand-border">
+              <AccordionTrigger className="text-left text-brand-dark hover:text-brand-primary">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent className="text-slate-600">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
