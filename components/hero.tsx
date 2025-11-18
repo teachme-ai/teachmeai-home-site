@@ -1,13 +1,31 @@
 "use client"
 
+import { useState } from 'react'
 import { track } from '@vercel/analytics'
 
 export function Hero() {
+  const [selectedAudience, setSelectedAudience] = useState('students')
+  
   const scrollToQuiz = () => {
     try {
       document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })
     } catch (error) {
       console.error('Error scrolling to quiz:', error)
+    }
+  }
+
+  const audienceContent = {
+    students: {
+      start: "I'm not sure how AI fits into my career path.",
+      end: "You'll have portfolio projects, a clear AI skill roadmap, and confidence to showcase your capabilities."
+    },
+    educators: {
+      start: "I want to use AI in teaching but don't know where to start.",
+      end: "You'll have practical lesson plans, AI tools integrated into your curriculum, and student engagement strategies."
+    },
+    professionals: {
+      start: "I feel overwhelmed by AI tools and hype.",
+      end: "You'll have a clear workflow, 1–2 shipped projects, and a repeatable system for your work."
     }
   }
 
@@ -46,19 +64,46 @@ export function Hero() {
           </div>
         </div>
         <div className="hidden md:flex justify-end">
-          <div className="bg-white rounded-2xl shadow-lg p-5 border border-brand-border w-full max-w-sm space-y-4">
+          <div className="bg-white rounded-2xl shadow-lg p-8 border border-brand-border w-full space-y-5">
             <div>
-              <p className="text-xs font-semibold text-slate-500 uppercase mb-1">Your Starting Point</p>
-              <p className="text-sm text-slate-700">"I feel overwhelmed by AI tools."</p>
+              <p className="text-sm font-semibold text-slate-500 uppercase mb-2">Your Starting Point</p>
+              <p className="text-base text-slate-700 leading-relaxed">"{audienceContent[selectedAudience as keyof typeof audienceContent].start}"</p>
             </div>
             <div>
-              <p className="text-xs font-semibold text-slate-500 uppercase mb-1">In 30–90 Days</p>
-              <p className="text-sm text-slate-700">You'll have a clear workflow, 1–2 shipped projects, and a repeatable system.</p>
+              <p className="text-sm font-semibold text-slate-500 uppercase mb-2">In 30–90 Days</p>
+              <p className="text-base text-slate-700 leading-relaxed">{audienceContent[selectedAudience as keyof typeof audienceContent].end}</p>
             </div>
-            <div className="flex gap-2 text-xs">
-              <span className="px-2 py-1 rounded-full bg-brand-primary/10 text-brand-primary">Students</span>
-              <span className="px-2 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary">Educators</span>
-              <span className="px-2 py-1 rounded-full bg-emerald-50 text-emerald-600">Professionals</span>
+            <div className="flex gap-2 text-sm">
+              <button 
+                onClick={() => setSelectedAudience('students')}
+                className={`px-3 py-2 rounded-full transition-all duration-150 ${
+                  selectedAudience === 'students' 
+                    ? 'bg-brand-primary text-white' 
+                    : 'bg-brand-primary/10 text-brand-primary hover:bg-brand-primary/20'
+                }`}
+              >
+                Students
+              </button>
+              <button 
+                onClick={() => setSelectedAudience('educators')}
+                className={`px-3 py-2 rounded-full transition-all duration-150 ${
+                  selectedAudience === 'educators' 
+                    ? 'bg-brand-secondary text-white' 
+                    : 'bg-brand-secondary/10 text-brand-secondary hover:bg-brand-secondary/20'
+                }`}
+              >
+                Educators
+              </button>
+              <button 
+                onClick={() => setSelectedAudience('professionals')}
+                className={`px-3 py-2 rounded-full transition-all duration-150 ${
+                  selectedAudience === 'professionals' 
+                    ? 'bg-emerald-600 text-white' 
+                    : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'
+                }`}
+              >
+                Professionals
+              </button>
             </div>
           </div>
         </div>
