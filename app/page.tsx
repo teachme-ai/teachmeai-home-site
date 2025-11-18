@@ -2,11 +2,10 @@ import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { Programs } from "@/components/programs"
 import { TeachMeAIFrameworks } from "@/components/teachmeai-frameworks"
-import { ImpactFramework } from "@/components/impact-framework"
 import { Quiz } from "@/components/quiz"
 import { About } from "@/components/about"
-import { AdaptFramework } from "@/components/adapt-framework"
 import { FAQ } from "@/components/faq"
+import { Newsletter } from "@/components/newsletter"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -16,11 +15,10 @@ export default function Home() {
       <Hero />
       <Programs />
       <TeachMeAIFrameworks />
-      <ImpactFramework />
-      <AdaptFramework />
       <About />
-      <FAQ />
       <Quiz />
+      <FAQ />
+      <Newsletter />
       <Footer />
     </main>
   )
