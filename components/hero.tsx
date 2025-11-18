@@ -22,7 +22,7 @@ export function Hero() {
             Build real AI capability in 30–90 days — without the hype.
           </h1>
           <p className="text-base text-slate-600 mb-6">
-            I help students, educators, and professionals design practical AI roadmaps, ship real projects, and feel confident using AI at work and in the classroom.
+            I help people understand AI, use it with confidence, and take steady steps that move their learning and work forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <button 
