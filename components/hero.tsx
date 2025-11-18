@@ -63,17 +63,17 @@ export function Hero() {
             </button>
           </div>
         </div>
-        <div className="hidden md:flex justify-end">
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-brand-border w-full space-y-5">
+        <div className="flex justify-end">
+          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-brand-border w-full space-y-4 md:space-y-5">
             <div>
-              <p className="text-sm font-semibold text-slate-500 uppercase mb-2">Your Starting Point</p>
-              <p className="text-base text-slate-700 leading-relaxed">"{audienceContent[selectedAudience as keyof typeof audienceContent].start}"</p>
+              <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase mb-2">Your Starting Point</p>
+              <p className="text-sm md:text-base text-slate-700 leading-relaxed">"{audienceContent[selectedAudience as keyof typeof audienceContent].start}"</p>
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-500 uppercase mb-2">In 30–90 Days</p>
-              <p className="text-base text-slate-700 leading-relaxed">{audienceContent[selectedAudience as keyof typeof audienceContent].end}</p>
+              <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase mb-2">In 30–90 Days</p>
+              <p className="text-sm md:text-base text-slate-700 leading-relaxed">{audienceContent[selectedAudience as keyof typeof audienceContent].end}</p>
             </div>
-            <div className="flex gap-2 text-sm">
+            <div className="flex gap-2 text-xs md:text-sm">
               <button 
                 onClick={() => setSelectedAudience('students')}
                 className={`px-3 py-2 rounded-full transition-all duration-150 ${
