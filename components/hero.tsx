@@ -46,7 +46,7 @@ export function Hero() {
   }, [images.length])
 
   return (
-    <section id="home" className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-20 pb-6 md:pb-8">
+    <section id="home" className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-8 md:pb-12">
       {/* Gradient Background */}
       <div className="absolute inset-0 gradient-bg opacity-90"></div>
       
@@ -59,34 +59,34 @@ export function Hero() {
       <div className="relative z-10 container mx-auto max-w-7xl px-4">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 leading-tight text-white">
               Build real AI capability in 
               <span className="block text-yellow-300">30–90 days</span>
-              <span className="text-3xl md:text-4xl font-normal block mt-2 text-white/90">without the hype</span>
+              <span className="text-2xl md:text-3xl font-normal block mt-2 text-white/90">without the hype</span>
             </h1>
             
-            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-12 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-white/90 mb-6 md:mb-8 leading-relaxed">
               <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-lg font-semibold text-white shadow-lg border border-white/30">1-to-1 Personalised Coaching,</span> Personalized roadmaps, hands-on practice, and measurable outcomes for working professionals and learners.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-2 md:mb-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-2 md:mb-4">
               <button
                 onClick={() => {
                   track('cta_book_clicked', { location: 'hero' })
                   window.open('https://topmate.io/khalidirfan/1622786', '_blank')
                 }}
-                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 bg-white text-emerald-900 hover:bg-gray-100 font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center"
+                className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 hover:from-yellow-500 hover:to-yellow-600 font-bold shadow-2xl transform hover:scale-105 transition-all duration-200 rounded-lg inline-flex items-center justify-center text-center ring-4 ring-yellow-300/50 hover:ring-yellow-400/60"
               >
-                Book a 70-minute Clarity Call
+                📞 Book a 70-minute Clarity Call
               </button>
               <button
                 onClick={() => {
                   track('quiz_cta_clicked', { location: 'hero' })
                   scrollToQuiz()
                 }}
-                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 border-2 border-white text-white hover:bg-white hover:text-emerald-900 backdrop-blur-sm font-semibold transform hover:scale-105 transition-all duration-200 rounded-md h-12 sm:h-14 inline-flex items-center justify-center text-center"
+                className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 border-2 border-white/80 text-white hover:bg-white/10 backdrop-blur-sm font-semibold transform hover:scale-105 transition-all duration-200 rounded-lg inline-flex items-center justify-center text-center"
               >
-                Check your AI readiness (3 minutes)
+                ✓ Check your AI readiness (3 min)
               </button>
             </div>
           </div>
