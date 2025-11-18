@@ -72,8 +72,20 @@ export function AdaptFramework() {
             <div 
               key={`${step.letter}-${index}`}
               className="group relative"
-              onMouseEnter={() => setHoveredStep(`${step.letter}-${index}`)}
-              onMouseLeave={() => setHoveredStep(null)}
+              onMouseEnter={() => {
+                try {
+                  setHoveredStep(`${step.letter}-${index}`)
+                } catch (error) {
+                  console.error('Error setting hovered step:', error)
+                }
+              }}
+              onMouseLeave={() => {
+                try {
+                  setHoveredStep(null)
+                } catch (error) {
+                  console.error('Error clearing hovered step:', error)
+                }
+              }}
             >
               {/* Main Card */}
               <div className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer h-full ${

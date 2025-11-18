@@ -8,8 +8,12 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    setIsOpen(false)
+    try {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      setIsOpen(false)
+    } catch (error) {
+      console.error('Error scrolling to section:', id, error)
+    }
   }
 
   return (
@@ -52,7 +56,13 @@ export function Navbar() {
             FAQ
           </button>
           <Button 
-            onClick={() => window.open('https://topmate.io/khalidirfan/1622786', '_blank')}
+            onClick={() => {
+              try {
+                window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
+              } catch (error) {
+                console.error('Error opening booking link:', error)
+              }
+            }}
             size="sm"
             className="bg-gray-900 text-white hover:bg-gray-800 font-semibold shadow-lg"
           >
@@ -104,7 +114,13 @@ export function Navbar() {
               FAQ
             </button>
             <Button 
-              onClick={() => window.open('https://topmate.io/khalidirfan/1622786', '_blank')}
+              onClick={() => {
+                try {
+                  window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
+                } catch (error) {
+                  console.error('Error opening booking link:', error)
+                }
+              }}
               size="sm"
               className="bg-gray-900 text-white hover:bg-gray-800 font-semibold shadow-lg w-full"
             >

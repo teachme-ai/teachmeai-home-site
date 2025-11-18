@@ -80,8 +80,20 @@ export function TeachMeAIFrameworks() {
             <div 
               key={`${framework.title}-${index}`}
               className="group relative"
-              onMouseEnter={() => setHoveredFramework(`${framework.title}-${index}`)}
-              onMouseLeave={() => setHoveredFramework(null)}
+              onMouseEnter={() => {
+                try {
+                  setHoveredFramework(`${framework.title}-${index}`)
+                } catch (error) {
+                  console.error('Error setting hovered framework:', error)
+                }
+              }}
+              onMouseLeave={() => {
+                try {
+                  setHoveredFramework(null)
+                } catch (error) {
+                  console.error('Error clearing hovered framework:', error)
+                }
+              }}
             >
               {/* Main Card */}
               <div className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 cursor-pointer h-full ${

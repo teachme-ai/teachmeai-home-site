@@ -15,11 +15,15 @@ export function Newsletter() {
     
     setIsSubmitting(true)
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setIsSubmitted(true)
-    setIsSubmitting(false)
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Newsletter subscription error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {

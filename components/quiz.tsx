@@ -24,6 +24,7 @@ export function Quiz() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError(null)
     
     try {
       track('quiz_submitted', { 
@@ -35,7 +36,7 @@ export function Quiz() {
       const webhookUrl = process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL
       
       if (webhookUrl) {
-        await fetch(webhookUrl, {
+        const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -45,12 +46,16 @@ export function Quiz() {
             timestamp: new Date().toISOString()
           })
         })
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
       }
       
       setIsSubmitted(true)
     } catch (error) {
       console.error('Quiz submission error:', error)
-      setSubmitError('Failed to submit quiz. Please try again.')
+      setSubmitError(error instanceof Error ? error.message : 'Failed to submit quiz. Please try again.')
     } finally {
       setIsSubmitting(false)
     }

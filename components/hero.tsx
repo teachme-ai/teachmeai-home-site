@@ -17,14 +17,22 @@ export function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   const scrollToQuiz = () => {
-    document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })
+    try {
+      document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })
+    } catch (error) {
+      console.error('Error scrolling to quiz:', error)
+    }
   }
   
   // Preload images for smooth transitions
   useEffect(() => {
     images.forEach((src) => {
-      const img = new window.Image()
-      img.src = src
+      try {
+        const img = new window.Image()
+        img.src = src
+      } catch (error) {
+        console.error('Error preloading image:', src, error)
+      }
     })
   }, [])
   

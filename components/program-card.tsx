@@ -36,7 +36,13 @@ export function ProgramCard({ program, index }: ProgramCardProps) {
             ? 'bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg' 
             : 'shadow-md hover:shadow-lg'
         }`}
-        onClick={() => window.open(program.id === 'growth' ? 'https://topmate.io/khalidirfan/1697252' : 'https://topmate.io/khalidirfan/1622786', '_blank')}
+        onClick={() => {
+          try {
+            window.open(program.id === 'growth' ? 'https://topmate.io/khalidirfan/1697252' : 'https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
+          } catch (error) {
+            console.error('Error opening program link:', error)
+          }
+        }}
       >
         {program.cta}
       </Button>
