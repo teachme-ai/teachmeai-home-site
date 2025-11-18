@@ -18,8 +18,7 @@ export function Navbar() {
     <header className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-brand-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div className="flex items-center gap-2">
-          <span className="text-lg font-bold text-brand-dark">TeachMeAI</span>
-          <span className="text-xs text-slate-500 hidden sm:inline">with Irfan Khalid</span>
+          <span className="text-xl font-extrabold text-brand-primary">TeachMeAI</span>
         </div>
         
         <nav className="hidden md:flex items-center gap-6 text-sm text-slate-600">
