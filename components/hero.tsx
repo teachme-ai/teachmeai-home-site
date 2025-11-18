@@ -64,7 +64,7 @@ export function Hero() {
           </div>
         </div>
         <div className="flex justify-end">
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-brand-border w-full space-y-4 md:space-y-5">
+          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border-2 border-brand-primary/30 w-full space-y-4 md:space-y-5">
             <div>
               <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase mb-2">Your Starting Point</p>
               <p className="text-sm md:text-base text-slate-700 leading-relaxed">"{audienceContent[selectedAudience as keyof typeof audienceContent].start}"</p>

@@ -6,7 +6,7 @@ export function Programs() {
   return (
     <section id="programs" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-brand-dark mb-3">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-3">
           Choose your learning pathway
         </h2>
         <p className="text-base text-slate-600 mb-8">
@@ -14,7 +14,7 @@ export function Programs() {
         </p>
         <div className="grid md:grid-cols-3 gap-6">
           {programs.map((program, index) => (
-            <div key={program.id} className="p-6 bg-brand-light rounded-2xl border border-brand-border shadow-sm flex flex-col hover:border-brand-primary hover:-translate-y-0.5 transition-all duration-150">
+            <div key={program.id} className="p-6 bg-white rounded-2xl border-2 border-brand-primary/20 shadow-sm flex flex-col hover:border-brand-primary hover:shadow-xl hover:shadow-brand-primary/10 hover:-translate-y-1 transition-all duration-150">
               <p className="text-xs font-semibold uppercase text-slate-500 mb-1">
                 {index === 0 ? 'Single Session' : index === 1 ? 'Starter Program' : 'Growth Program'}
               </p>
