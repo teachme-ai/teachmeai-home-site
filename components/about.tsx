@@ -5,8 +5,8 @@ export function About() {
     <section id="about" className="py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-[auto,1fr] gap-8 items-center">
         <div className="flex justify-center md:justify-start">
-          <div className="w-32 h-32 rounded-full bg-brand-light border border-brand-border overflow-hidden flex items-center justify-center text-4xl">
-            👨‍💼
+          <div className="w-32 h-32 rounded-full bg-brand-light border border-brand-border overflow-hidden">
+            <img src="/images/irfanpic.jpeg" alt="Irfan Khalid" className="w-full h-full object-cover" />
           </div>
         </div>
         <div>
