@@ -10,9 +10,10 @@ export function About() {
           </div>
           <h2 className="text-3xl font-bold text-brand-dark mb-4">Meet Irfan</h2>
           <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <span className="px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-sky-100 text-brand-primary text-xs font-semibold rounded-full border border-brand-primary/30">IBM Design Thinking Practitioner</span>
-            <span className="px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-sky-100 text-brand-primary text-xs font-semibold rounded-full border border-brand-primary/30">Certified ScrumMaster</span>
-            <span className="px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-sky-100 text-brand-primary text-xs font-semibold rounded-full border border-brand-primary/30">IBM Recognized Educator</span>
+            <span className="px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-sky-100 text-brand-primary text-xs font-semibold rounded-full border border-brand-primary/30">IBM Certified Design Thinking Practitioner</span>
+            <span className="px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-sky-100 text-brand-primary text-xs font-semibold rounded-full border border-brand-primary/30">Agile Certified Coach</span>
+            <span className="px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-sky-100 text-brand-primary text-xs font-semibold rounded-full border border-brand-primary/30">Google Certified Teacher</span>
+            <span className="px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-sky-100 text-brand-primary text-xs font-semibold rounded-full border border-brand-primary/30">IBM Recognised Educator</span>
           </div>
         </div>
         <div className="max-w-3xl mx-auto text-center">
