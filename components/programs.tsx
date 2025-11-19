@@ -14,8 +14,13 @@ export function Programs() {
         </p>
         <div className="grid md:grid-cols-3 gap-6">
           {programs.map((program, index) => (
-            <div key={program.id} className="p-6 bg-white rounded-2xl border-2 border-brand-primary/20 shadow-sm flex flex-col hover:border-brand-primary hover:shadow-xl hover:shadow-brand-primary/10 hover:-translate-y-1 transition-all duration-150">
-              <p className="text-xs font-semibold uppercase text-slate-500 mb-1">
+            <div key={program.id} className="relative p-6 bg-white rounded-2xl border-2 border-brand-primary/20 shadow-sm flex flex-col hover:border-brand-primary hover:shadow-xl hover:shadow-brand-primary/10 hover:-translate-y-1 transition-all duration-150 h-full">
+              {index === 1 && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-brand-primary to-sky-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">MOST POPULAR</span>
+                </div>
+              )}
+              <p className="text-xs font-semibold uppercase text-slate-500 mb-1 mt-2">
                 {index === 0 ? 'Single Session' : index === 1 ? 'Starter Program' : 'Growth Program'}
               </p>
               <h3 className="text-xl font-semibold text-brand-dark mb-2">{program.title}</h3>
