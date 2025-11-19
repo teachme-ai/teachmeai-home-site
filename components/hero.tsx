@@ -24,8 +24,8 @@ export function Hero() {
       end: "You'll have practical lesson plans, AI tools integrated into your curriculum, and student engagement strategies."
     },
     professionals: {
-      start: "I feel overwhelmed by AI tools and hype.",
-      end: "You'll have a clear workflow, 1–2 shipped projects, and a repeatable system for your work."
+      start: "I'm unsure where to begin and everything feels confusing.",
+      end: "You'll have a simple, comfortable way to use AI in your daily work, plus one or two small projects that prove to you that you can do this."
     }
   }
 
