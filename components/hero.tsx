@@ -16,8 +16,8 @@ export function Hero() {
 
   const audienceContent = {
     students: {
-      start: "I'm not sure how AI fits into my career path.",
-      end: "You'll have portfolio projects, a clear AI skill roadmap, and confidence to showcase your capabilities."
+      start: "I'm unsure how AI fits into my future, and the job market feels unpredictable.",
+      end: "You'll have a clearer understanding of where AI fits in your field, a simple skill path you can follow, and the confidence to explain your strengths and readiness to employers."
     },
     educators: {
       start: "I want to use AI in teaching but don't know where to start.",
@@ -25,7 +25,7 @@ export function Hero() {
     },
     professionals: {
       start: "I'm unsure where to begin and everything feels confusing.",
-      end: "You'll have a simple, comfortable way to use AI in your daily work, plus one or two small projects that prove to you that you can do this."
+      end: "You'll have a simple, comfortable way to use AI in your daily work, plus one or two small projects that prove to you that you can do this. You'll understand what's useful for your goals, have a clear routine, and gain the confidence to apply AI without second-guessing every step."
     }
   }
 
