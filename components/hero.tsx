@@ -20,8 +20,8 @@ export function Hero() {
       end: "You'll have a clearer understanding of where AI fits in your field, a simple skill path you can follow, and the confidence to explain your strengths and readiness to employers."
     },
     educators: {
-      start: "I want to use AI in teaching but don't know where to start.",
-      end: "You'll have practical lesson plans, AI tools integrated into your curriculum, and student engagement strategies."
+      start: "I want to bring AI into my teaching, but I'm not sure what's useful or where to start.",
+      end: "You'll gain clarity on the tools that matter, practical ways to use them in your subject, and more confidence creating engaging learning experiences with AI."
     },
     professionals: {
       start: "I'm unsure where to begin and everything feels confusing.",
