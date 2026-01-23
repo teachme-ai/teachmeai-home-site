@@ -62,31 +62,6 @@ export function Hero() {
               Check Your AI Readiness
             </button>
           </div>
-
-          {/* Trust Strip */}
-          <div className="mt-8 pt-6 border-t border-slate-200">
-            <p className="text-xs text-slate-500 mb-3">Trusted by teams and institutions including:</p>
-            <div className="flex flex-wrap items-center gap-4 md:gap-6">
-              <div className="flex items-center gap-2 text-slate-600">
-                <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">IBM</span>
-                </div>
-                <span className="text-sm font-medium">IBM</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-600">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">N</span>
-                </div>
-                <span className="text-sm font-medium">NPCI</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-600">
-                <div className="w-8 h-8 bg-emerald-600 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">IT</span>
-                </div>
-                <span className="text-sm font-medium">Indus Trust</span>
-              </div>
-            </div>
-          </div>
         </div>
         <div className="flex justify-end">
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border-2 border-brand-primary/30 w-full space-y-4 md:space-y-5">
