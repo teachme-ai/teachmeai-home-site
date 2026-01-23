@@ -5,7 +5,7 @@ import { track } from '@vercel/analytics'
 
 export function Hero() {
   const [selectedAudience, setSelectedAudience] = useState('students')
-  
+
   const scrollToQuiz = () => {
     try {
       document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })
@@ -43,16 +43,16 @@ export function Hero() {
             I help people understand AI, use it with confidence, and take steady steps that move their learning and work forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
-            <button 
+            <button
               onClick={() => {
                 track('cta_book_clicked', { location: 'hero' })
                 window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
               }}
-              className="bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-150"
+              className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-150"
             >
               Book a 70-minute Clarity Call
             </button>
-            <button 
+            <button
               onClick={() => {
                 track('quiz_cta_clicked', { location: 'hero' })
                 scrollToQuiz()
@@ -74,33 +74,30 @@ export function Hero() {
               <p className="text-sm md:text-base text-slate-700 leading-relaxed">{audienceContent[selectedAudience as keyof typeof audienceContent].end}</p>
             </div>
             <div className="flex gap-2 text-xs md:text-sm">
-              <button 
+              <button
                 onClick={() => setSelectedAudience('students')}
-                className={`px-3 py-2 rounded-full transition-all duration-150 ${
-                  selectedAudience === 'students' 
-                    ? 'bg-brand-primary text-white' 
+                className={`px-3 py-2 rounded-full transition-all duration-150 ${selectedAudience === 'students'
+                    ? 'bg-brand-primary text-white'
                     : 'bg-brand-primary/10 text-brand-primary hover:bg-brand-primary/20'
-                }`}
+                  }`}
               >
                 Students
               </button>
-              <button 
+              <button
                 onClick={() => setSelectedAudience('educators')}
-                className={`px-3 py-2 rounded-full transition-all duration-150 ${
-                  selectedAudience === 'educators' 
-                    ? 'bg-brand-secondary text-white' 
+                className={`px-3 py-2 rounded-full transition-all duration-150 ${selectedAudience === 'educators'
+                    ? 'bg-brand-secondary text-white'
                     : 'bg-brand-secondary/10 text-brand-secondary hover:bg-brand-secondary/20'
-                }`}
+                  }`}
               >
                 Educators
               </button>
-              <button 
+              <button
                 onClick={() => setSelectedAudience('professionals')}
-                className={`px-3 py-2 rounded-full transition-all duration-150 ${
-                  selectedAudience === 'professionals' 
-                    ? 'bg-emerald-600 text-white' 
+                className={`px-3 py-2 rounded-full transition-all duration-150 ${selectedAudience === 'professionals'
+                    ? 'bg-emerald-600 text-white'
                     : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'
-                }`}
+                  }`}
               >
                 Professionals
               </button>

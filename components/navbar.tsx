@@ -4,7 +4,7 @@ import { useState } from "react"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  
+
   const scrollToSection = (id: string) => {
     try {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -21,7 +21,7 @@ export function Navbar() {
           <img src="/images/logo.png" alt="TeachMeAI" className="w-8 h-8 rounded-lg" />
           <span className="text-xl font-extrabold text-brand-primary">TeachMeAI</span>
         </div>
-        
+
         <nav className="hidden md:flex items-center gap-6 text-sm text-slate-600">
           <button onClick={() => scrollToSection('programs')} className="hover:text-brand-primary transition-all duration-150">
             Programs
@@ -35,11 +35,11 @@ export function Navbar() {
           <button onClick={() => scrollToSection('faq')} className="hover:text-brand-primary transition-all duration-150">
             FAQ
           </button>
-          <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-150">
+          <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-150">
             Book Call
           </a>
         </nav>
-        
+
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-slate-600 hover:text-brand-dark">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
@@ -50,7 +50,7 @@ export function Navbar() {
           </svg>
         </button>
       </div>
-      
+
       {isOpen && (
         <div className="md:hidden bg-white border-t border-brand-border">
           <div className="px-4 py-4 space-y-3">
