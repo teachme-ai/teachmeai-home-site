@@ -93,9 +93,10 @@ export function Quiz() {
               <input
                 type="text"
                 required
+                placeholder="e.g., John Smith"
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
-                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary"
+                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
             <div>
@@ -103,9 +104,10 @@ export function Quiz() {
               <input
                 type="email"
                 required
+                placeholder="you@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary"
+                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
             <div>
@@ -113,9 +115,10 @@ export function Quiz() {
               <input
                 type="text"
                 required
+                placeholder="e.g., Software Engineer"
                 value={formData.role}
                 onChange={(e) => setFormData({...formData, role: e.target.value})}
-                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary"
+                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
             <div>
@@ -123,9 +126,10 @@ export function Quiz() {
               <input
                 type="text"
                 required
+                placeholder="e.g., Healthcare, Finance, Education"
                 value={formData.industry}
                 onChange={(e) => setFormData({...formData, industry: e.target.value})}
-                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary"
+                className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
           </div>
