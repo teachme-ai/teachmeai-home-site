@@ -20,26 +20,26 @@ export function Quiz() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitError(null)
-    
+
     try {
-      track('quiz_submitted', { 
+      track('quiz_submitted', {
         goal: formData.goal,
         confidence: formData.confidence,
         industry: formData.industry
       })
-      
+
       const webhookUrl = process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL
-      
+
       if (webhookUrl) {
         const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...formData, timestamp: new Date().toISOString() })
         })
-        
+
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
       }
-      
+
       setIsSubmitted(true)
     } catch (error) {
       console.error('Quiz submission error:', error)
@@ -58,7 +58,7 @@ export function Quiz() {
               Thanks! You'll get a short summary in your inbox.
             </h3>
             <p className="text-slate-600 mb-6">Want to fast-track your AI journey?</p>
-            <button 
+            <button
               onClick={() => window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')}
               className="bg-brand-primary text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-sky-600 transition-all duration-150"
             >
@@ -79,13 +79,13 @@ export function Quiz() {
         <p className="text-base text-slate-600 mb-6">
           Answer a few questions and I'll help you see where you are today and what a realistic 30–90 day plan can look like.
         </p>
-        
+
         {submitError && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
             <p className="text-red-700 text-sm">{submitError}</p>
           </div>
         )}
-        
+
         <form onSubmit={handleSubmit} className="bg-white border border-brand-border rounded-2xl p-6 shadow-sm space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div>
@@ -95,7 +95,7 @@ export function Quiz() {
                 required
                 placeholder="e.g., John Smith"
                 value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
@@ -106,7 +106,7 @@ export function Quiz() {
                 required
                 placeholder="you@example.com"
                 value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
@@ -117,7 +117,7 @@ export function Quiz() {
                 required
                 placeholder="e.g., Software Engineer"
                 value={formData.role}
-                onChange={(e) => setFormData({...formData, role: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                 className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
@@ -128,7 +128,7 @@ export function Quiz() {
                 required
                 placeholder="e.g., Healthcare, Finance, Education"
                 value={formData.industry}
-                onChange={(e) => setFormData({...formData, industry: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
                 className="w-full border border-brand-border rounded-lg px-3 py-2 text-sm focus:outline-brand-primary placeholder:text-slate-400"
               />
             </div>
@@ -144,7 +144,7 @@ export function Quiz() {
                     name="goal"
                     value={option}
                     required
-                    onChange={(e) => setFormData({...formData, goal: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
                     className="text-brand-primary focus:ring-brand-primary"
                   />
                   <span>{option}</span>
@@ -154,26 +154,30 @@ export function Quiz() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-brand-dark mb-3">Current AI tool confidence (1 = new, 5 = advanced) *</label>
-            <div className="flex space-x-4">
-              {[1, 2, 3, 4, 5].map((num) => (
-                <label key={num} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="confidence"
-                    value={num}
-                    required
-                    onChange={(e) => setFormData({...formData, confidence: parseInt(e.target.value)})}
-                    className="text-brand-primary focus:ring-brand-primary"
-                  />
-                  <span className="text-sm">{num}</span>
-                </label>
-              ))}
+            <label className="block text-sm font-medium text-brand-dark mb-3">Current AI tool confidence *</label>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs text-slate-500 w-16">Beginner</span>
+              <div className="flex gap-4 flex-1 justify-center">
+                {[1, 2, 3, 4, 5].map((num) => (
+                  <label key={num} className="flex flex-col items-center cursor-pointer group">
+                    <input
+                      type="radio"
+                      name="confidence"
+                      value={num}
+                      required
+                      onChange={(e) => setFormData({ ...formData, confidence: parseInt(e.target.value) })}
+                      className="w-5 h-5 text-brand-primary focus:ring-brand-primary focus:ring-2 cursor-pointer"
+                    />
+                    <span className="text-xs text-slate-500 mt-1 group-hover:text-brand-primary transition-colors">{num}</span>
+                  </label>
+                ))}
+              </div>
+              <span className="text-xs text-slate-500 w-16 text-right">Advanced</span>
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={isSubmitting}
             className="bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-150 disabled:opacity-50"
           >
