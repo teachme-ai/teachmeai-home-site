@@ -2,6 +2,7 @@
 
 import programs from "@/content/programs.json"
 import { Target, TrendingUp, Rocket } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const programIcons = [
   { icon: Target, color: "text-brand-primary" },
@@ -10,9 +11,11 @@ const programIcons = [
 ]
 
 export function Programs() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="programs" className="py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
         <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-3">
           Choose your learning pathway
         </h2>

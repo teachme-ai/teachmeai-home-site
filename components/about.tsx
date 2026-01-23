@@ -1,9 +1,13 @@
 "use client"
 
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+
 export function About() {
+  const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="about" className="py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
         <div className="flex flex-col items-center text-center mb-8">
           <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-brand-light border-4 border-brand-primary/30 overflow-hidden mb-4">
             <img src="/images/irfanpic.jpeg" alt="Irfan Khalid" className="w-full h-full object-cover" />
