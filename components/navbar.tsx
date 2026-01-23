@@ -1,9 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const scrollToSection = (id: string) => {
     try {
@@ -15,7 +25,10 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-brand-border">
+    <header className={`sticky top-0 z-30 transition-all duration-300 ${isScrolled
+        ? 'bg-white/95 backdrop-blur-lg shadow-md border-b border-brand-border/50'
+        : 'bg-white/80 backdrop-blur border-b border-brand-border'
+      }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div className="flex items-center gap-2">
           <img src="/images/logo.png" alt="TeachMeAI" className="w-8 h-8 rounded-lg" />
