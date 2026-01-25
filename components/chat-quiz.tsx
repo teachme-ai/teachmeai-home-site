@@ -37,9 +37,13 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
     const [isComplete, setIsComplete] = useState(false)
     const [showQuickReplies, setShowQuickReplies] = useState(true)
     const messagesEndRef = useRef<HTMLDivElement>(null)
+    const messagesContainerRef = useRef<HTMLDivElement>(null)
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+        // Scroll only the chat container, not the entire page
+        if (messagesContainerRef.current) {
+            messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight
+        }
     }
 
     // Only scroll when new messages are added (not on initial load with just 1 message)
@@ -140,7 +144,7 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
             </div>
 
             {/* Messages Container */}
-            <div className="h-[500px] overflow-y-auto p-4 space-y-4 bg-slate-50">
+            <div ref={messagesContainerRef} className="h-[500px] overflow-y-auto p-4 space-y-4 bg-slate-50">
                 {messages.map((msg) => (
                     <div
                         key={msg.id}
