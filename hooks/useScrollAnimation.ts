@@ -7,11 +7,14 @@ export function useScrollAnimation() {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
+        const element = ref.current
+        if (!element) return
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true)
-                    observer.unobserve(entry.target)
+                    // Don't unobserve here - let cleanup handle it
                 }
             },
             {
@@ -20,14 +23,11 @@ export function useScrollAnimation() {
             }
         )
 
-        if (ref.current) {
-            observer.observe(ref.current)
-        }
+        observer.observe(element)
 
+        // Proper cleanup: disconnect the observer entirely
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current)
-            }
+            observer.disconnect()
         }
     }, [])
 
