@@ -42,8 +42,11 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
 
+    // Only scroll when new messages are added (not on initial load with just 1 message)
     useEffect(() => {
-        scrollToBottom()
+        if (messages.length > 1) {
+            scrollToBottom()
+        }
     }, [messages])
 
     useEffect(() => {
@@ -145,8 +148,8 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
                     >
                         <div
                             className={`max-w-[80%] rounded-2xl px-4 py-3 ${msg.role === 'user'
-                                    ? 'bg-brand-primary text-white'
-                                    : 'bg-white text-slate-800 border border-slate-200 shadow-sm'
+                                ? 'bg-brand-primary text-white'
+                                : 'bg-white text-slate-800 border border-slate-200 shadow-sm'
                                 }`}
                         >
                             <p className="whitespace-pre-wrap text-sm leading-relaxed">{msg.content}</p>
