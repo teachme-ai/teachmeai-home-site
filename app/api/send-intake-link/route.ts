@@ -2,61 +2,62 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import * as jwt from 'jsonwebtoken'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 interface IntakeData {
-    name: string
-    email: string
-    role: string
-    goal: string
-    challenge?: string
+  name: string
+  email: string
+  role: string
+  goal: string
+  challenge?: string
 }
 
 export async function POST(req: NextRequest) {
-    try {
-        const data: IntakeData = await req.json()
+  try {
+    const data: IntakeData = await req.json()
 
-        // Validate required fields
-        if (!data.name || !data.email || !data.role || !data.goal) {
-            return NextResponse.json(
-                { error: 'Missing required fields' },
-                { status: 400 }
-            )
-        }
+    // Validate required fields
+    if (!data.name || !data.email || !data.role || !data.goal) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      )
+    }
 
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        if (!emailRegex.test(data.email)) {
-            return NextResponse.json(
-                { error: 'Invalid email format' },
-                { status: 400 }
-            )
-        }
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(data.email)) {
+      return NextResponse.json(
+        { error: 'Invalid email format' },
+        { status: 400 }
+      )
+    }
 
-        // Generate JWT token with 7-day expiration
-        const token = jwt.sign(
-            {
-                name: data.name,
-                email: data.email,
-                role: data.role,
-                goal: data.goal,
-                challenge: data.challenge || null,
-                timestamp: Date.now()
-            },
-            process.env.JWT_SECRET || 'your-secret-key-change-this',
-            { expiresIn: '7d' }
-        )
+    // Generate JWT token with 7-day expiration
+    const token = jwt.sign(
+      {
+        name: data.name,
+        email: data.email,
+        role: data.role,
+        goal: data.goal,
+        challenge: data.challenge || null,
+        timestamp: Date.now()
+      },
+      process.env.JWT_SECRET || 'your-secret-key-change-this',
+      { expiresIn: '7d' }
+    )
 
-        // Build intake app link with token
-        const intakeBaseUrl = process.env.NEXT_PUBLIC_INTAKE_APP_URL || 'https://intake.teachmeai.in'
-        const intakeLink = `${intakeBaseUrl}?token=${token}`
+    // Build intake app link with token
+    const intakeBaseUrl = process.env.NEXT_PUBLIC_INTAKE_APP_URL || 'https://intake.teachmeai.in'
+    const intakeLink = `${intakeBaseUrl}?token=${token}`
 
-        // Send email via Resend
-        const emailResult = await resend.emails.send({
-            from: 'Khalid at TeachMeAI <khalid@teachmeai.in>',
-            to: data.email,
-            subject: `Complete Your AI Learning Profile - ${data.name}`,
-            html: `
+    // Initialize Resend client (lazy initialization to avoid build-time errors)
+    const resend = new Resend(process.env.RESEND_API_KEY || '')
+
+    // Send email via Resend
+    const emailResult = await resend.emails.send({
+      from: 'Khalid at TeachMeAI <khalid@teachmeai.in>',
+      to: data.email,
+      subject: `Complete Your AI Learning Profile - ${data.name}`,
+      html: `
         <!DOCTYPE html>
         <html>
         <head>
@@ -174,42 +175,42 @@ export async function POST(req: NextRequest) {
         </body>
         </html>
       `
+    })
+
+    // Log to Google Sheets (if webhook is configured)
+    if (process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL) {
+      try {
+        await fetch(process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...data,
+            intakeLink: intakeLink.substring(0, 100) + '...', // Truncate for sheets
+            timestamp: new Date().toISOString(),
+            source: 'chatui',
+            status: 'email_sent'
+          })
         })
-
-        // Log to Google Sheets (if webhook is configured)
-        if (process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL) {
-            try {
-                await fetch(process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        ...data,
-                        intakeLink: intakeLink.substring(0, 100) + '...', // Truncate for sheets
-                        timestamp: new Date().toISOString(),
-                        source: 'chatui',
-                        status: 'email_sent'
-                    })
-                })
-            } catch (sheetError) {
-                console.error('Error logging to sheets:', sheetError)
-                // Don't fail the request if sheets logging fails
-            }
-        }
-
-        return NextResponse.json({
-            success: true,
-            emailId: emailResult.data?.id,
-            message: 'Email sent successfully'
-        })
-
-    } catch (error) {
-        console.error('Send intake link error:', error)
-        return NextResponse.json(
-            {
-                error: 'Failed to send email',
-                details: error instanceof Error ? error.message : 'Unknown error'
-            },
-            { status: 500 }
-        )
+      } catch (sheetError) {
+        console.error('Error logging to sheets:', sheetError)
+        // Don't fail the request if sheets logging fails
+      }
     }
+
+    return NextResponse.json({
+      success: true,
+      emailId: emailResult.data?.id,
+      message: 'Email sent successfully'
+    })
+
+  } catch (error) {
+    console.error('Send intake link error:', error)
+    return NextResponse.json(
+      {
+        error: 'Failed to send email',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
+      { status: 500 }
+    )
+  }
 }
