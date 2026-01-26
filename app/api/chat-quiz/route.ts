@@ -72,9 +72,13 @@ export async function POST(req: NextRequest) {
 
         // If complete, trigger email sending (legacy integration)
         if (isComplete) {
-            console.log('📬 Triggering email sending for:', updatedData.email);
+            const host = req.headers.get('host');
+            const protocol = host?.includes('localhost') ? 'http' : 'https';
+            const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${protocol}://${host}`;
+
+            console.log('📬 Triggering email sending for:', updatedData.email, 'at', `${baseUrl}/api/send-intake-link`);
             try {
-                const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/send-intake-link`, {
+                const emailResponse = await fetch(`${baseUrl}/api/send-intake-link`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(updatedData)
