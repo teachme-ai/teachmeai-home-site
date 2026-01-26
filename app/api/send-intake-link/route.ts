@@ -13,6 +13,7 @@ interface IntakeData {
 export async function POST(req: NextRequest) {
   try {
     const data: IntakeData = await req.json()
+    console.log('📬 [Email Service] Received request for:', data.email);
 
     // Validate required fields
     if (!data.name || !data.email || !data.role || !data.goal) {
@@ -53,6 +54,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY || '')
 
     // Send email via Resend
+    console.log('✉️ [Email Service] Calling Resend API...');
     const emailResult = await resend.emails.send({
       from: 'Khalid at TeachMeAI <khalid@teachmeai.in>',
       to: data.email,
@@ -176,6 +178,13 @@ export async function POST(req: NextRequest) {
         </html>
       `
     })
+
+    if (emailResult.error) {
+      console.error('❌ [Email Service] Resend reported an error:', emailResult.error);
+      throw new Error(`Resend Error: ${emailResult.error.message}`);
+    }
+
+    console.log('✅ [Email Service] Resend successfully accepted the email:', emailResult.data?.id);
 
     // Log to Google Sheets (if webhook is configured)
     if (process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL) {

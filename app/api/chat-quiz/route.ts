@@ -47,7 +47,8 @@ export async function POST(req: NextRequest) {
                 extractedData: {
                     name: collectedData.name,
                     email: collectedData.email,
-                    learningGoal: collectedData.goal
+                    learningGoal: collectedData.goal,
+                    role: collectedData.role
                 }
             })
         });
@@ -63,21 +64,30 @@ export async function POST(req: NextRequest) {
             ...collectedData,
             name: result.extractedData.name,
             email: result.extractedData.email,
-            goal: result.extractedData.learningGoal
+            goal: result.extractedData.learningGoal,
+            role: result.extractedData.role
         };
 
         const isComplete = result.isComplete;
 
         // If complete, trigger email sending (legacy integration)
         if (isComplete) {
+            console.log('📬 Triggering email sending for:', updatedData.email);
             try {
-                await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/send-intake-link`, {
+                const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/send-intake-link`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(updatedData)
-                })
+                });
+
+                if (emailResponse.ok) {
+                    console.log('✅ Email trigger successful');
+                } else {
+                    const errorText = await emailResponse.text();
+                    console.error('❌ Email trigger failed:', errorText);
+                }
             } catch (emailError) {
-                console.error('Error sending email:', emailError)
+                console.error('💥 Error triggering email:', emailError)
             }
         }
 
