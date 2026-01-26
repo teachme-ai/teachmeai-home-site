@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
         ];
 
         // Call the Smart Agent Service
-        console.log('🤖 Calling smart Quiz Guide at:', `${AGENT_SERVICE_URL}/quizGuide`);
+        console.log('🤖 [Chat Quiz] Calling Guide Agent at:', `${AGENT_SERVICE_URL}/quizGuide`);
         const response = await fetch(`${AGENT_SERVICE_URL}/quizGuide`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -62,10 +62,10 @@ export async function POST(req: NextRequest) {
 
         const updatedData: CollectedData = {
             ...collectedData,
-            name: result.extractedData.name,
-            email: result.extractedData.email,
-            goal: result.extractedData.learningGoal,
-            role: result.extractedData.role
+            name: result.extractedData.name || collectedData.name,
+            email: result.extractedData.email || collectedData.email,
+            goal: result.extractedData.learningGoal || collectedData.goal,
+            role: result.extractedData.role || collectedData.role
         };
 
         const isComplete = result.isComplete;
@@ -76,22 +76,29 @@ export async function POST(req: NextRequest) {
             const protocol = host?.includes('localhost') ? 'http' : 'https';
             const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${protocol}://${host}`;
 
-            console.log('📬 Triggering email sending for:', updatedData.email, 'at', `${baseUrl}/api/send-intake-link`);
-            try {
-                const emailResponse = await fetch(`${baseUrl}/api/send-intake-link`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(updatedData)
-                });
+            console.log('📬 [Chat Quiz] Agent says Complete. Mapped Payload:', JSON.stringify(updatedData, null, 2));
 
-                if (emailResponse.ok) {
-                    console.log('✅ Email trigger successful');
-                } else {
-                    const errorText = await emailResponse.text();
-                    console.error('❌ Email trigger failed:', errorText);
+            const { name, email, role, goal } = updatedData;
+            if (name && email && role && goal) {
+                try {
+                    console.log('📬 [Chat Quiz] Internal Fetch to:', `${baseUrl}/api/send-intake-link`);
+                    const emailResponse = await fetch(`${baseUrl}/api/send-intake-link`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(updatedData)
+                    });
+
+                    if (emailResponse.ok) {
+                        console.log('✅ [Chat Quiz] Email triggered successfully');
+                    } else {
+                        const errorText = await emailResponse.text();
+                        console.error('❌ [Chat Quiz] Email trigger failed validation:', errorText);
+                    }
+                } catch (emailError) {
+                    console.error('💥 [Chat Quiz] Error calling internal email API:', emailError)
                 }
-            } catch (emailError) {
-                console.error('💥 Error triggering email:', emailError)
+            } else {
+                console.error('⚠️ [Chat Quiz] Missing required fields for email. Skipping trigger.');
             }
         }
 
