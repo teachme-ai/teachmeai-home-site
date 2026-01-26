@@ -60,12 +60,34 @@ export async function POST(req: NextRequest) {
 
         const { result } = await response.json();
 
+        // LLM Recovery: If the AI squashed the JSON into a single string (common failure)
+        const cleanPayload = (data: any) => {
+            const raw = JSON.stringify(data);
+            if (raw.includes('\\n') || raw.includes('email":')) {
+                console.log('🧹 [Chat Quiz] Squashed payload detected. Attempting recovery...');
+                const emailMatch = raw.match(/"email":\s*"([^"]+)"/);
+                const roleMatch = raw.match(/"role":\s*"([^"]+)"/);
+                const goalMatch = raw.match(/"learningGoal":\s*"([^"]+)"/ || /"goal":\s*"([^"]+)"/);
+                const nameMatch = raw.match(/"name":\s*"([^"]+)"/);
+
+                return {
+                    name: nameMatch ? nameMatch[1] : data.name,
+                    email: emailMatch ? emailMatch[1] : data.email,
+                    learningGoal: goalMatch ? goalMatch[1] : data.learningGoal,
+                    role: roleMatch ? roleMatch[1]?.split('\\n')[0].replace(/[",]/g, '').trim() : data.role
+                };
+            }
+            return data;
+        };
+
+        const cleanedExtractedData = cleanPayload(result.extractedData);
+
         const updatedData: CollectedData = {
             ...collectedData,
-            name: result.extractedData.name || collectedData.name,
-            email: result.extractedData.email || collectedData.email,
-            goal: result.extractedData.learningGoal || collectedData.goal,
-            role: result.extractedData.role || collectedData.role
+            name: cleanedExtractedData.name || result.extractedData.name || collectedData.name,
+            email: cleanedExtractedData.email || result.extractedData.email || collectedData.email,
+            goal: cleanedExtractedData.learningGoal || result.extractedData.learningGoal || collectedData.goal,
+            role: cleanedExtractedData.role || result.extractedData.role || collectedData.role
         };
 
         const isComplete = result.isComplete;
@@ -76,7 +98,7 @@ export async function POST(req: NextRequest) {
             const protocol = host?.includes('localhost') ? 'http' : 'https';
             const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${protocol}://${host}`;
 
-            console.log('📬 [Chat Quiz] Agent says Complete. Mapped Payload:', JSON.stringify(updatedData, null, 2));
+            console.log('📬 [Chat Quiz] Agent says Complete. Payload:', JSON.stringify(updatedData, null, 2));
 
             const { name, email, role, goal } = updatedData;
             if (name && email && role && goal) {
@@ -98,7 +120,7 @@ export async function POST(req: NextRequest) {
                     console.error('💥 [Chat Quiz] Error calling internal email API:', emailError)
                 }
             } else {
-                console.error('⚠️ [Chat Quiz] Missing required fields for email. Skipping trigger.');
+                console.error('⚠️ [Chat Quiz] Missing required fields for email. Final Keys:', Object.keys(updatedData).filter(k => updatedData[k as keyof CollectedData]));
             }
         }
 
@@ -106,7 +128,7 @@ export async function POST(req: NextRequest) {
             message: result.message,
             dataCollected: updatedData,
             isComplete,
-            confidence: isComplete ? 100 : 50 // Simplified confidence
+            confidence: isComplete ? 100 : 50
         });
 
     } catch (error) {
