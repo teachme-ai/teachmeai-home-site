@@ -1,7 +1,13 @@
 # Local Development Setup Guide
 
-**Last Updated:** January 25, 2026  
+**Last Updated:** January 26, 2026  
 **Purpose:** Run both Home Site and Intake App locally for end-to-end testing
+
+> ⚠️ **SECURITY NOTICE:** This guide contains NO sensitive information. All actual credentials (API keys, secrets, Sheet IDs) should be stored in:
+> - **Local Development:** `.env.local` files (never committed to Git)
+> - **Production:** Vercel environment variables dashboard
+> 
+> Never commit actual credentials to this documentation or to Git!
 
 ---
 
@@ -41,28 +47,28 @@
 
 ```bash
 # Navigate to home site
-cd /Users/khalidirfan/projects/teachmeai-home-site
+cd teachmeai-home-site
 
-# Install dependencies (already done ✅)
+# Install dependencies
 npm install
 
 # Configure environment variables
 ```
 
-**Edit `.env.local`:**
+**Create `.env.local` file:**
 
 ```bash
-# REQUIRED - Already have this
-GEMINI_API_KEY=AIzaSyBHm1Wy2c4vH_63fiyz2MY3uZQVqtuuPfo
+# REQUIRED - Get your Gemini API Key from https://aistudio.google.com/app/apikey
+GEMINI_API_KEY=your_gemini_api_key_here
 
 # REQUIRED - Generate with this command:
 # node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-JWT_SECRET=your-generated-secret-here
+JWT_SECRET=your_generated_secret_here
 
-# REQUIRED - Get from https://resend.com (or skip for now)
-RESEND_API_KEY=re_your-key-here
+# REQUIRED - Get from https://resend.com (or skip for local testing)
+RESEND_API_KEY=re_your_resend_key_here
 
-# Already set correctly
+# Set for local development
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 NEXT_PUBLIC_INTAKE_APP_URL=http://localhost:3001
 ```
@@ -73,24 +79,28 @@ NEXT_PUBLIC_INTAKE_APP_URL=http://localhost:3001
 
 ```bash
 # Navigate to intake app
-cd /Users/khalidirfan/projects/teachmeai-intake-app
+cd teachmeai-intake-app
 
-# Install dependencies (if needed)
+# Install dependencies
 npm install
 
 # Configure environment variables
 ```
 
-**Add to `.env.local`:**
+**Create `.env.local` file:**
 
 ```bash
-# ADD THIS - MUST BE IDENTICAL to home site
-JWT_SECRET=your-generated-secret-here
+# REQUIRED - MUST BE IDENTICAL to home site JWT_SECRET
+JWT_SECRET=your_generated_secret_here
 
-# Already have these
-GEMINI_API_KEY=AIzaSyBHm1Wy2c4vH_63fiyz2MY3uZQVqtuuPfo
-GOOGLE_SHEET_ID=1-EGTgJfeAAEVwPodDJyFbtleM5ww7qZZHJ9J-GJ4YzM
-# ... other existing variables
+# REQUIRED - Same Gemini API Key as home site
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# REQUIRED - Your Google Sheet ID for data storage
+GOOGLE_SHEET_ID=your_google_sheet_id_here
+
+# REQUIRED - Path to your service account key file
+GOOGLE_APPLICATION_CREDENTIALS=./service-account-key.json
 ```
 
 ---
@@ -101,14 +111,14 @@ GOOGLE_SHEET_ID=1-EGTgJfeAAEVwPodDJyFbtleM5ww7qZZHJ9J-GJ4YzM
 
 **Terminal 1 - Home Site:**
 ```bash
-cd /Users/khalidirfan/projects/teachmeai-home-site
+cd teachmeai-home-site
 npm run dev
 # Server runs on http://localhost:3000
 ```
 
 **Terminal 2 - Intake App:**
 ```bash
-cd /Users/khalidirfan/projects/teachmeai-intake-app
+cd teachmeai-intake-app
 npm run dev -- -p 3001
 # Server runs on http://localhost:3001
 ```
@@ -119,11 +129,11 @@ npm run dev -- -p 3001
 
 ```bash
 # Start home site in background
-cd /Users/khalidirfan/projects/teachmeai-home-site
+cd teachmeai-home-site
 npm run dev &
 
 # Start intake app on different port
-cd /Users/khalidirfan/projects/teachmeai-intake-app
+cd teachmeai-intake-app
 npm run dev -- -p 3001
 ```
 
@@ -229,7 +239,7 @@ Always specify different ports:
 
 ```bash
 # Make sure jsonwebtoken is installed
-cd /Users/khalidirfan/projects/teachmeai-home-site
+cd teachmeai-home-site
 npm list jsonwebtoken
 
 # If missing:
@@ -255,7 +265,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 ### **Home Site Commands**
 ```bash
-cd /Users/khalidirfan/projects/teachmeai-home-site
+cd teachmeai-home-site
 npm run dev              # Start on port 3000
 npm run build           # Production build
 npm run lint            # Check code quality
@@ -263,7 +273,7 @@ npm run lint            # Check code quality
 
 ### **Intake App Commands**
 ```bash
-cd /Users/khalidirfan/projects/teachmeai-intake-app
+cd teachmeai-intake-app
 npm run dev -- -p 3001  # Start on port 3001
 npm run build           # Production build
 ```
@@ -271,16 +281,17 @@ npm run build           # Production build
 ### **Environment Variables Checklist**
 
 **Home Site:**
-- [x] GEMINI_API_KEY (already have it)
-- [ ] JWT_SECRET (generate new)
-- [ ] RESEND_API_KEY (optional for now)
-- [x] NEXT_PUBLIC_BASE_URL=http://localhost:3000
-- [x] NEXT_PUBLIC_INTAKE_APP_URL=http://localhost:3001
+- [ ] GEMINI_API_KEY (get from Google AI Studio)
+- [ ] JWT_SECRET (generate with crypto command)
+- [ ] RESEND_API_KEY (optional for local testing)
+- [ ] NEXT_PUBLIC_BASE_URL=http://localhost:3000
+- [ ] NEXT_PUBLIC_INTAKE_APP_URL=http://localhost:3001
 
 **Intake App:**
-- [x] GEMINI_API_KEY (already have it)
+- [ ] GEMINI_API_KEY (same as home site)
 - [ ] JWT_SECRET (MUST match home site)
-- [x] GOOGLE_SHEET_ID (already have it)
+- [ ] GOOGLE_SHEET_ID (your Google Sheet ID)
+- [ ] GOOGLE_APPLICATION_CREDENTIALS (path to service account key)
 
 ---
 
