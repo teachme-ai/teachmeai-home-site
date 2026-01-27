@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { sendIntakeEmail } from '@/lib/email'
 
 interface Message {
     id: string
@@ -126,50 +127,29 @@ export async function POST(req: NextRequest) {
 
         // If complete, trigger email sending
         if (isComplete) {
-            const host = req.headers.get('host');
-            const forwardedProto = req.headers.get('x-forwarded-proto');
-            const protocol = forwardedProto || (host?.includes('localhost') ? 'http' : 'https');
+            console.log('📬 [Chat Quiz] Conversation marked COMPLETE. Triggering email...');
 
-            // In production, we should prefer the host header to ensure we call the correct environment
-            const baseUrl = host ? `${protocol}://${host}` : (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000');
-
-            console.log('📬 [Chat Quiz] Conversation marked COMPLETE. Identifying final payload...');
-
-            // Critical check for email service fields
             const { name, email, role, goal } = updatedData;
             if (name && email && role && goal) {
                 try {
-                    const emailPayload = {
+                    console.log(`✉️ [Chat Quiz] Triggering direct email send for ${email}`);
+                    const result = await sendIntakeEmail({
                         name,
                         email,
                         role,
                         goal,
                         challenge: updatedData.challenge || null
-                    };
-
-                    console.log(`📬 [Chat Quiz] Triggering email for ${email} via ${baseUrl}/api/send-intake-link`);
-                    console.log('📦 [Chat Quiz] Email Payload:', JSON.stringify(emailPayload));
-
-                    const emailResponse = await fetch(`${baseUrl}/api/send-intake-link`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(emailPayload)
                     });
 
-                    if (emailResponse.ok) {
-                        const emailData = await emailResponse.json();
-                        console.log('✅ [Chat Quiz] Email successfully triggered:', emailData.emailId);
-                    } else {
-                        const errorText = await emailResponse.text();
-                        console.error('❌ [Chat Quiz] Email trigger failed (Status:', emailResponse.status, '):', errorText);
+                    if (result.success) {
+                        console.log('✅ [Chat Quiz] Email successfully sent via lib');
                     }
                 } catch (emailError) {
-                    console.error('💥 [Chat Quiz] Critical error calling email API:', emailError)
+                    console.error('💥 [Chat Quiz] Critical error sending email:', emailError);
                 }
             } else {
                 console.error('⚠️ [Chat Quiz] Missing required data for email despite isComplete=true.');
                 console.log('📊 [Chat Quiz] Current State:', { name: !!name, email: !!email, role: !!role, goal: !!goal });
-                console.log('📦 [Chat Quiz] Data:', JSON.stringify(updatedData));
             }
         }
 
