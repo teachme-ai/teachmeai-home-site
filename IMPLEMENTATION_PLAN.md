@@ -8,22 +8,21 @@
 
 ### ✅ Tasks You Can Do Right Now
 
-- [ ] **Update Hero Section** (`components/hero.tsx`)
+- [x] **Update Hero Section** (`components/hero.tsx`)
   - Line 30-35: Change primary CTA text
   - Old: "Book a 70-minute Clarity Call"
   - New: "Get Your Free AI Analysis"
   - Add secondary CTA: "Skip to Clarity Call (₹2,600)"
 
-- [ ] **Build AI ChatUI Quiz Component** (`components/chat-quiz.tsx`)
+- [x] **Build AI ChatUI Quiz Component** (`components/chat-quiz.tsx`)
   - Replace static form with conversational AI interface
   - Implement real-time chat with Gemini 2.5 Flash
   - Add streaming responses and typing indicators
   - Collect: Name, Email, Role, Goal, Challenge
   - Send email with JWT token to intake app link
   - See: `CHATUI_QUIZ_ARCHITECTURE.md` for full details
-  - Estimated effort: 8-12 hours for complete implementation
 
-- [ ] **Modify Programs Section** (`components/programs.tsx`)
+- [x] **Modify Programs Section** (`components/programs.tsx`)
   - Add new first card: "Free AI Analysis"
   - Reorder existing cards
   - Update pricing copy for clarity call

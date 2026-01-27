@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { track } from '@vercel/analytics'
+import { Send, User, Bot, Sparkles, CheckCircle2 } from 'lucide-react'
 
 interface Message {
     id: string
@@ -40,18 +41,19 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
     const messagesContainerRef = useRef<HTMLDivElement>(null)
 
     const scrollToBottom = () => {
-        // Scroll only the chat container, not the entire page
         if (messagesContainerRef.current) {
-            messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight
+            messagesContainerRef.current.scrollTo({
+                top: messagesContainerRef.current.scrollHeight,
+                behavior: 'smooth'
+            })
         }
     }
 
-    // Only scroll when new messages are added (not on initial load with just 1 message)
     useEffect(() => {
         if (messages.length > 1) {
             scrollToBottom()
         }
-    }, [messages])
+    }, [messages, isLoading])
 
     useEffect(() => {
         track('chatquiz_started')
@@ -60,11 +62,10 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
     const generateId = () => Math.random().toString(36).substring(7)
 
     const sendMessage = async (userMessage: string) => {
-        if (!userMessage.trim() || isComplete) return
+        if (!userMessage.trim() || isComplete || isLoading) return
 
         setShowQuickReplies(false)
 
-        // Add user message to UI
         const userMsg: Message = {
             id: generateId(),
             role: 'user',
@@ -80,12 +81,11 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
         })
 
         try {
-            // Call API route for AI response
             const response = await fetch('/api/chat-quiz', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    conversationHistory: messages,
+                    conversationHistory: [...messages, userMsg],
                     userMessage,
                     collectedData
                 })
@@ -95,7 +95,6 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
 
             const data = await response.json()
 
-            // Add AI message to UI
             setMessages(prev => [...prev, {
                 id: generateId(),
                 role: 'assistant',
@@ -103,12 +102,10 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
                 timestamp: new Date()
             }])
 
-            // Update collected data
             if (data.dataCollected) {
-                setCollectedData(data.dataCollected)
+                setCollectedData(prev => ({ ...prev, ...data.dataCollected }))
             }
 
-            // Check if complete
             if (data.isComplete) {
                 setIsComplete(true)
                 track('chatquiz_completed', data.dataCollected)
@@ -120,12 +117,9 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
             setMessages(prev => [...prev, {
                 id: generateId(),
                 role: 'assistant',
-                content: "Sorry, I encountered an error. Please try again or refresh the page.",
+                content: "I'm having a bit of trouble connecting to my brain! Could you try again or refresh the page?",
                 timestamp: new Date()
             }])
-            track('chatquiz_error', {
-                error: error instanceof Error ? error.message : 'Unknown error'
-            })
         } finally {
             setIsLoading(false)
         }
@@ -136,62 +130,104 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
     }
 
     return (
-        <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+        <div className="w-full max-w-4xl mx-auto backdrop-blur-sm bg-white/80 rounded-3xl shadow-2xl border border-slate-200/60 overflow-hidden flex flex-col h-[650px]">
             {/* Header */}
-            <div className="bg-gradient-to-r from-brand-primary to-sky-500 p-4">
-                <h3 className="text-white font-semibold text-lg">AI Learning Assistant</h3>
-                <p className="text-sky-100 text-sm">Quick chat to understand your goals</p>
+            <div className="bg-gradient-to-r from-brand-primary via-blue-600 to-brand-primary p-6 flex items-center justify-between shadow-md relative overflow-hidden">
+                <div className="relative z-10 flex items-center gap-3">
+                    <div className="bg-white/20 p-2 rounded-xl backdrop-blur-md border border-white/30">
+                        <Sparkles className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                        <h3 className="text-white font-bold text-xl tracking-tight">AI Skills Diagnostic</h3>
+                        <div className="flex items-center gap-1.5">
+                            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                            <p className="text-white/80 text-xs font-medium uppercase tracking-wider">Online Assistant</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Decorative Pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-8 -mb-8 blur-xl" />
             </div>
 
             {/* Messages Container */}
-            <div ref={messagesContainerRef} className="h-[500px] overflow-y-auto p-4 space-y-4 bg-slate-50">
-                {messages.map((msg) => (
+            <div
+                ref={messagesContainerRef}
+                className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50/50"
+            >
+                {messages.map((msg, idx) => (
                     <div
                         key={msg.id}
-                        className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                        className={`flex items-start gap-3 w-full animate-in fade-in slide-in-from-bottom-3 duration-500 fill-mode-both ${msg.role === 'user' ? 'flex-row-reverse' : 'justify-start'}`}
+                        style={{ animationDelay: `${(idx % 5) * 100}ms` }}
                     >
+                        {/* Avatar */}
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${msg.role === 'user'
+                                ? 'bg-brand-primary/10 border border-brand-primary/20'
+                                : 'bg-white border border-slate-200'
+                            }`}>
+                            {msg.role === 'user' ? (
+                                <User className="w-4 h-4 text-brand-primary" />
+                            ) : (
+                                <Bot className="w-4 h-4 text-slate-600" />
+                            )}
+                        </div>
+
+                        {/* Message Bubble */}
                         <div
-                            className={`max-w-[80%] rounded-2xl px-4 py-3 ${msg.role === 'user'
-                                ? 'bg-brand-primary text-white'
-                                : 'bg-white text-slate-800 border border-slate-200 shadow-sm'
+                            className={`relative group max-w-[85%] sm:max-w-[75%] rounded-2xl px-5 py-3.5 shadow-sm transition-all duration-200 ${msg.role === 'user'
+                                    ? 'bg-gradient-to-br from-brand-primary to-blue-600 text-white rounded-tr-none'
+                                    : 'bg-white text-slate-700 border border-slate-200/80 rounded-tl-none hover:shadow-md'
                                 }`}
                         >
-                            <p className="whitespace-pre-wrap text-sm leading-relaxed">{msg.content}</p>
-                            <span className={`text-xs mt-1 block ${msg.role === 'user' ? 'text-sky-100' : 'text-slate-400'}`}>
-                                {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                            </span>
+                            <p className="text-[15px] leading-relaxed font-medium whitespace-pre-wrap">{msg.content}</p>
+                            <div className={`flex items-center gap-1.5 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                <span className={`text-[10px] uppercase font-bold tracking-tighter ${msg.role === 'user' ? 'text-white/60' : 'text-slate-400'}`}>
+                                    {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                </span>
+                            </div>
+
+                            {/* Speech Bubble Tail - Visual only, modern UI often skips this but we'll add a subtle hint */}
                         </div>
                     </div>
                 ))}
 
                 {/* Typing Indicator */}
                 {isLoading && (
-                    <div className="flex justify-start">
-                        <div className="bg-white text-slate-800 border border-slate-200 shadow-sm rounded-2xl px-4 py-3">
-                            <div className="flex space-x-2">
-                                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <div className="flex justify-start items-center gap-3 animate-in fade-in duration-300">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-white border border-slate-200 shadow-sm">
+                            <Bot className="w-4 h-4 text-slate-600" />
+                        </div>
+                        <div className="bg-white text-slate-800 border border-slate-200/80 shadow-sm rounded-2xl rounded-tl-none px-5 py-3.5">
+                            <div className="flex space-x-1.5 items-center">
+                                <div className="w-1.5 h-1.5 bg-brand-primary/60 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                                <div className="w-1.5 h-1.5 bg-brand-primary/60 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                                <div className="w-1.5 h-1.5 bg-brand-primary/60 rounded-full animate-bounce" />
                             </div>
                         </div>
                     </div>
                 )}
 
-                {/* Quick Replies (shown on first message only) */}
+                {/* Quick Replies */}
                 {showQuickReplies && messages.length === 1 && !isLoading && (
-                    <div className="flex justify-start">
-                        <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-col items-center gap-4 py-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 fill-mode-both">
+                        <div className="h-px w-24 bg-slate-200" />
+                        <div className="flex flex-wrap justify-center gap-3">
                             <button
                                 onClick={() => handleQuickReply("Yes, let's go!")}
-                                className="bg-white hover:bg-slate-50 text-brand-primary border-2 border-brand-primary font-medium px-4 py-2 rounded-full text-sm transition-all duration-150"
+                                className="group relative bg-brand-primary hover:bg-blue-600 text-white font-bold px-8 py-3.5 rounded-2xl text-base shadow-lg shadow-brand-primary/20 transition-all duration-300 active:scale-95 overflow-hidden"
                             >
-                                Yes, let's go! 🚀
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Yes, let's go! <Sparkles className="w-4 h-4" />
+                                </span>
+                                <div className="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                             </button>
                             <button
                                 onClick={() => handleQuickReply("I have questions first")}
-                                className="bg-white hover:bg-slate-50 text-slate-600 border border-slate-300 px-4 py-2 rounded-full text-sm transition-all duration-150"
+                                className="bg-white hover:bg-slate-50 text-slate-600 border border-slate-300/80 font-bold px-8 py-3.5 rounded-2xl text-base shadow-sm transition-all duration-300 active:scale-95"
                             >
-                                I have questions first
+                                Not yet
                             </button>
                         </div>
                     </div>
@@ -199,57 +235,90 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
 
                 {/* Completion State */}
                 {isComplete && (
-                    <div className="flex justify-center">
-                        <div className="bg-green-50 border-2 border-green-200 rounded-2xl px-6 py-4 text-center max-w-md">
-                            <div className="text-4xl mb-2">✅</div>
-                            <p className="text-green-800 font-semibold mb-2">Perfect! Check your email</p>
-                            <p className="text-green-700 text-sm">
-                                I've just sent you a personalized link to complete your AI learning profile.
-                                <br />
-                                <span className="text-xs text-green-600 mt-2 block">
-                                    (Check your spam folder if you don't see it in a minute)
-                                </span>
+                    <div className="py-8 px-4 animate-in zoom-in-95 fade-in duration-700">
+                        <div className="bg-gradient-to-br from-white to-emerald-50/30 border border-emerald-200/60 rounded-3xl p-8 text-center shadow-xl shadow-emerald-500/5 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-4 opacity-5">
+                                <CheckCircle2 className="w-24 h-24 text-emerald-500" />
+                            </div>
+
+                            <div className="w-20 h-20 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner ring-4 ring-emerald-50">
+                                <CheckCircle2 className="w-10 h-10 text-emerald-600" />
+                            </div>
+
+                            <h4 className="text-2xl font-bold text-slate-800 mb-3">Excellent, you're all set!</h4>
+                            <p className="text-slate-600 font-medium mb-8 leading-relaxed">
+                                I've sent your personalized intake link to <span className="text-brand-primary font-bold underline decoration-brand-primary/30 underline-offset-4">{collectedData.email}</span>.
                             </p>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto">
+                                <div className="bg-white/60 p-4 rounded-2xl border border-slate-100 flex items-center gap-3 text-left">
+                                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                                        <Bot className="w-4 h-4 text-blue-500" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Next Step</p>
+                                        <p className="text-sm font-bold text-slate-700">Check Inbox</p>
+                                    </div>
+                                </div>
+                                <div className="bg-white/60 p-4 rounded-2xl border border-slate-100 flex items-center gap-3 text-left">
+                                    <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center">
+                                        <Sparkles className="w-4 h-4 text-emerald-500" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Rewards</p>
+                                        <p className="text-sm font-bold text-slate-700">AI Readiness Report</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}
 
-                <div ref={messagesEndRef} />
+                <div ref={messagesEndRef} className="h-4" />
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-white border-t border-slate-200">
-                <div className="flex gap-2">
-                    <input
-                        type="text"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        onKeyPress={(e) => {
-                            if (e.key === 'Enter' && !e.shiftKey) {
-                                e.preventDefault()
-                                sendMessage(input)
-                            }
-                        }}
-                        placeholder={isComplete ? "Conversation complete ✅" : "Type your message..."}
-                        disabled={isComplete || isLoading}
-                        className="flex-1 px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent disabled:bg-slate-100 disabled:cursor-not-allowed"
-                    />
+            <div className="p-6 bg-white border-t border-slate-100 shadow-[0_-8px_30px_rgba(0,0,0,0.02)]">
+                <div className="flex gap-3 relative max-w-screen-md mx-auto">
+                    <div className="relative flex-1 group">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    e.preventDefault()
+                                    sendMessage(input)
+                                }
+                            }}
+                            placeholder={isComplete ? "Diagnostic complete ✅" : "Type your message here..."}
+                            disabled={isComplete || isLoading}
+                            className="w-full pl-5 pr-12 py-4 bg-slate-50 border border-slate-200/80 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary focus:bg-white transition-all duration-300 disabled:bg-slate-100/50 disabled:cursor-not-allowed font-medium text-slate-700 placeholder:text-slate-400"
+                        />
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
+                            <div className={`w-1.5 h-1.5 rounded-full ${input.trim() ? "bg-brand-primary" : "bg-slate-300"} transition-colors`} />
+                        </div>
+                    </div>
                     <button
                         onClick={() => sendMessage(input)}
                         disabled={!input.trim() || isComplete || isLoading}
-                        className="bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold px-6 py-3 rounded-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="p-4 bg-brand-primary hover:bg-blue-600 disabled:bg-slate-200 text-white rounded-2xl transition-all duration-300 active:scale-90 shadow-lg shadow-brand-primary/10 disabled:shadow-none group"
+                        aria-label="Send message"
                     >
                         {isLoading ? (
-                            <span className="inline-block animate-spin">⏳</span>
+                            <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         ) : (
-                            <span>Send</span>
+                            <Send className={`w-6 h-6 ${input.trim() ? "scale-110 translate-x-0.5 -translate-y-0.5" : ""} transition-transform`} />
                         )}
                     </button>
                 </div>
-                <p className="text-xs text-slate-500 mt-2 text-center">
-                    Press Enter to send • Your data is secure and never shared
-                </p>
+                {!isComplete && (
+                    <p className="text-[10px] text-slate-400 mt-3 text-center font-bold uppercase tracking-widest flex items-center justify-center gap-1.5">
+                        <Sparkles className="w-3 h-3" /> Powered by Gemini 2.5 Flash
+                    </p>
+                )}
             </div>
         </div>
     )
 }
+

@@ -26,8 +26,8 @@ export function Navbar() {
 
   return (
     <header className={`sticky top-0 z-30 transition-all duration-300 ${isScrolled
-        ? 'bg-white/95 backdrop-blur-lg shadow-md border-b border-brand-border/50'
-        : 'bg-white/80 backdrop-blur border-b border-brand-border'
+      ? 'bg-white/95 backdrop-blur-lg shadow-md border-b border-brand-border/50'
+      : 'bg-white/80 backdrop-blur border-b border-brand-border'
       }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div className="flex items-center gap-2">
@@ -43,7 +43,7 @@ export function Navbar() {
             About
           </button>
           <button onClick={() => scrollToSection('quiz')} className="hover:text-brand-primary transition-all duration-150">
-            AI Readiness
+            AI Diagnostic
           </button>
           <button onClick={() => scrollToSection('faq')} className="hover:text-brand-primary transition-all duration-150">
             FAQ
