@@ -56,7 +56,15 @@ export async function POST(req: NextRequest) {
 
         if (!response.ok) {
             const errorText = await response.text();
-            throw new Error(`Agent Service failed: ${errorText}`);
+            console.error('💥 [Chat Quiz] Agent Service Error:', errorText);
+
+            // Graceful fallback for the user
+            return NextResponse.json({
+                message: "I'm processing that right now! Could you please repeat your last point so I can make sure I've got it saved correctly?",
+                dataCollected: collectedData,
+                isComplete: false,
+                confidence: 40
+            });
         }
 
         const { result } = await response.json();
