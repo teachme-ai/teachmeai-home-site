@@ -96,6 +96,8 @@ export async function POST(req: NextRequest) {
         };
 
         const cleanedExtractedData = cleanPayload(result.extractedData);
+        console.log('🤖 [Chat Quiz] Raw AI Data:', JSON.stringify(result.extractedData));
+        console.log('🧹 [Chat Quiz] Cleaned Data:', JSON.stringify(cleanedExtractedData));
 
         // Helper to get a valid string or fallback to existing
         const getValidValue = (newVal: any, oldVal: any) => {
