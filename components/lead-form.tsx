@@ -10,6 +10,7 @@ interface CollectedData {
     email: string
     role: string
     goal: string
+    [key: string]: string
 }
 
 interface LeadFormProps {
