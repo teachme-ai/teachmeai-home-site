@@ -121,18 +121,33 @@ export async function POST(req: NextRequest) {
         const { name, email, role, goal } = updatedData;
         const isComplete = !!(isCompleteRaw && name && email && role && goal);
 
+        console.log('🏁 [Chat Quiz] Evaluation:', {
+            isCompleteRaw,
+            isComplete,
+            hasName: !!name,
+            hasEmail: !!email,
+            hasRole: !!role,
+            hasGoal: !!goal
+        });
+
         if (isCompleteRaw && !isComplete) {
-            console.warn('⚠️ [Chat Quiz] AI hallucinated completion with missing data. Overriding isComplete to false.');
+            console.warn('⚠️ [Chat Quiz] AI hallucinated completion with missing data.');
+            console.log('📊 [Chat Quiz] Missing fields:', { name: !name, email: !email, role: !role, goal: !goal });
         }
 
         // If complete, trigger email sending
         if (isComplete) {
-            console.log('📬 [Chat Quiz] Conversation marked COMPLETE. Triggering email...');
+            console.log('📬 [Chat Quiz] ✅ CONDITION MET. Triggering email lib...');
 
             const { name, email, role, goal } = updatedData;
             if (name && email && role && goal) {
                 try {
                     console.log(`✉️ [Chat Quiz] Triggering direct email send for ${email}`);
+                    console.log('🛡️ [Chat Quiz] Env Check:', {
+                        hasResendKey: !!process.env.RESEND_API_KEY,
+                        resendKeyPrefix: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.substring(0, 5) + '...' : 'NONE',
+                        hasJwtSecret: !!process.env.JWT_SECRET
+                    });
                     const result = await sendIntakeEmail({
                         name,
                         email,
