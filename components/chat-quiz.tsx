@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { track } from '@vercel/analytics'
-import { Send, User, Bot, Sparkles, CheckCircle2 } from 'lucide-react'
+import { Send, User, Bot, Sparkles, CheckCircle2, Loader2 } from 'lucide-react'
+import { QuizSpec, QUIZ_CONFIGS } from '../config/quiz-configs'
 
 interface Message {
     id: string
@@ -21,14 +22,15 @@ interface CollectedData {
 
 interface ChatQuizProps {
     onComplete?: (data: CollectedData) => void
+    quizConfig?: QuizSpec
 }
 
-export function ChatQuiz({ onComplete }: ChatQuizProps) {
+export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: ChatQuizProps) {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
             role: 'assistant',
-            content: "Hi there! 👋 I'm TeachMeAI's AI assistant. I'll ask you a few quick questions to understand your AI learning goals.\n\nThis should take about 2-3 minutes. Ready to start?",
+            content: quizConfig.initialMessage,
             timestamp: new Date()
         }
     ])
@@ -112,6 +114,48 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
                 setIsComplete(true)
                 track('chatquiz_completed', data.dataCollected)
                 onComplete?.(data.dataCollected)
+
+                // Handoff Logic
+                if (quizConfig.handoffEnabled) {
+                    setIsLoading(true); // Show loader while redirecting
+                    try {
+                        // Prepare generic transcript
+                        const answers_raw = messages.map(m => ({ role: m.role, content: m.content }));
+                        answers_raw.push({ role: 'user', content: userMessage }); // Add last message
+
+                        const handoffPayload = {
+                            persona_id: quizConfig.id,
+                            landing_page_id: quizConfig.landingPageId || 'unknown',
+                            quiz_version: '1.0.0',
+                            answers_raw,
+                            contact_info: {
+                                name: data.dataCollected.name || 'Unknown',
+                                email: data.dataCollected.email || 'unknown'
+                            },
+                            attribution: {
+                                referrer: document.referrer
+                            }
+                        };
+
+                        const handoffRes = await fetch('/api/handoff-proxy', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(handoffPayload)
+                        });
+
+                        const handoffData = await handoffRes.json();
+                        if (handoffData.redirect_url) {
+                            window.location.href = handoffData.redirect_url;
+                        } else {
+                            console.error('Handoff failed, no redirect URL');
+                            setIsLoading(false);
+                        }
+
+                    } catch (e) {
+                        console.error('Handoff error:', e);
+                        setIsLoading(false);
+                    }
+                }
             }
 
         } catch (error) {
