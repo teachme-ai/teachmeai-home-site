@@ -113,7 +113,16 @@ export async function POST(req: NextRequest) {
             role: getValidValue(cleanedExtractedData.role || result.extractedData.role, collectedData.role)
         };
 
-        const isComplete = result.isComplete;
+        const isCompleteRaw = result.isComplete;
+
+        // Final Safeguard: Even if the AI says it's complete, if we are missing critical data,
+        // we override it to false to prevent the UI from showing the success state.
+        const { name, email, role, goal } = updatedData;
+        const isComplete = !!(isCompleteRaw && name && email && role && goal);
+
+        if (isCompleteRaw && !isComplete) {
+            console.warn('⚠️ [Chat Quiz] AI hallucinated completion with missing data. Overriding isComplete to false.');
+        }
 
         // If complete, trigger email sending
         if (isComplete) {
