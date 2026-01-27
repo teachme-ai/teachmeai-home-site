@@ -28,7 +28,8 @@ export const QUIZ_CONFIGS: Record<string, QuizSpec> = {
         description: 'Find out how AI can help you specifically.',
         initialMessage: "Hi! I'm your AI Guide. I'm here to help you find the best way to use AI for your specific needs. To start, could you tell me your name?",
         systemPromptContext: "You are a helpful AI Guide for TeachMeAI. Your goal is to understand the user's needs generally.",
-        handoffEnabled: false,
+        handoffEnabled: true,
+        landingPageId: 'general-lead-form',
         questions: [
             { id: 'q_name', text: "Could you tell me your name?", type: 'text', required: true, field: 'name', placeholder: "Your Name" },
             { id: 'q_role', text: "What is your professional role?", type: 'text', required: true, field: 'role', placeholder: "e.g. Marketing Manager" },

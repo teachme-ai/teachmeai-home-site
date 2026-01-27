@@ -1,209 +1,63 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendIntakeEmail } from '@/lib/email'
 
-interface Message {
-    id: string
-    role: 'user' | 'assistant'
-    content: string
-    timestamp: Date
-}
-
-interface CollectedData {
-    name?: string
-    email?: string
-    role?: string
-    goal?: string
-    challenge?: string
-}
-
-interface RequestBody {
-    conversationHistory: Message[]
-    userMessage: string
-    collectedData: CollectedData
-}
-
-const AGENT_SERVICE_URL = process.env.AGENT_SERVICE_URL || 'https://teachmeai-agent-service-584680412286.us-central1.run.app';
-
 export async function POST(req: NextRequest) {
     try {
-        const body: RequestBody = await req.json()
-        const { conversationHistory, userMessage, collectedData } = body
+        const body = await req.json()
+        const { collectedData } = body
 
-        // Map conversation history to Genkit format
-        const messages = [
-            ...conversationHistory.map(m => ({
-                role: m.role === 'assistant' ? 'model' : 'user',
-                content: m.content
-            })),
-            { role: 'user', content: userMessage }
-        ];
+        // 1. Extract data from either direct or nested source
+        const name = (collectedData.name || "").trim()
+        const email = (collectedData.email || "").trim().toLowerCase()
+        const role = (collectedData.role || "").trim()
+        const goal = (collectedData.goal || collectedData.learningGoal || "").trim()
 
-        // Call the Smart Agent Service
-        console.log('🤖 [Chat Quiz] Calling Guide Agent at:', `${AGENT_SERVICE_URL}/quizGuide`);
-        const response = await fetch(`${AGENT_SERVICE_URL}/quizGuide`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                messages,
-                extractedData: {
-                    name: collectedData.name,
-                    email: collectedData.email,
-                    learningGoal: collectedData.goal,
-                    role: collectedData.role
+        console.log('📝 [Form Submission] Received:', { name, email, role, goal })
+
+        // 2. Immediate Validation
+        const hasAllFields = !!(name && email && role && goal)
+        const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+        if (hasAllFields && isValidEmail) {
+            console.log('📬 [Form Submission] ✅ Data valid. Triggering email...')
+
+            try {
+                const emailResult = await sendIntakeEmail({
+                    name,
+                    email,
+                    role,
+                    goal,
+                    challenge: collectedData.challenge || null
+                })
+
+                if (emailResult.success) {
+                    console.log('✅ [Form Submission] Email sent successfully')
                 }
-            })
-        });
+            } catch (emailError) {
+                console.error('💥 [Form Submission] Email Error:', emailError)
+                // We still proceed because we want the user to get the handoff redirect
+            }
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('💥 [Chat Quiz] Agent Service Error:', errorText);
-
-            // Graceful fallback for the user
             return NextResponse.json({
-                message: "I'm processing that right now! Could you please repeat your last point so I can make sure I've got it saved correctly?",
-                dataCollected: collectedData,
-                isComplete: false,
-                confidence: 40
-            });
+                message: "Excellent! We've received your details. Redirecting you to your diagnostic...",
+                dataCollected: { name, email, role, goal: goal },
+                isComplete: true,
+                confidence: 100
+            })
         }
 
-        const { result } = await response.json();
-
-        // LLM Recovery: If the AI squashed the JSON into a single string or used markdown blocks
-        const cleanPayload = (data: any) => {
-            let raw = JSON.stringify(data);
-
-            // 1. Mandatory Normalization: Ensure 'goal' or other aliases map to 'learningGoal'
-            const normalized: any = { ...data };
-            if (data.goal && !data.learningGoal) normalized.learningGoal = data.goal;
-            if (data.job && !data.role) normalized.role = data.job;
-
-            // 2. LLM Recovery: If the AI squashed the JSON into a string or used markdown blocks
-            if (raw.includes('```json')) {
-                const match = raw.match(/```json\n([\s\S]*?)\n```/);
-                if (match) {
-                    try {
-                        const parsed = JSON.parse(match[1]);
-                        return { ...normalized, ...parsed };
-                    } catch (e) {
-                        console.error('🧹 [Chat Quiz] Failed to parse markdown JSON');
-                    }
-                }
-            }
-
-            if (raw.includes('\\n') || raw.includes('email') || typeof data === 'string') {
-                console.log('🧹 [Chat Quiz] Squashed payload detected. Attempting recovery...');
-                const findField = (key: string, altKey?: string) => {
-                    const pattern = new RegExp(`(?:"?${key}"?|"?${altKey || key}"?)\\s*[:=-]?\\s*"([^"]+)"`, 'i');
-                    const match = raw.match(pattern);
-                    if (match) return match[1];
-                    const plainPattern = new RegExp(`(?:"?${key}"?|"?${altKey || key}"?)\\s*[:=-]?\\s*([^\\n,}]+)`, 'i');
-                    const plainMatch = raw.match(plainPattern);
-                    return plainMatch ? plainMatch[1].trim().replace(/[",]/g, '') : null;
-                };
-
-                return {
-                    name: findField('name') || normalized.name,
-                    email: findField('email') || normalized.email,
-                    learningGoal: findField('learningGoal', 'goal') || normalized.learningGoal,
-                    role: findField('role') || normalized.role
-                };
-            }
-            return normalized;
-        };
-
-        const cleanedExtractedData = cleanPayload(result.extractedData);
-        console.log('🤖 [Chat Quiz] Raw AI Data:', JSON.stringify(result.extractedData));
-        console.log('🧹 [Chat Quiz] Cleaned Data:', JSON.stringify(cleanedExtractedData));
-
-        // Helper to get a valid string or fallback to existing
-        const getValidValue = (newVal: any, oldVal: any) => {
-            if (typeof newVal === 'string' && newVal.trim().length > 1 && !newVal.toLowerCase().includes('not provided')) {
-                return newVal.trim();
-            }
-            return oldVal;
-        };
-
-        // Ensure we preserve existing data if new data is missing or invalid
-        const updatedData: CollectedData = {
-            ...collectedData,
-            name: getValidValue(cleanedExtractedData.name || result.extractedData.name, collectedData.name),
-            email: getValidValue(cleanedExtractedData.email || result.extractedData.email, collectedData.email),
-            goal: getValidValue(cleanedExtractedData.learningGoal || result.extractedData.learningGoal, collectedData.goal),
-            role: getValidValue(cleanedExtractedData.role || result.extractedData.role, collectedData.role)
-        };
-
-        const isCompleteRaw = result.isComplete;
-
-        // Final Safeguard: Even if the AI says it's complete, if we are missing critical data,
-        // we override it to false to prevent the UI from showing the success state.
-        const { name, email, role, goal } = updatedData;
-        const isComplete = !!(isCompleteRaw && name && email && role && goal);
-
-        console.log('🏁 [Chat Quiz] Evaluation:', {
-            isCompleteRaw,
-            isComplete,
-            hasName: !!name,
-            hasEmail: !!email,
-            hasRole: !!role,
-            hasGoal: !!goal
-        });
-
-        if (isCompleteRaw && !isComplete) {
-            console.warn('⚠️ [Chat Quiz] AI hallucinated completion with missing data.');
-            console.log('📊 [Chat Quiz] Missing fields:', { name: !name, email: !email, role: !role, goal: !goal });
-        }
-
-        // If complete, trigger email sending
-        if (isComplete) {
-            console.log('📬 [Chat Quiz] ✅ CONDITION MET. Triggering email lib...');
-
-            const { name, email, role, goal } = updatedData;
-            if (name && email && role && goal) {
-                try {
-                    console.log(`✉️ [Chat Quiz] Triggering direct email send for ${email}`);
-                    console.log('🛡️ [Chat Quiz] Env Check:', {
-                        hasResendKey: !!process.env.RESEND_API_KEY,
-                        resendKeyPrefix: process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.substring(0, 5) + '...' : 'NONE',
-                        hasJwtSecret: !!process.env.JWT_SECRET
-                    });
-                    const result = await sendIntakeEmail({
-                        name,
-                        email,
-                        role,
-                        goal,
-                        challenge: updatedData.challenge || null
-                    });
-
-                    if (result.success) {
-                        console.log('✅ [Chat Quiz] Email successfully sent via lib');
-                    }
-                } catch (emailError) {
-                    console.error('💥 [Chat Quiz] Critical error sending email:', emailError);
-                }
-            } else {
-                console.error('⚠️ [Chat Quiz] Missing required data for email despite isComplete=true.');
-                console.log('📊 [Chat Quiz] Current State:', { name: !!name, email: !!email, role: !!role, goal: !!goal });
-            }
-        }
-
+        // 3. Fallback for incomplete data (shouldn't happen with form validation)
         return NextResponse.json({
-            message: result.message,
-            dataCollected: updatedData,
-            isComplete,
-            confidence: isComplete ? 100 : result.confidence || 50
-        });
+            message: "Please ensure all fields (Name, Email, Role, Goal) are filled out.",
+            dataCollected: collectedData,
+            isComplete: false,
+            confidence: 0
+        })
 
     } catch (error) {
-        console.error('Chat quiz API error:', error)
+        console.error('💥 [Form Submission] API Error:', error)
         return NextResponse.json(
-            {
-                error: 'Failed to process message',
-                message: "I'm having a bit of trouble connecting to my brain! Could you try again in a second?",
-                dataCollected: {},
-                isComplete: false,
-                confidence: 0
-            },
+            { error: 'Internal Server Error', isComplete: false },
             { status: 500 }
         )
     }
