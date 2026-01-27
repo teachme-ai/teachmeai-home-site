@@ -65,47 +65,43 @@ export async function POST(req: NextRequest) {
         const cleanPayload = (data: any) => {
             let raw = JSON.stringify(data);
 
-            // Check for markdown JSON blocks that might have leaked
+            // 1. Mandatory Normalization: Ensure 'goal' or other aliases map to 'learningGoal'
+            const normalized: any = { ...data };
+            if (data.goal && !data.learningGoal) normalized.learningGoal = data.goal;
+            if (data.job && !data.role) normalized.role = data.job;
+
+            // 2. LLM Recovery: If the AI squashed the JSON into a string or used markdown blocks
             if (raw.includes('```json')) {
                 const match = raw.match(/```json\n([\s\S]*?)\n```/);
                 if (match) {
                     try {
                         const parsed = JSON.parse(match[1]);
-                        return parsed;
+                        return { ...normalized, ...parsed };
                     } catch (e) {
-                        console.error('🧹 [Chat Quiz] Failed to parse markdown JSON block');
+                        console.error('🧹 [Chat Quiz] Failed to parse markdown JSON');
                     }
                 }
             }
 
             if (raw.includes('\\n') || raw.includes('email') || typeof data === 'string') {
                 console.log('🧹 [Chat Quiz] Squashed payload detected. Attempting recovery...');
-
-                // Flexible regex to match "key": "value" or "key: value" or just "key value"
                 const findField = (key: string, altKey?: string) => {
                     const pattern = new RegExp(`(?:"?${key}"?|"?${altKey || key}"?)\\s*[:=-]?\\s*"([^"]+)"`, 'i');
                     const match = raw.match(pattern);
                     if (match) return match[1];
-
-                    // Try without quotes for the value if it's plain text
                     const plainPattern = new RegExp(`(?:"?${key}"?|"?${altKey || key}"?)\\s*[:=-]?\\s*([^\\n,}]+)`, 'i');
                     const plainMatch = raw.match(plainPattern);
                     return plainMatch ? plainMatch[1].trim().replace(/[",]/g, '') : null;
                 };
 
-                const recoveredEmail = findField('email');
-                const recoveredRole = findField('role');
-                const recoveredGoal = findField('learningGoal', 'goal');
-                const recoveredName = findField('name');
-
                 return {
-                    name: recoveredName || data.name,
-                    email: recoveredEmail || data.email,
-                    learningGoal: recoveredGoal || (data.learningGoal || data.goal),
-                    role: recoveredRole ? recoveredRole.split('\n')[0].trim() : data.role
+                    name: findField('name') || normalized.name,
+                    email: findField('email') || normalized.email,
+                    learningGoal: findField('learningGoal', 'goal') || normalized.learningGoal,
+                    role: findField('role') || normalized.role
                 };
             }
-            return data;
+            return normalized;
         };
 
         const cleanedExtractedData = cleanPayload(result.extractedData);
