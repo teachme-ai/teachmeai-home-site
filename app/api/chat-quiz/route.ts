@@ -78,18 +78,31 @@ export async function POST(req: NextRequest) {
                 }
             }
 
-            if (raw.includes('\\n') || raw.includes('email":')) {
+            if (raw.includes('\\n') || raw.includes('email') || typeof data === 'string') {
                 console.log('🧹 [Chat Quiz] Squashed payload detected. Attempting recovery...');
-                const emailMatch = raw.match(/"email":\s*"([^"]+)"/);
-                const roleMatch = raw.match(/"role":\s*"([^"]+)"/);
-                const goalMatch = raw.match(/"learningGoal":\s*"([^"]+)"/) || raw.match(/"goal":\s*"([^"]+)"/);
-                const nameMatch = raw.match(/"name":\s*"([^"]+)"/);
+
+                // Flexible regex to match "key": "value" or "key: value" or just "key value"
+                const findField = (key: string, altKey?: string) => {
+                    const pattern = new RegExp(`(?:"?${key}"?|"?${altKey || key}"?)\\s*[:=-]?\\s*"([^"]+)"`, 'i');
+                    const match = raw.match(pattern);
+                    if (match) return match[1];
+
+                    // Try without quotes for the value if it's plain text
+                    const plainPattern = new RegExp(`(?:"?${key}"?|"?${altKey || key}"?)\\s*[:=-]?\\s*([^\\n,}]+)`, 'i');
+                    const plainMatch = raw.match(plainPattern);
+                    return plainMatch ? plainMatch[1].trim().replace(/[",]/g, '') : null;
+                };
+
+                const recoveredEmail = findField('email');
+                const recoveredRole = findField('role');
+                const recoveredGoal = findField('learningGoal', 'goal');
+                const recoveredName = findField('name');
 
                 return {
-                    name: nameMatch ? nameMatch[1] : data.name,
-                    email: emailMatch ? emailMatch[1] : data.email,
-                    learningGoal: goalMatch ? goalMatch[1] : (data.learningGoal || data.goal),
-                    role: roleMatch ? roleMatch[1]?.split('\\n')[0].replace(/[",]/g, '').trim() : data.role
+                    name: recoveredName || data.name,
+                    email: recoveredEmail || data.email,
+                    learningGoal: recoveredGoal || (data.learningGoal || data.goal),
+                    role: recoveredRole ? recoveredRole.split('\n')[0].trim() : data.role
                 };
             }
             return data;
