@@ -37,6 +37,7 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
     const [collectedData, setCollectedData] = useState<CollectedData>({})
     const [isComplete, setIsComplete] = useState(false)
     const [showQuickReplies, setShowQuickReplies] = useState(true)
+    const [hasMounted, setHasMounted] = useState(false)
     const messagesEndRef = useRef<HTMLDivElement>(null)
     const messagesContainerRef = useRef<HTMLDivElement>(null)
 
@@ -50,6 +51,7 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
     }
 
     useEffect(() => {
+        setHasMounted(true)
         if (messages.length > 1) {
             scrollToBottom()
         }
@@ -164,8 +166,8 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
                     >
                         {/* Avatar */}
                         <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${msg.role === 'user'
-                                ? 'bg-brand-primary/10 border border-brand-primary/20'
-                                : 'bg-white border border-slate-200'
+                            ? 'bg-brand-primary/10 border border-brand-primary/20'
+                            : 'bg-white border border-slate-200'
                             }`}>
                             {msg.role === 'user' ? (
                                 <User className="w-4 h-4 text-brand-primary" />
@@ -177,16 +179,18 @@ export function ChatQuiz({ onComplete }: ChatQuizProps) {
                         {/* Message Bubble */}
                         <div
                             className={`relative group max-w-[85%] sm:max-w-[75%] rounded-2xl px-5 py-3.5 shadow-sm transition-all duration-200 ${msg.role === 'user'
-                                    ? 'bg-gradient-to-br from-brand-primary to-blue-600 text-white rounded-tr-none'
-                                    : 'bg-white text-slate-700 border border-slate-200/80 rounded-tl-none hover:shadow-md'
+                                ? 'bg-gradient-to-br from-brand-primary to-blue-600 text-white rounded-tr-none'
+                                : 'bg-white text-slate-700 border border-slate-200/80 rounded-tl-none hover:shadow-md'
                                 }`}
                         >
                             <p className="text-[15px] leading-relaxed font-medium whitespace-pre-wrap">{msg.content}</p>
-                            <div className={`flex items-center gap-1.5 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                <span className={`text-[10px] uppercase font-bold tracking-tighter ${msg.role === 'user' ? 'text-white/60' : 'text-slate-400'}`}>
-                                    {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                </span>
-                            </div>
+                            {hasMounted && (
+                                <div className={`flex items-center gap-1.5 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                    <span className={`text-[10px] uppercase font-bold tracking-tighter ${msg.role === 'user' ? 'text-white/60' : 'text-slate-400'}`}>
+                                        {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                    </span>
+                                </div>
+                            )}
 
                             {/* Speech Bubble Tail - Visual only, modern UI often skips this but we'll add a subtle hint */}
                         </div>
