@@ -43,9 +43,9 @@ export async function POST(req: Request) {
         }
 
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error('❌ [Handoff Proxy] Upstream Error:', errorText);
-            return NextResponse.json({ status: 'error', message: 'Handoff failed' }, { status: response.status });
+            const errorData = await response.json();
+            console.error('❌ [Handoff Proxy] Upstream Error Response:', JSON.stringify(errorData, null, 2));
+            return NextResponse.json(errorData, { status: response.status });
         }
 
         const data = await response.json();
