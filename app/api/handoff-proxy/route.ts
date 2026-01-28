@@ -49,6 +49,13 @@ export async function POST(req: Request) {
         }
 
         const data = await response.json();
+
+        // OVERRIDE: Redirect to the local success page instead of the intake app 404
+        if (data.redirect_url) {
+            console.log('🔄 [Handoff Proxy] Overriding redirect_url to local /quiz-success');
+            data.redirect_url = '/quiz-success';
+        }
+
         return NextResponse.json(data);
 
     } catch (error) {
