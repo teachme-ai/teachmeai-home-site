@@ -5,11 +5,11 @@ export async function POST(req: Request) {
     try {
         const body = await req.json();
 
-        // Forward to Cloud Run (Bypassing Vercel WAF)
-        const INTAKE_API = process.env.INTAKE_API_URL || 'https://teachmeai-agent-service-584680412286.us-central1.run.app/handoff';
+        // FORCE Cloud Run (Bypassing Vercel WAF entirely)
+        // We hardcode this because environment variables on Vercel are likely still pointing to the blocked URL
+        const INTAKE_API = 'https://teachmeai-agent-service-584680412286.us-central1.run.app/handoff';
 
-        // 1. Triage Logging
-        console.log(`📡 [Handoff Proxy] Attempting Upstream: ${INTAKE_API}`);
+        console.log(`📡 [Handoff Proxy] CRITICAL: Calling Cloud Run at ${INTAKE_API}`);
 
         const response = await fetch(INTAKE_API, {
             // ... (headers and body)
