@@ -12,6 +12,10 @@ export async function POST(req: Request) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'User-Agent': req.headers.get('user-agent') || 'Mozilla/5.0',
+                'x-forwarded-for': req.headers.get('x-forwarded-for') || '',
+                'referer': req.headers.get('referer') || '',
+                // Forward original client IP and agent info
             },
             body: JSON.stringify(body),
         });
