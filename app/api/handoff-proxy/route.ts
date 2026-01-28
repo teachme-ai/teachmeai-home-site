@@ -13,9 +13,15 @@ export async function POST(req: Request) {
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': req.headers.get('user-agent') || 'Mozilla/5.0',
+                'Accept': req.headers.get('accept') || '*/*',
+                'Accept-Language': req.headers.get('accept-language') || '',
+                'sec-ch-ua': req.headers.get('sec-ch-ua') || '',
+                'sec-ch-ua-mobile': req.headers.get('sec-ch-ua-mobile') || '',
+                'sec-ch-ua-platform': req.headers.get('sec-ch-ua-platform') || '',
                 'x-forwarded-for': req.headers.get('x-forwarded-for') || '',
                 'referer': req.headers.get('referer') || '',
-                // Forward original client IP and agent info
+                'cookie': req.headers.get('cookie') || '',
+                'x-vercel-protection-bypass': req.headers.get('x-vercel-protection-bypass') || '',
             },
             body: JSON.stringify(body),
         });
