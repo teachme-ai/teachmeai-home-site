@@ -5,10 +5,14 @@ export async function POST(req: Request) {
     try {
         const body = await req.json();
 
-        // Forward to Intake App
-        const INTAKE_API = process.env.INTAKE_API_URL || 'http://localhost:3001/api/handoff';
+        // Forward to Cloud Run (Bypassing Vercel WAF)
+        const INTAKE_API = process.env.INTAKE_API_URL || 'https://teachmeai-agent-service-584680412286.us-central1.run.app/handoff';
+
+        // 1. Triage Logging
+        console.log(`📡 [Handoff Proxy] Attempting Upstream: ${INTAKE_API}`);
 
         const response = await fetch(INTAKE_API, {
+            // ... (headers and body)
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,6 +29,18 @@ export async function POST(req: Request) {
             },
             body: JSON.stringify(body),
         });
+
+        const contentType = response.headers.get('content-type') || '';
+        console.log(`📡 [Handoff Proxy] Status: ${response.status}, Content-Type: ${contentType}`);
+
+        // 2. Treat HTML as a hard failure (Vercel Checkpoint)
+        if (contentType.includes('text/html')) {
+            console.error('❌ [Handoff Proxy] Blocked by Vercel Security Checkpoint');
+            return NextResponse.json(
+                { status: 'error', message: 'Handoff blocked by security wall' },
+                { status: 502 } // Bad Gateway
+            );
+        }
 
         if (!response.ok) {
             const errorText = await response.text();
