@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendIntakeEmail } from '@/lib/email'
+import { sign } from 'jsonwebtoken'
 
 export async function POST(req: NextRequest) {
     try {
@@ -38,9 +39,17 @@ export async function POST(req: NextRequest) {
                 // We still proceed because we want the user to get the handoff redirect
             }
 
+            // 3. Generate Token for Intake App Redirect
+            const token = sign(
+                { name, email, role, goal, challenge: collectedData.challenge || null },
+                process.env.JWT_SECRET || "default_secret", // Fallback for dev, but env-check handles prod
+                { expiresIn: '1h' }
+            )
+
             return NextResponse.json({
                 message: "Excellent! We've received your details. Redirecting you to your diagnostic...",
                 dataCollected: { name, email, role, goal: goal },
+                token, // Return token for hybrid redirect
                 isComplete: true,
                 confidence: 100
             })

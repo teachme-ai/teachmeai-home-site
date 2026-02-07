@@ -2,6 +2,9 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
 import "./globals.css"
+import { validateEnv } from "../lib/env-check"
+
+validateEnv() // Fail fast if secrets are missing
 
 const inter = Inter({ subsets: ["latin"] })
 

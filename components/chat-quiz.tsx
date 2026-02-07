@@ -123,6 +123,15 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
                         const answers_raw = messages.map(m => ({ role: m.role, content: m.content }));
                         answers_raw.push({ role: 'user', content: userMessage }); // Add last message
 
+                        // Hybrid Redirect - Direct to Intake App
+                        if (data.token) {
+                            // DEV OVERRIDE: Use localhost:3001 for testing
+                            window.location.href = `http://localhost:3001?token=${data.token}`;
+                            // window.location.href = `https://intake.teachmeai.in?token=${data.token}`;
+                            return; // Stop further execution
+                        }
+
+                        // Fallback Handoff Proxy (Legacy)
                         const handoffPayload = {
                             persona_id: quizConfig.id,
                             landing_page_id: quizConfig.landingPageId || 'unknown',
@@ -332,7 +341,8 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
                         <input
                             type="text"
                             value={input}
-                            onChange={(e) => setInput(e.target.value)}
+                            maxLength={500}
+                            onChange={(e) => setInput(e.target.value.slice(0, 500))}
                             onKeyPress={(e) => {
                                 if (e.key === 'Enter' && !e.shiftKey) {
                                     e.preventDefault()
@@ -341,9 +351,12 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
                             }}
                             placeholder={isComplete ? "Diagnostic complete ✅" : "Type your message here..."}
                             disabled={isComplete || isLoading}
-                            className="w-full pl-5 pr-12 py-4 bg-slate-50 border border-slate-200/80 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary focus:bg-white transition-all duration-300 disabled:bg-slate-100/50 disabled:cursor-not-allowed font-medium text-slate-700 placeholder:text-slate-400"
+                            className="w-full pl-5 pr-20 py-4 bg-slate-50 border border-slate-200/80 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary focus:bg-white transition-all duration-300 disabled:bg-slate-100/50 disabled:cursor-not-allowed font-medium text-slate-700 placeholder:text-slate-400"
                         />
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center">
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+                            <span className={`text-[10px] font-bold ${input.length >= 450 ? 'text-red-500' : 'text-slate-300'}`}>
+                                {input.length}/500
+                            </span>
                             <div className={`w-1.5 h-1.5 rounded-full ${input.trim() ? "bg-brand-primary" : "bg-slate-300"} transition-colors`} />
                         </div>
                     </div>
