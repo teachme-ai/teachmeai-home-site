@@ -10,7 +10,7 @@ interface HandoffInterstitialProps {
 }
 
 export default function HandoffInterstitial({ userName, userEmail, onContinue }: HandoffInterstitialProps) {
-    const [countdown, setCountdown] = useState(10);
+    const [countdown, setCountdown] = useState(15);
     const [progress, setProgress] = useState(100);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
         // Progress bar animation
         const progressTimer = setInterval(() => {
             setProgress((prev) => {
-                const newProgress = prev - (100 / 100); // 10 seconds = 100 intervals of 100ms
+                const newProgress = prev - (100 / 150); // 15 seconds = 150 intervals of 100ms
                 return newProgress < 0 ? 0 : newProgress;
             });
         }, 100);
@@ -41,8 +41,8 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
     }, [onContinue]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4 animate-in fade-in duration-500">
-            <div className="max-w-xl w-full bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
+            <div className="max-w-lg w-full bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
                 {/* Progress Bar */}
                 <div className="h-1 bg-gray-100 relative overflow-hidden">
                     <div
@@ -51,35 +51,33 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
                     />
                 </div>
 
-                <div className="p-8">
+                <div className="p-6">
                     {/* Success Icon */}
-                    <div className="flex justify-center mb-4">
-                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center animate-in zoom-in duration-300">
-                            <CheckCircle className="w-8 h-8 text-green-600" />
+                    <div className="flex justify-center mb-3">
+                        <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
+                            <CheckCircle className="w-7 h-7 text-green-600" />
                         </div>
                     </div>
 
                     {/* Headline */}
-                    <h1 className="text-2xl font-bold text-center text-gray-900 mb-3">
+                    <h1 className="text-xl font-bold text-center text-gray-900 mb-2">
                         Great! Let's Build Your AI Learning Profile
                     </h1>
 
                     {/* Description */}
-                    <p className="text-base text-center text-gray-600 mb-5 leading-relaxed">
-                        You'll now chat with our AI agents to understand your learning style and preferences.
-                        At the end, you'll receive a rich analysis of your unique AI learning profile.
+                    <p className="text-sm text-center text-gray-600 mb-4 leading-relaxed px-2">
+                        You'll chat with our AI agents to understand your learning style. At the end, you'll receive a rich analysis of your unique AI learning profile.
                     </p>
 
                     {/* Email Confirmation Card */}
-                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5 flex items-start gap-3">
-                        <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 flex items-start gap-2">
+                        <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                             <Mail className="w-4 h-4 text-blue-600" />
                         </div>
                         <div className="flex-1">
-                            <h3 className="font-semibold text-sm text-blue-900 mb-0.5">Email Sent!</h3>
-                            <p className="text-xs text-blue-800 leading-relaxed">
-                                We've sent a custom link to <span className="font-bold">{userEmail}</span> so you can
-                                continue this diagnostic later if needed.
+                            <h3 className="font-semibold text-xs text-blue-900 mb-0.5">Email Sent!</h3>
+                            <p className="text-xs text-blue-800 leading-tight">
+                                Custom link sent to <span className="font-bold">{userEmail}</span> to continue later.
                             </p>
                         </div>
                     </div>
@@ -87,16 +85,16 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
                     {/* CTA Button */}
                     <button
                         onClick={onContinue}
-                        className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-base px-6 py-4 rounded-xl hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group mb-3"
+                        className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-sm px-4 py-3 rounded-lg hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group mb-2"
                     >
-                        <Sparkles className="w-5 h-5" />
+                        <Sparkles className="w-4 h-4" />
                         Continue Chat with AI Agents
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>
 
                     {/* Auto-redirect notice */}
                     <p className="text-center text-xs text-gray-500">
-                        Automatically redirecting in <span className="font-bold text-indigo-600">{countdown}</span> seconds...
+                        Redirecting in <span className="font-bold text-indigo-600">{countdown}s</span>
                     </p>
                 </div>
             </div>
