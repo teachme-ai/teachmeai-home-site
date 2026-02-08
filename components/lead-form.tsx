@@ -61,34 +61,13 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
             if (data.isComplete) {
                 setIsComplete(true)
 
-                // 2. Perform handoff redirect
-                if (quizConfig.handoffEnabled) {
-                    const handoffPayload = {
-                        persona_id: quizConfig.id,
-                        landing_page_id: quizConfig.landingPageId || 'unknown',
-                        quiz_version: '1.0.0-form',
-                        answers_raw: [
-                            { role: 'user', content: `Name: ${formData.name}, Role: ${formData.role}, Goal: ${formData.goal}` }
-                        ],
-                        contact_info: {
-                            name: formData.name,
-                            email: formData.email
-                        },
-                        attribution: {
-                            referrer: document.referrer
-                        }
-                    }
-
-                    const handoffRes = await fetch('/api/handoff-proxy', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(handoffPayload)
-                    })
-
-                    const handoffData = await handoffRes.json()
-                    if (handoffData.redirect_url) {
-                        window.location.href = handoffData.redirect_url
-                    }
+                // Redirect using JWT token (new v2.10 flow)
+                if (data.token) {
+                    // Redirect to intake app with JWT token
+                    window.location.href = `https://intake.teachmeai.in?token=${data.token}`;
+                } else {
+                    // Fallback: no token - something went wrong
+                    throw new Error('No authentication token received');
                 }
             } else {
                 throw new Error('Data validation failed on server')
