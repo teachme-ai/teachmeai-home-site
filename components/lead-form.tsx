@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { track } from '@vercel/analytics'
 import { Send, User, Bot, Sparkles, CheckCircle2, Loader2, Mail, UserCircle, Briefcase, Target } from 'lucide-react'
 import { QuizSpec, QUIZ_CONFIGS } from '../config/quiz-configs'
+import HandoffInterstitial from './HandoffInterstitial'
 
 interface CollectedData {
     name: string
@@ -27,6 +28,8 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
     const [isLoading, setIsLoading] = useState(false)
     const [isComplete, setIsComplete] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const [showHandoffScreen, setShowHandoffScreen] = useState(false)
+    const [redirectToken, setRedirectToken] = useState<string | null>(null)
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -78,6 +81,23 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
             setError('Something went wrong. Please try again.')
             setIsLoading(false)
         }
+    }
+
+    const handleContinueToIntake = () => {
+        if (redirectToken) {
+            window.location.href = `https://intake.teachmeai.in?token=${redirectToken}`;
+        }
+    }
+
+    // Show handoff interstitial if form is complete and handoff screen is active
+    if (showHandoffScreen && redirectToken) {
+        return (
+            <HandoffInterstitial
+                userName={formData.name || 'there'}
+                userEmail={formData.email || ''}
+                onContinue={handleContinueToIntake}
+            />
+        );
     }
 
     if (isComplete) {
