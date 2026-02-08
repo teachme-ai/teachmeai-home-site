@@ -10,7 +10,7 @@ interface HandoffInterstitialProps {
 }
 
 export default function HandoffInterstitial({ userName, userEmail, onContinue }: HandoffInterstitialProps) {
-    const [countdown, setCountdown] = useState(5);
+    const [countdown, setCountdown] = useState(10);
     const [progress, setProgress] = useState(100);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
         // Progress bar animation
         const progressTimer = setInterval(() => {
             setProgress((prev) => {
-                const newProgress = prev - (100 / 50); // 5 seconds = 50 intervals of 100ms
+                const newProgress = prev - (100 / 100); // 10 seconds = 100 intervals of 100ms
                 return newProgress < 0 ? 0 : newProgress;
             });
         }, 100);
