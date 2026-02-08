@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { track } from '@vercel/analytics'
 import { Send, User, Bot, Sparkles, CheckCircle2, Loader2 } from 'lucide-react'
 import { QuizSpec, QUIZ_CONFIGS } from '../config/quiz-configs'
+import HandoffInterstitial from './HandoffInterstitial'
 
 interface Message {
     id: string
@@ -40,6 +41,8 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
     const [isComplete, setIsComplete] = useState(false)
     const [showQuickReplies, setShowQuickReplies] = useState(true)
     const [hasMounted, setHasMounted] = useState(false)
+    const [showHandoffScreen, setShowHandoffScreen] = useState(false)
+    const [redirectToken, setRedirectToken] = useState<string | null>(null)
     const messagesEndRef = useRef<HTMLDivElement>(null)
     const messagesContainerRef = useRef<HTMLDivElement>(null)
 
@@ -117,19 +120,18 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
 
                 // Handoff Logic
                 if (quizConfig.handoffEnabled) {
-                    setIsLoading(true); // Show loader while redirecting
                     try {
-                        // Prepare generic transcript
-                        const answers_raw = messages.map(m => ({ role: m.role, content: m.content }));
-                        answers_raw.push({ role: 'user', content: userMessage }); // Add last message
-
-                        // Hybrid Redirect - Direct to Intake App
+                        // Show interstitial screen instead of immediate redirect
                         if (data.token) {
-                            // DEV OVERRIDE: Use localhost:3001 for testing
-                            // window.location.href = `http://localhost:3001?token=${data.token}`;
-                            window.location.href = `https://intake.teachmeai.in?token=${data.token}`;
+                            setRedirectToken(data.token);
+                            setShowHandoffScreen(true);
+                            setIsLoading(false);
                             return; // Stop further execution
                         }
+
+                        // Fallback Handoff Proxy (Legacy) - only if no token
+                        const answers_raw = messages.map(m => ({ role: m.role, content: m.content }));
+                        answers_raw.push({ role: 'user', content: userMessage }); // Add last message
 
                         // Fallback Handoff Proxy (Legacy)
                         const handoffPayload = {
@@ -182,6 +184,24 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
 
     const handleQuickReply = (reply: string) => {
         sendMessage(reply)
+    }
+
+    const handleContinueToIntake = () => {
+        if (redirectToken) {
+            // Redirect to intake app with JWT token
+            window.location.href = `https://intake.teachmeai.in?token=${redirectToken}`;
+        }
+    }
+
+    // Show handoff interstitial if quiz is complete and handoff screen is active
+    if (showHandoffScreen && redirectToken) {
+        return (
+            <HandoffInterstitial
+                userName={collectedData.name || 'there'}
+                userEmail={collectedData.email || ''}
+                onContinue={handleContinueToIntake}
+            />
+        );
     }
 
     return (

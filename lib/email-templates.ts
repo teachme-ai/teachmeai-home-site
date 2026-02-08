@@ -1,11 +1,11 @@
 export const getIntakeEmailHtml = (data: {
-    name: string;
-    role: string;
-    goal: string;
-    challenge?: string | null;
-    intakeLink: string;
+  name: string;
+  role: string;
+  goal: string;
+  challenge?: string | null;
+  intakeLink: string;
 }) => {
-    return `
+  return `
     <!DOCTYPE html>
     <html>
     <head>
@@ -83,25 +83,25 @@ export const getIntakeEmailHtml = (data: {
         
         ${data.challenge ? `<p>I totally understand your challenge: "${data.challenge}". You're not alone - this is one of the most common obstacles people face when getting started with AI.</p>` : ''}
         
-        <p>To generate your <span class="highlight">personalized AI analysis</span>, we need a bit more context about your learning style and experience.</p>
+        <p>You'll now chat with our AI agents to understand your learning style and preferences. At the end, you'll receive a rich analysis of your <span class="highlight">unique AI learning profile</span>.</p>
         
         <div style="text-align: center; margin: 30px 0;">
           <a href="${data.intakeLink}" class="cta-button">
-            Complete Your Profile →
+            Continue Your AI Profile Analysis →
           </a>
         </div>
         
         <div class="benefits">
-          <p style="margin-top: 0; font-weight: 600; color: #0066CC;">This will take about 5-7 minutes and give us everything we need to:</p>
+          <p style="margin-top: 0; font-weight: 600; color: #0066CC;">This personalized link is just for you and will pre-fill your details. You can return anytime to complete your AI profile analysis and receive:</p>
           <ul>
-            <li>✅ Analyze your learning style (VARK assessment)</li>
-            <li>✅ Map your current AI readiness level</li>
-            <li>✅ Identify your optimal learning path</li>
-            <li>✅ Generate your custom 3-5 page AI analysis report</li>
+            <li>✅ Strategic AI opportunities tailored to your role</li>
+            <li>✅ A personalized IMPACT action plan</li>
+            <li>✅ Learning style insights & psychological profile</li>
+            <li>✅ Priority roadmap with quick wins</li>
           </ul>
         </div>
         
-        <p>Once you complete your profile, you'll receive a comprehensive report that shows exactly where you are and where you need to go on your AI learning journey.</p>
+        <p>Once you finish chatting with our AI agents, you'll have your complete personalized learning profile ready - a comprehensive guide showing exactly where you are and where you need to go on your AI learning journey.</p>
         
         <p>Looking forward to helping you master AI!</p>
         

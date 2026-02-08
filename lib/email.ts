@@ -48,7 +48,7 @@ export async function sendIntakeEmail({ name, email, role, goal, challenge }: Se
     const { data, error } = await resend.emails.send({
         from: 'Khalid at TeachMeAI <khalid@teachmeai.in>',
         to: email,
-        subject: `Complete Your AI Learning Profile - ${name}`,
+        subject: `Your Personalized AI Learning Profile Link - ${name}`,
         html: emailHtml
     })
 
