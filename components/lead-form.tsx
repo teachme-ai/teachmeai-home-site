@@ -64,10 +64,11 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
             if (data.isComplete) {
                 setIsComplete(true)
 
-                // Redirect using JWT token (new v2.10 flow)
+                // Show interstitial screen with countdown (v2.10 flow)
                 if (data.token) {
-                    // Redirect to intake app with JWT token
-                    window.location.href = `https://intake.teachmeai.in?token=${data.token}`;
+                    setRedirectToken(data.token);
+                    setShowHandoffScreen(true);
+                    setIsLoading(false);
                 } else {
                     // Fallback: no token - something went wrong
                     throw new Error('No authentication token received');
