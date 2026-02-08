@@ -10,7 +10,7 @@ function HandoffContent() {
     const email = searchParams.get('email') || '';
     const token = searchParams.get('token') || '';
 
-    const [countdown, setCountdown] = useState(15);
+    const [countdown, setCountdown] = useState(20);
     const [progress, setProgress] = useState(100);
 
     useEffect(() => {
