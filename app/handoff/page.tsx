@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { CheckCircle, Sparkles, Mail, ArrowRight, MessageCircle, Target, Lightbulb } from 'lucide-react';
 
-export default function HandoffPage() {
+function HandoffContent() {
     const searchParams = useSearchParams();
     const email = searchParams.get('email') || '';
     const token = searchParams.get('token') || '';
@@ -146,5 +146,20 @@ export default function HandoffPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function HandoffPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center">
+                <div className="text-center">
+                    <Sparkles className="w-12 h-12 text-indigo-600 mx-auto mb-4 animate-spin" />
+                    <p className="text-gray-600">Loading...</p>
+                </div>
+            </div>
+        }>
+            <HandoffContent />
+        </Suspense>
     );
 }
