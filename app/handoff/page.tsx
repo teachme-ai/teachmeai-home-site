@@ -9,7 +9,7 @@ export default function HandoffPage() {
     const searchParams = useSearchParams();
     const email = searchParams.get('email') || '';
     const token = searchParams.get('token') || '';
-    
+
     const [countdown, setCountdown] = useState(15);
     const [progress, setProgress] = useState(100);
 
@@ -36,12 +36,12 @@ export default function HandoffPage() {
             clearInterval(timer);
             clearInterval(progressTimer);
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleContinue = () => {
         if (token) {
-            window.location.href = \`https://intake.teachmeai.in?token=\${token}\`;
+            window.location.href = `https://intake.teachmeai.in?token=${token}`;
         } else {
             window.location.href = 'https://intake.teachmeai.in';
         }
@@ -53,7 +53,7 @@ export default function HandoffPage() {
                 <div className="h-1.5 bg-gray-100 relative overflow-hidden">
                     <div
                         className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 transition-all duration-100 ease-linear"
-                        style={{ width: \`\${progress}%\` }}
+                        style={{ width: `${progress}%` }}
                     />
                 </div>
 
@@ -103,7 +103,7 @@ export default function HandoffPage() {
                             <Lightbulb className="w-5 h-5 text-indigo-600" />
                             What Happens Next
                         </h2>
-                        
+
                         <div className="space-y-3">
                             <div className="flex items-start gap-3">
                                 <MessageCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
@@ -112,7 +112,7 @@ export default function HandoffPage() {
                                     <p className="text-sm text-gray-600">Our agents will ask targeted questions to understand your unique situation</p>
                                 </div>
                             </div>
-                            
+
                             <div className="flex items-start gap-3">
                                 <Target className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                                 <div>
@@ -120,7 +120,7 @@ export default function HandoffPage() {
                                     <p className="text-sm text-gray-600">We&apos;ll analyze your learning goals, current skills, constraints, and preferred style</p>
                                 </div>
                             </div>
-                            
+
                             <div className="flex items-start gap-3">
                                 <Sparkles className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                                 <div>
