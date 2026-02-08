@@ -27,7 +27,7 @@ function HandoffContent() {
 
         const progressTimer = setInterval(() => {
             setProgress((prev) => {
-                const newProgress = prev - (100 / 150);
+                const newProgress = prev - (100 / 200);
                 return newProgress < 0 ? 0 : newProgress;
             });
         }, 100);
