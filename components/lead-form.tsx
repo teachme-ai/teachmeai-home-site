@@ -66,7 +66,7 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
 
                 // Redirect to dedicated handoff page (v2.10 flow)
                 if (data.token) {
-                    const userEmail = String(formData.get('email') || '');
+                    const userEmail = (formData.get('email')?.toString() || '');
                     window.location.href = `/handoff?email=${encodeURIComponent(userEmail)}&token=${encodeURIComponent(data.token)}`;
                 } else {
                     // Fallback: no token - something went wrong
