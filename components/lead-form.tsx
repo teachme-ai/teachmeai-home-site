@@ -64,11 +64,10 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
             if (data.isComplete) {
                 setIsComplete(true)
 
-                // Show interstitial screen with countdown (v2.10 flow)
+                // Redirect to dedicated handoff page (v2.10 flow)
                 if (data.token) {
-                    setRedirectToken(data.token);
-                    setShowHandoffScreen(true);
-                    setIsLoading(false);
+                    const userEmail = formData.get('email') as string || '';
+                    window.location.href = `/handoff?email=${encodeURIComponent(userEmail)}&token=${encodeURIComponent(data.token)}`;
                 } else {
                     // Fallback: no token - something went wrong
                     throw new Error('No authentication token received');

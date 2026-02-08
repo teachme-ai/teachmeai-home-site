@@ -121,11 +121,10 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
                 // Handoff Logic
                 if (quizConfig.handoffEnabled) {
                     try {
-                        // Show interstitial screen instead of immediate redirect
+                        // Redirect to dedicated handoff page
                         if (data.token) {
-                            setRedirectToken(data.token);
-                            setShowHandoffScreen(true);
-                            setIsLoading(false);
+                            const userEmail = data.dataCollected?.email || '';
+                            window.location.href = `/handoff?email=${encodeURIComponent(userEmail)}&token=${encodeURIComponent(data.token)}`;
                             return; // Stop further execution
                         }
 
