@@ -1,362 +1,89 @@
-Stage-1 PRD — TeachMeAI Homepage (MVP)
+# TeachMeAI — Product Requirements Document (PRD)
 
-Owner: Irfan Khalid
-Version: v2.0 (IMPLEMENTATION COMPLETE)
-Goal of Stage-1: Ship a fast, clear, conversion-focused homepage that moves visitors to (a) book a 70-minute Clarity Call (Topmate) and (b) subscribe for ongoing value. Includes a minimal AI Readiness Quiz (non-automated) to capture leads.
+**Owner**: Irfan Khalid  
+**Version**: v2.9.0 (INTELLIGENCE UPGRADE)  
+**Status**: 🟢 LIVE IN PRODUCTION
 
-🟢 IMPLEMENTATION STATUS: 100% COMPLETE - READY FOR DEPLOYMENT
+---
 
-1) Scope (Stage-1 Only)
-In-scope (must-have)
+## 1. Executive Summary
+TeachMeAI is a professional AI adoption platform that moves learners from "AI curiosity" to "AI mastery" in 30–90 days. The platform features an **Agentic Intake Engine** ("Coach-in-a-Box") that automates lead qualification, psychometric profiling, and the generation of hyper-personalized 90-day roadmaps through a multi-agent hierarchy.
 
-🟢 Hero section with clear value prop + 2 CTAs (Book Call, Start Quiz) - COMPLETED
+---
 
-🟢 Programs block (Single / Starter / Growth) with concise blurbs + one "Compare details" expandable area - COMPLETED
+## 2. System Architecture (The "Hybrid" Model)
 
-🟢 Mini AI Readiness Quiz (3 questions incl. "Expected Impact on Work/Career/Confidence") → stores to Google Sheet; thank-you message - COMPLETED
+### 2.1 Cross-Domain Handshake
+The platform operates across two primary domains with a secure JSON Web Token (JWT) handshake:
+1.  **Home Site (`teachmeai-home-site`)**: Conversion-focused landing page (Vercel).
+2.  **Intake App (`teachmeai-intake-app`)**: Deep-assessment conversational interface (Vercel).
+3.  **Agent Service**: Backend orchestration layer (Google Cloud Run).
 
-🟢 About Irfan (compact): 3-line bio + badges (certs/orgs) - COMPLETED
+**The Handshake Flow**:
+- User starts challenge intake on Home Site.
+- Home Site signs a JWT containing `name`, `email`, and `challenge`.
+- User is redirected to `intake.teachmeai.in?token=...`.
+- Intake App verifies token and pre-fills session state for a seamless transition.
 
-🟢 Newsletter signup (email capture) - COMPLETED
+---
 
-🟢 FAQ (5–7 items) addressing objections - COMPLETED
+## 3. The Intelligence Hierarchy (Agent Service)
+The `agent-service` is a Genkit-powered Express application that manages a 6-agent choreography:
 
-🟢 Footer with contact, social, privacy/terms placeholders - COMPLETED
+1.  **The Guide**: Manages initial conversational extraction and lead capture.
+2.  **The Profiler**: Performs expert psychometric analysis (Decision style, Uncertainty handling, Cognitive load tolerance).
+3.  **Learner Dimensions**: Assesses 5 key areas: SRL (Self-Regulated Learning), Motivation, Preferences (VARK), Readiness, and Constraints.
+4.  **Deep Research**: Maps industry-specific AI opportunities and identifies "Quick Win" portfolio artifacts.
+5.  **The Strategist**: Calibrates raw goals into outcome-focused IMPACT goals.
+6.  **The Tactician**: Assembles a weekly execution plan (Act/Check/Transform) calibrated to time and skill barriers.
 
-🟢 Top navigation (sticky) with anchors: Home, Programs, About, FAQ, Book - COMPLETED
+---
 
-🟢 BONUS: IMPACT & ADAPT Framework sections - COMPLETED
+## 4. Hyper-Personalization Logic (v2.9.0)
+The system adapts the output dynamically based on four core "Pivots":
 
-🟢 Analytics & SEO basics (events + metadata + schema) - COMPLETED
+- **Seniority Pivot**: 
+  - *Junior*: Focus on task-level automation and individual efficiency.
+  - *Senior/Lead*: Focus on strategic leverage, team scaling, and decision support.
+- **Technical Pivot (Digital Mastery)**: 
+  - *Score < 3*: Suggests simple, web-based tools (ChatGPT, Claude, Perplexity).
+  - *Score >= 4*: Suggests automation, APIs, custom Python scripts, and LangChain.
+- **Time Calibration**: 
+  - Roadmaps are time-fenced. If availability < 120m/week, sessions are 20-min "Sprints."
+- **Learning Style Pivot (Kolb)**: 
+  - *Activists/Pragmatists*: Start with "Building" tasks.
+  - *Theorists/Reflectors*: Start with "Researching" tasks.
 
-Explicitly out-of-scope for Stage-1 (defer)
+---
 
-Automated roadmap generation via LLM.
+## 5. Functional & Feature Specs
 
-Workshop catalog, case studies carousel, resources library.
+### 5.1 Interactive Components
+- **`InterviewChat`**: A real-time conversational UI with turn-by-turn state persistence.
+- **IMPACT Analysis Display**: A rich UI for viewing the generated 90-day roadmap.
+- **Lead Capture**: Seamless integration with **Mailerlite** for newsletter double opt-in.
 
-Segment-specific pages (Students/Educators/Professionals).
+### 5.2 Persistence & Operations
+- **Google Sheets Sync**: All intake data + AI analysis blobs are appended to a centralized Google Sheet for administrative review.
+- **Fail-Safe Logging**: Data is logged *before* high-latency AI calls to ensure no leads are lost during errors.
 
-Payments on-site (Stripe/Razorpay). Keep Topmate.
+---
 
-2) Users & Primary Journeys
-Primary personas
+## 6. Success Metrics & Performance
+- **Conversation Completion**: Target >= 85%.
+- **Lead Capture Accuracy**: 100% synchronization between Chat UI and Google Sheets.
+- **Performance**: Lighthouse Desktop/Mobile scores >= 90.
+- **Security**: 100% validation of cross-site redirect tokens.
 
-Professionals/Leaders seeking 30/90-day AI adoption.
+---
 
-Educators/Institutions seeking AI-infused teaching support.
+## 7. Tech Stack Summary
+- **Frontend**: Next.js (App Router), Tailwind CSS, Framer Motion, shadcn/ui.
+- **AI Framework**: Firebase Genkit, Google Gemini 1.5 Pro.
+- **Infrastructure**: Vercel (Web), Google Cloud Run (Agents), Google Cloud Build (CI/CD).
+- **Communication**: JWT (Handshake), Webhooks (Sheets/Email).
 
-Students/Early-career seeking clarity and portfolio projects.
+---
 
-Key flows
-
-🟢 Book flow (primary): Hero → "Book a 70-minute Clarity Call" → Topmate page - COMPLETED
-
-🟢 Quiz → nurture flow (secondary): Hero/Programs → "Check AI readiness" → Submit → Thank-you → Prompt to book call - COMPLETED
-
-🟢 Newsletter flow: Any section → "Get weekly tactics" → Email capture → Confirmation - COMPLETED
-
-Success metrics (Stage-1)
-
-Hero → Topmate CTR ≥ 3–7% (baseline to track).
-
-Quiz start rate ≥ 15% of unique visitors; completion ≥ 60% of starters.
-
-Newsletter signups ≥ 1–3% of unique visitors.
-
-Lighthouse ≥ 90 (mobile/desktop).
-
-3) Information Architecture (Stage-1)
-
-🟢 / (single scrolling page) - COMPLETED
-
-🟢 Hero (value + CTAs) - COMPLETED
-
-🟢 Programs (3 cards + details expander) - COMPLETED
-
-🟢 IMPACT & ADAPT Frameworks - COMPLETED
-
-🟢 About (compact) - COMPLETED
-
-🟢 Mini Quiz - COMPLETED
-
-🟢 FAQ - COMPLETED
-
-🟢 Newsletter - COMPLETED
-
-🟢 Footer - COMPLETED
-
-🟢 /book → 302 redirect to Topmate booking URL - COMPLETED
-
-🟢 /privacy, /terms (full legal pages with comprehensive copy) - COMPLETED
-
-4) Content Requirements (ready-to-use copy skeletons)
-4.1 Hero
-
-H1: Build real AI capability in 30–90 days—without the hype.
-
-Subhead: Personalized roadmaps, hands-on practice, and measurable outcomes for students, educators, and professionals.
-
-Primary CTA: Book a 70-minute Clarity Call
-
-Secondary CTA: Check your AI readiness (3 minutes)
-
-Trust strip (one line): Trusted by teams at IBM, NPCI, Indus Trust (adjust logos later)
-
-4.2 Programs (cards)
-
-Single (70-minute) Clarity Call
-Rapid diagnosis, quick-win tactics, and a one-page action sheet.
-CTA: Book now
-
-Starter (30 days)
-Compact evaluation, weekly milestones, and a curated tool/prompt list.
-CTA: Start your 30-day plan
-
-Growth (90 days / 4 sessions)
-Deeper mentorship, hands-on practice, KPIs, and an ROI review.
-CTA: Build your 90-day roadmap
-
-Expander ("What's included?"): bullet list with 4–6 items per package (keep concise).
-
-4.3 Mini AI Readiness Quiz (Stage-1 form)
-
-Q1 (Multiple choice): Your primary goal right now?
-Options: Career shift • Upskill in current role • Teaching with AI • Startup/entrepreneurship
-
-Q2 (Short text): Expected Impact on Work/Career/Confidence (three short fields)
-
-Q3 (Scale 1–5): Current AI tool confidence (1 = new, 5 = advanced)
-
-Capture: Name, Email, Role/Industry (required)
-
-Post-submit message: Thanks! You'll get a short summary in your inbox. Want to fast-track? → Button: Book a 70-minute Clarity Call
-
-4.4 About (compact)
-
-3-line bio: Irfan Khalid—Innovation & Agility Facilitator, AI Educator, Professor of Practice. 19+ years in IT (IBM, Netsurion) and 7+ in academia. I design AI-infused curricula and 30/90-day adoption roadmaps for real results.
-
-Badges (text): Certified ScrumMaster • Enterprise Design Thinking • IBM Recognized Teacher/Educator
-
-4.5 Newsletter
-
-Pitch: One practical AI tactic each week—ready to apply on Monday.
-
-Field: Email + consent checkbox
-
-Button: Subscribe
-
-4.6 FAQ (examples)
-
-Who is this for?
-
-What happens in the 70-minute call?
-
-What tools do we use?
-
-Refund/reschedule policy? (Topmate link)
-
-Privacy—what happens to my quiz data?
-
-5) UX & Visual Requirements
-
-Tone: Warm, encouraging, practical.
-
-Layout: Above-the-fold clarity; skimmable sections; expanders for depth.
-
-Responsive: Mobile-first (≤390px), tablet (768px), desktop (≥1200px).
-
-Brand hints: Subtle framework chips (IMPACT, ADAPT) as small badges in Programs.
-
-Accessibility: WCAG 2.1 AA (focus states, alt text, headings order, form labels).
-
-Performance budget: First Contentful Paint ≤ 2.0s on 4G; images ≤ 200KB each.
-
-6) Functional Specs
-6.1 Components
-
-🟡 Navbar (sticky): site logo (text OK), anchor links, "Book" button (Topmate) - PENDING
-
-🟡 Hero: headline, subhead, 2 CTAs, trust strip - PENDING
-
-🟡 Programs: 3 cards + expander; each card includes CTA button (Topmate deep link to the right product where possible) - PENDING
-
-🟡 Quiz: inline form, client-side validation, submit to Google Sheet via webhook; success message area; no page reload - PENDING
-
-🟡 Newsletter: email field + provider embed/API (Mailerlite/Buttondown); double opt-in if available - PENDING
-
-🟡 FAQ: accordion (expand/collapse) - PENDING
-
-🟡 Footer: contact email, social (LinkedIn), links to /privacy /terms - PENDING
-
-6.2 Integrations
-
-🟢 Topmate: external booking links; open in same tab - REDIRECT IMPLEMENTED
-
-🟢 Quiz → Google Sheets: via custom API route forwarding to Google Apps Script webhook - COMPLETED
-
-🟢 Newsletter: email capture integration - COMPLETED
-
-🟢 Analytics: Vercel Analytics integrated - COMPLETED
-
-6.3 SEO & Schema - 🟢 FULLY IMPLEMENTED
-
-🟢 Meta: title, description, canonical, OG image - COMPLETED
-
-🟢 Schema.org: Organization, Person, LocalBusiness with full structured data - COMPLETED
-
-🟢 Open Graph/Twitter cards: hero image and summary - COMPLETED
-
-🟢 Multi-language support (en, en-US, en-GB, en-IN, en-CA, en-AU) - COMPLETED
-
-🟢 Geo-targeting for India - COMPLETED
-
-🟢 Comprehensive metadata including keywords, authors, publisher - COMPLETED
-
-7) Tech Stack & Repo Conventions - 🟢 INFRASTRUCTURE COMPLETE
-
-🟢 Framework: Next.js (App Router) + Tailwind + shadcn/ui - SETUP COMPLETE
-
-🟢 Deployment: Vercel (Preview → Production) - CONFIGURED
-
-🟢 Content config: JSON files for Programs, FAQ - COMPLETED
-
-🟢 Env vars configured:
-
-NEXT_PUBLIC_ANALYTICS_ID (Vercel Analytics integrated)
-
-NEXT_PUBLIC_QUIZ_WEBHOOK_URL (ready for Google Apps Script)
-
-🟢 Directory structure implemented:
-
-/app/page.tsx (home) - COMPLETED
-/app/book/route.ts (redirect) - COMPLETED
-/app/privacy/page.tsx - COMPLETED
-/app/terms/page.tsx - COMPLETED
-/app/layout.tsx (with full SEO) - COMPLETED
-/app/globals.css (with custom styles) - COMPLETED
-/app/robots.ts - COMPLETED
-/app/sitemap.ts - COMPLETED
-
-🟢 /components/* (ALL components implemented and integrated) - COMPLETED
-
-🟢 /content/programs.json, /content/faq.json - COMPLETED
-
-8) Analytics Events (names & when to fire)
-
-cta_book_clicked (props: location=hero|program_card, program=single|starter|growth)
-
-quiz_started / quiz_submitted (props: goal, confidence_level)
-
-newsletter_submitted
-
-expander_programs_opened
-
-9) Acceptance Criteria (testable)
-
-A. Navigation & CTAs
-
-🟡 Clicking Book in navbar or hero opens Topmate URL in ≤ 500ms - PENDING COMPONENTS
-
-🟡 Programs card CTAs use distinct Topmate deep links (or the same booking URL with UTM params) - PENDING COMPONENTS
-
-B. Quiz
-
-🟡 All fields validate (required: name, email, role/industry; 3 questions) - PENDING COMPONENT
-
-🟡 On submit, a new row appears in the configured Google Sheet with timestamp and UTM params - PENDING COMPONENT
-
-🟡 Success message appears without page reload; offers Book Call CTA - PENDING COMPONENT
-
-C. Newsletter
-
-🟡 Valid email required; on success, provider confirmation message appears - PENDING COMPONENT
-
-🟡 Duplicate emails handled gracefully (provider message) - PENDING COMPONENT
-
-D. Performance & A11y
-
-🟢 Lighthouse mobile & desktop scores ≥ 90 - ARCHITECTURE SUPPORTS THIS
-
-🟡 All images have descriptive alt - PENDING COMPONENTS
-
-🟡 Keyboard-only navigation covers all interactive elements - PENDING COMPONENTS
-
-E. SEO
-
-🟢 Homepage has unique title/description; OG image renders on link preview - COMPLETED
-
-🟢 JSON-LD for Organization, Person, and FAQPage validates (Rich Results test) - COMPLETED
-
-F. Reliability
-
-🟡 If newsletter or quiz webhook fails, user sees a friendly fallback and an email contact - PENDING COMPONENTS
-
-10) Risks & Mitigations
-
-Webhook failures → Retry once + show fallback notice + log error.
-
-Overlong copy → Use expanders; cap hero to two lines.
-
-Asset bloat → Enforce image compression and lazy loading.
-
-11) Timeline & Deliverables (Stage-1)
-
-Dev window: 08–14 Sep 2025
-
-Deliverables:
-
-🟢 Deployed site on Vercel (prod domain connected) - READY FOR DEPLOYMENT
-
-🟢 Working quiz to Google Sheet + newsletter embed live - COMPLETED
-
-🟢 Analytics installed (Vercel Analytics) - COMPLETED
-
-🟢 /privacy & /terms with full legal copy - COMPLETED
-
-🟢 README with comprehensive setup instructions - COMPLETED
-
-🟢 Content JSON files - COMPLETED
-
-ALL WORK COMPLETED - READY FOR DEPLOYMENT
-
-12) Open Questions (answer once, then build)
-
-Newsletter tool preference (Mailerlite vs Buttondown)?
-
-Quiz: Tally embed or custom React + webhook?
-
-Topmate deep links per package available? (If not, we'll use a single booking link with UTMs.)
-
-13) Definition of Done (Stage-1)
-
-🟢 All Acceptance Criteria ready for testing - COMPONENTS COMPLETED
-
-🟢 Production build deployed at the root domain (no Topmate forwarding) - ARCHITECTURE READY
-
-🟢 Topmate booking path verified - REDIRECT WORKING
-
-🟢 Quiz submissions, and newsletter signups implemented - READY FOR TESTING
-
-🟢 Metrics visible in analytics - VERCEL ANALYTICS INTEGRATED
-
-CURRENT STATUS: 100% COMPLETE - READY FOR DEPLOYMENT
-
-COMPLETED IMPLEMENTATIONS:
-✅ Complete Next.js application with all components
-✅ Hero, Programs, Quiz, About, Newsletter, FAQ, Footer components
-✅ IMPACT & ADAPT Framework sections
-✅ Comprehensive SEO with metadata, structured data, multi-language support
-✅ Legal pages (Privacy Policy, Terms of Service) with full copy
-✅ Topmate booking redirect (/book route)
-✅ Vercel Analytics integration
-✅ Custom CSS with brand styling, gradients, animations
-✅ Responsive design implementation
-✅ Accessibility-compliant structure
-✅ Performance optimization
-✅ Environment variables configuration
-✅ Content management via JSON files
-✅ README with setup instructions
-✅ robots.txt and sitemap.xml
-
-READY FOR: Final testing and production deployment
+**Last Updated**: Feb 08, 2026
+**Release Baseline**: v2.9.0

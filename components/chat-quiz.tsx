@@ -126,8 +126,8 @@ export function ChatQuiz({ onComplete, quizConfig = QUIZ_CONFIGS.default }: Chat
                         // Hybrid Redirect - Direct to Intake App
                         if (data.token) {
                             // DEV OVERRIDE: Use localhost:3001 for testing
-                            window.location.href = `http://localhost:3001?token=${data.token}`;
-                            // window.location.href = `https://intake.teachmeai.in?token=${data.token}`;
+                            // window.location.href = `http://localhost:3001?token=${data.token}`;
+                            window.location.href = `https://intake.teachmeai.in?token=${data.token}`;
                             return; // Stop further execution
                         }
 
