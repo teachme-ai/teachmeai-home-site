@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Space_Grotesk } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import Script from 'next/script'
 import "./globals.css"
 import { validateEnv } from "../lib/env-check"
@@ -152,18 +153,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1GFLW2WR22"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1GFLW2WR22');
-          `}
-        </Script>
+        <GoogleAnalytics gaId="G-1GFLW2WR22" />
       </body>
     </html>
   )

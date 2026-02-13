@@ -1,14 +1,17 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
-import { Programs } from "@/components/programs"
-import { Testimonials } from "@/components/testimonials"
-import { TeachMeAIFrameworks } from "@/components/teachmeai-frameworks"
-import { LeadForm } from "@/components/lead-form"
-import { About } from "@/components/about"
-import { FAQ } from "@/components/faq"
-import { Newsletter } from "@/components/newsletter"
-import { Footer } from "@/components/footer"
-import { StickyCTA } from "@/components/sticky-cta"
+import dynamic from 'next/dynamic'
+
+// Below-the-fold components loaded dynamically to reduce TBT
+const LeadForm = dynamic(() => import("@/components/lead-form").then(mod => mod.LeadForm))
+const Programs = dynamic(() => import("@/components/programs").then(mod => mod.Programs))
+const Testimonials = dynamic(() => import("@/components/testimonials").then(mod => mod.Testimonials))
+const About = dynamic(() => import("@/components/about").then(mod => mod.About))
+const TeachMeAIFrameworks = dynamic(() => import("@/components/teachmeai-frameworks").then(mod => mod.TeachMeAIFrameworks))
+const FAQ = dynamic(() => import("@/components/faq").then(mod => mod.FAQ))
+const Newsletter = dynamic(() => import("@/components/newsletter").then(mod => mod.Newsletter))
+const Footer = dynamic(() => import("@/components/footer").then(mod => mod.Footer))
+const StickyCTA = dynamic(() => import("@/components/sticky-cta").then(mod => mod.StickyCTA))
 
 export default function Home() {
   return (
