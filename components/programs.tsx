@@ -20,13 +20,13 @@ export function Programs() {
     <section id="programs" className="py-20">
       <div ref={ref} className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-10">
-          <p className="text-xs font-semibold tracking-wide uppercase text-slate-500 mb-3">
+          <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">
             Flexible Options
           </p>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-3">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-700 bg-clip-text text-transparent mb-3">
             Choose your learning pathway
           </h2>
-          <p className="text-base text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base text-slate-700 font-medium max-w-2xl mx-auto">
             Three flexible options depending on how deep you want to go and how quickly you want results.
           </p>
         </div>
@@ -35,35 +35,35 @@ export function Programs() {
             <div key={program.id} className="relative p-6 bg-white rounded-2xl border-2 border-brand-primary/20 shadow-sm flex flex-col hover:border-brand-primary hover:shadow-xl hover:shadow-brand-primary/10 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-200 h-full">
               {index === 1 && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-brand-primary to-sky-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">MOST POPULAR</span>
+                  <span className="bg-gradient-to-r from-brand-primary to-sky-700 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">MOST POPULAR</span>
                 </div>
               )}
               {(() => {
                 const IconComponent = programIcons[index].icon
                 return (
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 mt-2 ${index === 0 ? 'bg-brand-primary/10' : index === 1 ? 'bg-sky-500/10' : 'bg-emerald-500/10'}`}>
-                    <IconComponent className={`w-5 h-5 ${programIcons[index].color}`} />
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 mt-2 ${index === 0 ? 'bg-brand-primary/10' : index === 1 ? 'bg-sky-700/10' : 'bg-emerald-600/10'}`}>
+                    <IconComponent className={`w-5 h-5 ${index === 0 ? 'text-brand-primary' : index === 1 ? 'text-sky-700' : 'text-emerald-700'}`} />
                   </div>
                 )
               })()}
-              <p className="text-xs font-semibold uppercase text-slate-500 mb-1">
+              <p className="text-xs font-bold uppercase text-slate-600 mb-1">
                 {index === 0 ? 'Single Session' : index === 1 ? 'Starter Program' : 'Growth Program'}
               </p>
-              <h3 className="text-xl font-semibold text-brand-dark mb-1">{program.title}</h3>
+              <h3 className="text-xl font-bold text-brand-dark mb-1">{program.title}</h3>
 
               {/* Pricing */}
               <div className="mb-3">
                 <span className="text-2xl font-bold text-brand-primary">{program.price}</span>
-                {index === 0 && <span className="text-xs text-slate-500 ml-1">/ session</span>}
-                {index === 1 && <span className="text-xs text-slate-500 ml-1">/ 30 days</span>}
-                {index === 2 && <span className="text-xs text-slate-500 ml-1">/ 90 days</span>}
+                {index === 0 && <span className="text-xs text-slate-600 font-bold ml-1">/ session</span>}
+                {index === 1 && <span className="text-xs text-slate-600 font-bold ml-1">/ 30 days</span>}
+                {index === 2 && <span className="text-xs text-slate-600 font-bold ml-1">/ 90 days</span>}
               </div>
 
-              <p className="text-sm text-slate-700 mb-4">{program.description}</p>
-              <ul className="text-sm text-slate-600 space-y-1.5 mb-5">
+              <p className="text-sm text-slate-800 font-medium mb-4">{program.description}</p>
+              <ul className="text-sm text-slate-700 font-medium space-y-1.5 mb-5">
                 {program.includes.slice(0, 3).map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="text-brand-primary mt-0.5">✓</span>
+                    <span className="text-brand-primary font-bold mt-0.5">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -71,8 +71,8 @@ export function Programs() {
 
               {/* Urgency signal */}
               <div className="mb-4 mt-auto">
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
-                  <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 bg-amber-50 border border-amber-300 px-3 py-1 rounded-full">
+                  <span className="w-1.5 h-1.5 bg-amber-600 rounded-full animate-pulse" />
                   {index === 0 ? 'Limited slots this week' : index === 1 ? 'Only 5 spots / month' : '3 spots remaining'}
                 </span>
               </div>

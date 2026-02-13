@@ -39,13 +39,13 @@ export function TeachMeAIFrameworks() {
 
         {/* Section header */}
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold tracking-wide uppercase text-slate-500 mb-3">
+          <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">
             Our Methodology
           </p>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-3">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-700 bg-clip-text text-transparent mb-3">
             Two frameworks. One goal.
           </h2>
-          <p className="text-base text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base text-slate-700 font-medium max-w-2xl mx-auto">
             Whether you're an organization adopting AI or an individual building skills — we have a structured, proven path for you.
           </p>
         </div>
@@ -76,10 +76,10 @@ export function TeachMeAIFrameworks() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-brand-dark">IMPACT</h3>
-                <p className="text-xs text-slate-500">For organizations & teams</p>
+                <p className="text-xs text-slate-700 font-bold">For organizations & teams</p>
               </div>
             </div>
-            <p className="text-sm text-slate-600 mb-5">
+            <p className="text-sm text-slate-800 font-medium mb-5">
               Strategic AI adoption — aligns stakeholders, prioritizes high-value use cases, and tracks measurable outcomes from day one.
             </p>
             <div className="space-y-2 mb-5">
@@ -111,10 +111,10 @@ export function TeachMeAIFrameworks() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-brand-dark">ADAPT</h3>
-                <p className="text-xs text-slate-500">For individuals & learners</p>
+                <p className="text-xs text-slate-700 font-bold">For individuals & learners</p>
               </div>
             </div>
-            <p className="text-sm text-slate-600 mb-5">
+            <p className="text-sm text-slate-800 font-medium mb-5">
               Personal AI capability — builds lasting competence through systematic skill development, not surface-level familiarity.
             </p>
             <div className="space-y-2 mb-5">

@@ -65,19 +65,19 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
                     </h1>
 
                     {/* Description */}
-                    <p className="text-sm text-center text-gray-600 mb-4 leading-relaxed px-2">
+                    <p className="text-sm text-center text-gray-800 font-medium mb-4 leading-relaxed px-2">
                         You'll chat with our AI agents to understand your learning style. At the end, you'll receive a rich analysis of your unique AI learning profile.
                     </p>
 
                     {/* Email Confirmation Card */}
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 flex items-start gap-2">
                         <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <Mail className="w-4 h-4 text-blue-600" />
+                            <Mail className="w-4 h-4 text-blue-700" />
                         </div>
                         <div className="flex-1">
-                            <h3 className="font-semibold text-xs text-blue-900 mb-0.5">Email Sent!</h3>
-                            <p className="text-xs text-blue-800 leading-tight">
-                                Custom link sent to <span className="font-bold">{userEmail}</span> to continue later.
+                            <h3 className="font-bold text-xs text-blue-900 mb-0.5">Email Sent!</h3>
+                            <p className="text-xs text-blue-900 font-medium leading-tight">
+                                Custom link sent to <span className="font-bold text-blue-950">{userEmail}</span> to continue later.
                             </p>
                         </div>
                     </div>
@@ -85,7 +85,7 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
                     {/* CTA Button */}
                     <button
                         onClick={onContinue}
-                        className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-sm px-4 py-3 rounded-lg hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group mb-2"
+                        className="w-full bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 text-white font-bold text-sm px-4 py-3 rounded-lg hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group mb-2 shadow-md"
                     >
                         <Sparkles className="w-4 h-4" />
                         Continue Chat with AI Agents
@@ -93,8 +93,8 @@ export default function HandoffInterstitial({ userName, userEmail, onContinue }:
                     </button>
 
                     {/* Auto-redirect notice */}
-                    <p className="text-center text-xs text-gray-500">
-                        Redirecting in <span className="font-bold text-indigo-600">{countdown}s</span>
+                    <p className="text-center text-xs text-gray-700 font-bold">
+                        Redirecting in <span className="font-bold text-indigo-700">{countdown}s</span>
                     </p>
                 </div>
             </div>

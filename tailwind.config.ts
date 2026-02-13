@@ -20,8 +20,8 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          primary: '#0EA5E9',
-          secondary: '#3B82F6',
+          primary: '#0369A1', // Sky 700
+          secondary: '#1D4ED8', // Blue 700
           dark: '#1E293B',
           light: '#F8FAFC',
           border: '#E2E8F0',

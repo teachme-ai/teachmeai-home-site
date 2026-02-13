@@ -31,10 +31,10 @@ export function FAQ() {
         <Accordion type="single" collapsible className="w-full">
           {faqData.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`} className="border-b border-brand-border">
-              <AccordionTrigger className="text-left text-brand-dark hover:text-brand-primary">
+              <AccordionTrigger className="text-left text-brand-dark hover:text-brand-primary font-bold">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-slate-600">
+              <AccordionContent className="text-slate-800 font-medium leading-relaxed">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

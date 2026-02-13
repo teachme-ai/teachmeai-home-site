@@ -33,18 +33,18 @@ export function Hero() {
     <section id="hero" className="bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5 py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <p className="text-xs font-semibold tracking-wide uppercase text-slate-500 mb-3">
+          <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">
             1-to-1 Personalised AI Coaching
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-brand-dark leading-tight mb-4">
-            Go from AI-curious to <span className="bg-gradient-to-r from-brand-primary to-sky-500 bg-clip-text text-transparent">AI-capable</span> in 30–90 days.
+            Go from AI-curious to <span className="bg-gradient-to-r from-brand-primary to-sky-700 bg-clip-text text-transparent">AI-capable</span> in 30–90 days.
           </h1>
-          <p className="text-base text-slate-600 mb-3">
+          <p className="text-base text-slate-700 font-medium mb-3">
             Skip the hype. Pick the tools you want to learn — from ChatGPT to Vertex AI to no-code builders — and build real projects with 1-to-1 guidance.
           </p>
-          <div className="flex items-center gap-4 mb-6 text-sm text-slate-500">
+          <div className="flex items-center gap-4 mb-6 text-sm text-slate-600 font-bold">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full" />
+              <span className="w-2 h-2 bg-emerald-600 rounded-full" />
               500+ professionals coached
             </span>
             <span className="flex items-center gap-1.5">
@@ -58,7 +58,7 @@ export function Hero() {
                 track('cta_diagnostic_clicked', { location: 'hero' })
                 scrollToQuiz()
               }}
-              className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-150"
+              className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-700 hover:from-sky-800 hover:to-brand-primary text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-150"
             >
               Start Free AI Diagnostic
             </button>
@@ -67,7 +67,7 @@ export function Hero() {
                 track('cta_book_clicked', { location: 'hero' })
                 window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')
               }}
-              className="border-2 border-brand-primary text-brand-primary hover:bg-gradient-to-r hover:from-brand-primary hover:to-sky-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-150"
+              className="border-2 border-brand-primary text-brand-primary hover:bg-gradient-to-r hover:from-brand-primary hover:to-sky-700 hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-150"
             >
               Book a Clarity Call — ₹2,100
             </button>
@@ -76,18 +76,18 @@ export function Hero() {
         <div className="flex justify-end">
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border-2 border-brand-primary/30 w-full space-y-4 md:space-y-5">
             <div>
-              <p className="text-xs md:text-sm font-semibold text-slate-500 uppercase mb-2">Your Starting Point</p>
-              <p className="text-sm md:text-base text-slate-700 leading-relaxed">"{audienceContent[selectedAudience as keyof typeof audienceContent].start}"</p>
+              <p className="text-xs md:text-sm font-bold text-slate-600 uppercase mb-2">Your Starting Point</p>
+              <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">"{audienceContent[selectedAudience as keyof typeof audienceContent].start}"</p>
             </div>
             <div className="w-full h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent" />
             <div>
-              <p className="text-xs md:text-sm font-semibold text-emerald-600 uppercase mb-2">In 30–90 Days ✦</p>
-              <p className="text-sm md:text-base text-slate-700 leading-relaxed">{audienceContent[selectedAudience as keyof typeof audienceContent].end}</p>
+              <p className="text-xs md:text-sm font-bold text-emerald-700 uppercase mb-2">In 30–90 Days ✦</p>
+              <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">{audienceContent[selectedAudience as keyof typeof audienceContent].end}</p>
             </div>
             <div className="flex gap-2 text-xs md:text-sm">
               <button
                 onClick={() => setSelectedAudience('professionals')}
-                className={`px-3 py-2 rounded-full transition-all duration-150 ${selectedAudience === 'professionals'
+                className={`px-3 py-2 rounded-full transition-all duration-150 font-bold ${selectedAudience === 'professionals'
                   ? 'bg-brand-primary text-white'
                   : 'bg-brand-primary/10 text-brand-primary hover:bg-brand-primary/20'
                   }`}
@@ -96,18 +96,18 @@ export function Hero() {
               </button>
               <button
                 onClick={() => setSelectedAudience('educators')}
-                className={`px-3 py-2 rounded-full transition-all duration-150 ${selectedAudience === 'educators'
+                className={`px-3 py-2 rounded-full transition-all duration-150 font-bold ${selectedAudience === 'educators'
                   ? 'bg-brand-secondary text-white'
-                  : 'bg-brand-secondary/10 text-brand-secondary hover:bg-brand-secondary/20'
+                  : 'bg-brand-secondary/15 text-brand-secondary hover:bg-brand-secondary/25'
                   }`}
               >
                 Educators
               </button>
               <button
                 onClick={() => setSelectedAudience('students')}
-                className={`px-3 py-2 rounded-full transition-all duration-150 ${selectedAudience === 'students'
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'
+                className={`px-3 py-2 rounded-full transition-all duration-150 font-bold ${selectedAudience === 'students'
+                  ? 'bg-emerald-700 text-white'
+                  : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200'
                   }`}
               >
                 Students

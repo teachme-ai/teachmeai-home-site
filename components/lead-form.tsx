@@ -120,12 +120,12 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
 
     return (
         <div className="w-full max-w-2xl mx-auto backdrop-blur-sm bg-white/90 rounded-3xl shadow-2xl border border-slate-200/60 overflow-hidden">
-            <div className="bg-gradient-to-r from-brand-primary to-blue-600 p-8 text-white relative overflow-hidden">
+            <div className="bg-gradient-to-r from-brand-primary to-blue-700 p-8 text-white relative overflow-hidden">
                 <div className="relative z-10">
                     <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
                         <Sparkles className="w-6 h-6" /> Start Your AI Analysis
                     </h3>
-                    <p className="text-white/80 font-medium">Get a personalized AI roadmap in 30 seconds.</p>
+                    <p className="text-white/90 font-bold">Get a personalized AI roadmap in 30 seconds.</p>
                 </div>
                 {/* Decorative Pattern */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl" />
@@ -135,14 +135,14 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
                     <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
+                        <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
                             <UserCircle className="w-4 h-4 text-brand-primary" /> Full Name
                         </label>
                         <input
                             required
                             type="text"
                             placeholder="John Doe"
-                            className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-medium"
+                            className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
                             value={formData.name}
                             onChange={e => setFormData({ ...formData, name: e.target.value })}
                         />
@@ -150,14 +150,14 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
 
                     {/* Email */}
                     <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
+                        <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
                             <Mail className="w-4 h-4 text-brand-primary" /> Email Address
                         </label>
                         <input
                             required
                             type="email"
                             placeholder="john@example.com"
-                            className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-medium"
+                            className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
                             value={formData.email}
                             onChange={e => setFormData({ ...formData, email: e.target.value })}
                         />
@@ -166,14 +166,14 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
 
                 {/* Role */}
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
+                    <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
                         <Briefcase className="w-4 h-4 text-brand-primary" /> Professional Role
                     </label>
                     <input
                         required
                         type="text"
                         placeholder="e.g. Marketing Manager, Educator, Founder"
-                        className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-medium"
+                        className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
                         value={formData.role}
                         onChange={e => setFormData({ ...formData, role: e.target.value })}
                     />
@@ -181,27 +181,27 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
 
                 {/* Goal */}
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
+                    <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
                         <Target className="w-4 h-4 text-brand-primary" /> Primary AI Goal
                     </label>
                     <textarea
                         required
                         placeholder="What do you want to achieve with AI?"
                         rows={3}
-                        className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-medium resize-none"
+                        className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500 resize-none"
                         value={formData.goal}
                         onChange={e => setFormData({ ...formData, goal: e.target.value })}
                     />
                 </div>
 
                 {error && (
-                    <p className="text-red-500 text-sm font-bold animate-pulse">{error}</p>
+                    <p className="text-red-600 text-sm font-bold animate-pulse">{error}</p>
                 )}
 
                 <button
                     disabled={isLoading}
                     type="submit"
-                    className="w-full bg-brand-primary hover:bg-blue-600 text-white font-bold py-5 rounded-2xl shadow-xl shadow-brand-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:bg-slate-300"
+                    className="w-full bg-brand-primary hover:bg-blue-700 text-white font-bold py-5 rounded-2xl shadow-xl shadow-brand-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:bg-slate-300"
                 >
                     {isLoading ? (
                         <Loader2 className="w-6 h-6 animate-spin" />
@@ -212,7 +212,7 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                     )}
                 </button>
 
-                <p className="text-[10px] text-slate-400 text-center font-bold uppercase tracking-widest">
+                <p className="text-[11px] text-slate-600 text-center font-bold uppercase tracking-widest">
                     Your privacy matters. No spam, just value.
                 </p>
             </form>
