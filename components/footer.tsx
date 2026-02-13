@@ -4,7 +4,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-4 text-sm text-slate-500">
         <div>
           <p className="font-semibold text-brand-dark">TeachMeAI</p>
-          <p>© 2025 Irfan Khalid. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Irfan Khalid. All rights reserved.</p>
         </div>
         <div className="flex gap-4">
           <a href="mailto:reachirfan@gmail.com" className="hover:text-brand-primary transition-all duration-150">Contact</a>

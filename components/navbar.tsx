@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,7 +32,7 @@ export function Navbar() {
       }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="TeachMeAI" className="w-8 h-8 rounded-lg" />
+          <Image src="/images/logo.png" alt="TeachMeAI" width={32} height={32} className="w-8 h-8 rounded-lg" />
           <span className="text-xl font-extrabold text-brand-primary">TeachMeAI</span>
         </div>
 

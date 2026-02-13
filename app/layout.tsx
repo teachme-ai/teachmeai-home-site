@@ -21,11 +21,6 @@ export const metadata: Metadata = {
     canonical: 'https://teachmeai.in',
     languages: {
       'en': 'https://teachmeai.in',
-      'en-US': 'https://teachmeai.in',
-      'en-GB': 'https://teachmeai.in',
-      'en-IN': 'https://teachmeai.in',
-      'en-CA': 'https://teachmeai.in',
-      'en-AU': 'https://teachmeai.in',
     },
   },
   other: {
@@ -83,9 +78,6 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/icon.png" />
         <link rel="alternate" hrefLang="en" href="https://teachmeai.in" />
-        <link rel="alternate" hrefLang="en-US" href="https://teachmeai.in" />
-        <link rel="alternate" hrefLang="en-GB" href="https://teachmeai.in" />
-        <link rel="alternate" hrefLang="en-IN" href="https://teachmeai.in" />
         <link rel="alternate" hrefLang="x-default" href="https://teachmeai.in" />
         <meta name="theme-color" content="#667eea" />
         <meta name="msapplication-TileColor" content="#667eea" />
