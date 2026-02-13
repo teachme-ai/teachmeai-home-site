@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Space_Grotesk } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
 import "./globals.css"
@@ -7,7 +7,7 @@ import { validateEnv } from "../lib/env-check"
 
 validateEnv() // Fail fast if secrets are missing
 
-const inter = Inter({ subsets: ["latin"] })
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "teachmeai - Build Real AI Capability in 30-90 Days",
@@ -145,7 +145,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={spaceGrotesk.className}>
         {children}
         <Analytics />
         <Script
