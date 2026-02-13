@@ -99,7 +99,7 @@ export function TeachMeAIFrameworks() {
               href="/frameworks/impact"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-sky-600 transition-colors"
             >
-              Learn more <ArrowRight className="w-4 h-4" />
+              Learn about the IMPACT Framework <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -134,7 +134,7 @@ export function TeachMeAIFrameworks() {
               href="/frameworks/adapt"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-500 hover:text-brand-primary transition-colors"
             >
-              Learn more <ArrowRight className="w-4 h-4" />
+              Learn about the ADAPT Framework <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
