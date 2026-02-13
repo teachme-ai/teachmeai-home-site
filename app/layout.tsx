@@ -79,6 +79,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+        <link rel="alternate" hrefLang="en" href="https://teachmeai.in" />
+        <link rel="alternate" hrefLang="x-default" href="https://teachmeai.in" />
+        <meta name="theme-color" content="#667eea" />
+        <meta name="msapplication-TileColor" content="#667eea" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link rel="preconnect" href="https://topmate.io" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://topmate.io" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
       <body className={`${spaceGrotesk.variable} ${spaceGrotesk.className} antialiased`}>
         {children}
         <Analytics />

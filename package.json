@@ -1,13 +1,14 @@
 {
   "name": "teachmeai-home-site",
-  "version": "2.14.0",
+  "version": "2.15.0",
   "private": true,
   "browserslist": [
-    "defaults",
-    "last 2 versions",
-    "not dead",
-    "> 0.5%",
-    "last 3 years"
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "safari >= 14",
+    "ios >= 14",
+    "edge >= 79",
+    "not dead"
   ],
   "scripts": {
     "dev": "next dev",
