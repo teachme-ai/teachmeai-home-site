@@ -91,9 +91,10 @@ The best way to know if AI coaching is right for you is to experience it. At tea
 
 You can also take our [free AI Skills Diagnostic](/ai-diagnostic) — a 2-minute chat that generates a personalized report on your learning style, cognitive strengths, and a custom roadmap.
 
----
-
-*Ready to move from AI-curious to AI-capable? [Start your free AI diagnostic](/ai-diagnostic) or [book a clarity call](/programs/clarity-call).*
+{{cta}}
+[Start Free AI Diagnostic](/ai-diagnostic)
+[Book a Clarity Call — ₹2,600](/programs/clarity-call)
+{{/cta}}
     `
     },
     {
@@ -211,9 +212,10 @@ Learning AI doesn't have to be overwhelming. If you want a structured approach w
 - **30-day sprint**: Join the [Starter Program](/programs/starter-30-day) with weekly milestones
 - **Full transformation**: The [90-Day Growth Package](/programs/growth-90-day) with hands-on mentorship
 
----
-
-*The best time to start learning AI was yesterday. The second best time is today. [Take the free diagnostic](/ai-diagnostic) and find out where to begin.*
+{{cta}}
+[Take the Free AI Diagnostic](/ai-diagnostic)
+[View All Programs](/programs)
+{{/cta}}
     `
     },
     {
@@ -340,9 +342,10 @@ The IMPACT framework works best with guided implementation. Here's how teachmeai
 
 You can also read the [detailed IMPACT framework guide](/frameworks/impact) for a deeper dive into each phase.
 
----
-
-*AI adoption doesn't have to be chaotic. The IMPACT framework gives you a structured, proven path from "we should use AI" to "AI is transforming our work." [Start with a free diagnostic](/ai-diagnostic) or [book a clarity call](/programs/clarity-call).*
+{{cta}}
+[Start Free AI Diagnostic](/ai-diagnostic)
+[Book a Clarity Call](/programs/clarity-call)
+{{/cta}}
     `
     }
 ]

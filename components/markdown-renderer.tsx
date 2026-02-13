@@ -26,6 +26,61 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             continue
         }
 
+        // CTA block — lines starting with {{cta: ...}}
+        if (line.trim().startsWith("{{cta")) {
+            const ctaLines: string[] = []
+            while (i < lines.length && !lines[i].trim().startsWith("{{/cta")) {
+                ctaLines.push(lines[i])
+                i++
+            }
+            if (i < lines.length) i++ // skip closing tag
+
+            const innerContent = ctaLines.slice(1).join("\n").trim()
+            const ctaLinks = Array.from(innerContent.matchAll(/\[(.*?)\]\((.*?)\)/g))
+
+            elements.push(
+                <div key={key++} className="my-8 bg-gradient-to-br from-brand-primary/5 to-sky-50 rounded-2xl border border-brand-primary/20 p-6 text-center">
+                    {ctaLinks.length > 0 ? (
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {ctaLinks.map((match, idx) => {
+                                const label = match[1]
+                                const href = match[2]
+                                const isPrimary = idx === 0
+                                return href.startsWith("/") ? (
+                                    <Link
+                                        key={idx}
+                                        href={href}
+                                        className={isPrimary
+                                            ? "inline-block bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-150 text-sm"
+                                            : "inline-block border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-150 text-sm"
+                                        }
+                                    >
+                                        {label}
+                                    </Link>
+                                ) : (
+                                    <a
+                                        key={idx}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={isPrimary
+                                            ? "inline-block bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-150 text-sm"
+                                            : "inline-block border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-150 text-sm"
+                                        }
+                                    >
+                                        {label}
+                                    </a>
+                                )
+                            })}
+                        </div>
+                    ) : (
+                        <p className="text-sm text-slate-600">{renderInline(innerContent)}</p>
+                    )}
+                </div>
+            )
+            continue
+        }
+
         // Headings
         if (line.startsWith("## ")) {
             elements.push(
@@ -154,7 +209,7 @@ function renderInline(text: string): React.ReactNode[] {
         // Bold + italic
         const boldItalicMatch = remaining.match(/^\*\*\*(.*?)\*\*\*/)
         if (boldItalicMatch) {
-            parts.push(<strong key={idx++} className="font-bold italic text-brand-dark">{boldItalicMatch[1]}</strong>)
+            parts.push(<strong key={idx++} className="font-bold italic text-brand-dark">{renderInline(boldItalicMatch[1])}</strong>)
             remaining = remaining.slice(boldItalicMatch[0].length)
             continue
         }
@@ -162,7 +217,7 @@ function renderInline(text: string): React.ReactNode[] {
         // Bold
         const boldMatch = remaining.match(/^\*\*(.*?)\*\*/)
         if (boldMatch) {
-            parts.push(<strong key={idx++} className="font-semibold text-brand-dark">{boldMatch[1]}</strong>)
+            parts.push(<strong key={idx++} className="font-semibold text-brand-dark">{renderInline(boldMatch[1])}</strong>)
             remaining = remaining.slice(boldMatch[0].length)
             continue
         }
@@ -170,7 +225,7 @@ function renderInline(text: string): React.ReactNode[] {
         // Italic
         const italicMatch = remaining.match(/^\*(.*?)\*/)
         if (italicMatch) {
-            parts.push(<em key={idx++} className="italic text-slate-600">{italicMatch[1]}</em>)
+            parts.push(<em key={idx++} className="italic text-slate-600">{renderInline(italicMatch[1])}</em>)
             remaining = remaining.slice(italicMatch[0].length)
             continue
         }
