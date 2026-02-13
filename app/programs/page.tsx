@@ -8,9 +8,16 @@ export const metadata: Metadata = {
     title: "AI Coaching Programs — Clarity Call, 30-Day Starter, 90-Day Growth | teachmeai",
     description: "Choose your AI learning pathway: 70-minute Clarity Call (₹2,100), 30-Day Starter Program (₹3,600), or 90-Day Growth Package (₹7,100). Personalized AI coaching for professionals.",
     openGraph: {
-        title: "AI Coaching Programs | teachmeai",
-        description: "Personalized AI training programs from a single clarity call to a 90-day growth package. Start your AI journey today.",
+        title: "AI Coaching Programs — Personalized 1:1 Mentorship | teachmeai",
+        description: "Choose from our Clarity Call, Starter (30-day), or Growth (90-day) programs to master AI tools and frameworks.",
         url: "https://teachmeai.in/programs",
+        images: [{ url: '/images/og/programs.png', width: 1200, height: 630, alt: 'AI Coaching Programs - teachmeai' }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'AI Coaching Programs — Personalized 1:1 Mentorship | teachmeai',
+        description: 'Choose from our Clarity Call, Starter (30-day), or Growth (90-day) programs to master AI tools and frameworks.',
+        images: ['/images/og/programs.png'],
     },
 }
 

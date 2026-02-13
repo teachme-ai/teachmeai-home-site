@@ -132,13 +132,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const program = programs[slug]
     if (!program) return {}
 
+    const ogImage = `/images/og/${slug.includes('clarity') ? 'clarity-call' : slug.includes('starter') ? 'starter' : 'growth'}.png`
+
     return {
-        title: `${program.title} — AI Coaching | teachmeai`,
-        description: `${program.subtitle} ${program.price !== "Custom" ? `Starting at ${program.price}.` : ""} Personalized AI coaching with Khalid Irfan.`,
+        title: `${program.title} | teachmeai`,
+        description: program.description,
         openGraph: {
             title: `${program.title} | teachmeai`,
-            description: program.subtitle,
+            description: program.description,
             url: `https://teachmeai.in/programs/${slug}`,
+            images: [{ url: ogImage, width: 1200, height: 630, alt: program.title }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${program.title} | teachmeai`,
+            description: program.description,
+            images: [ogImage],
         },
     }
 }

@@ -8,7 +8,11 @@ import { validateEnv } from "../lib/env-check"
 
 validateEnv() // Fail fast if secrets are missing
 
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+})
 
 export const metadata: Metadata = {
   title: "teachmeai - Build Real AI Capability in 30-90 Days",
@@ -86,10 +90,8 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://topmate.io" />
-        <link rel="dns-prefetch" href="https://vercel.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -146,15 +148,15 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={spaceGrotesk.className}>
+      <body className={`${spaceGrotesk.variable} ${spaceGrotesk.className} antialiased`}>
         {children}
         <Analytics />
         <SpeedInsights />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1GFLW2WR22"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

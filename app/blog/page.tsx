@@ -10,6 +10,13 @@ export const metadata: Metadata = {
         description: "Practical guides on AI coaching, career development with AI, and proven frameworks for AI adoption.",
         url: "https://teachmeai.in/blog",
         type: "website",
+        images: [{ url: '/images/og/blog.png', width: 1200, height: 630, alt: 'teachmeai Blog' }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Blog — AI Coaching Insights & Frameworks | teachmeai',
+        description: 'Practical guides on AI coaching, career development with AI, and proven frameworks for AI adoption.',
+        images: ['/images/og/blog.png'],
     },
 }
 

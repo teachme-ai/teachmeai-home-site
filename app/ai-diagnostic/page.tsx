@@ -10,6 +10,13 @@ export const metadata: Metadata = {
         title: "Free AI Skills Diagnostic | teachmeai",
         description: "Chat with our AI in 2 minutes to discover your AI learning style, cognitive strengths, and get a custom roadmap.",
         url: "https://teachmeai.in/ai-diagnostic",
+        images: [{ url: '/images/og/diagnostic.png', width: 1200, height: 630, alt: 'Free AI Skills Diagnostic - teachmeai' }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Free AI Skills Diagnostic | teachmeai',
+        description: 'Chat with our AI in 2 minutes to discover your AI learning style, cognitive strengths, and get a custom roadmap.',
+        images: ['/images/og/diagnostic.png'],
     },
 }
 

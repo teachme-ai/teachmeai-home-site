@@ -8,9 +8,16 @@ export const metadata: Metadata = {
     title: "About Khalid Irfan — AI Coach & Mentor | teachmeai",
     description: "Meet Khalid Irfan, founder of teachmeai. 19+ years in enterprise IT, 7+ years in academia. IBM Certified, Google Certified Teacher, Agile Coach. Personalized AI coaching for professionals, educators, and students.",
     openGraph: {
-        title: "About Khalid Irfan — AI Coach & Mentor",
-        description: "19+ years in IT, 7+ years in academia. Personalized AI coaching using the IMPACT & ADAPT frameworks.",
+        title: "About Khalid Irfan — AI Coach & Mentor | teachmeai",
+        description: "19+ years in IT, 7+ years in academia. Helping professionals adopt AI with clarity and confidence.",
         url: "https://teachmeai.in/about",
+        images: [{ url: '/images/og/about.png', width: 1200, height: 630, alt: 'Meet Your Facilitator - Khalid Irfan' }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'About Khalid Irfan — AI Coach & Mentor | teachmeai',
+        description: '19+ years in IT, 7+ years in academia. Helping professionals adopt AI with clarity and confidence.',
+        images: ['/images/og/about.png'],
     },
 }
 

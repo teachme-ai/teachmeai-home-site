@@ -9,6 +9,13 @@ export const metadata: Metadata = {
         title: "The ADAPT Framework | teachmeai",
         description: "5-step methodology for building individual AI capabilities and lasting competence.",
         url: "https://teachmeai.in/frameworks/adapt",
+        images: [{ url: '/images/og/adapt.png', width: 1200, height: 630, alt: 'The ADAPT Framework - teachmeai' }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'The ADAPT Framework | teachmeai',
+        description: '5-step methodology for building individual AI capabilities and lasting competence.',
+        images: ['/images/og/adapt.png'],
     },
 }
 

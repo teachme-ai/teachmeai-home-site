@@ -9,6 +9,13 @@ export const metadata: Metadata = {
         title: "The IMPACT Framework | teachmeai",
         description: "6-step coaching methodology for systematic AI adoption and measurable results.",
         url: "https://teachmeai.in/frameworks/impact",
+        images: [{ url: '/images/og/impact.png', width: 1200, height: 630, alt: 'The IMPACT Framework - teachmeai' }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'The IMPACT Framework | teachmeai',
+        description: '6-step coaching methodology for systematic AI adoption and measurable results.',
+        images: ['/images/og/impact.png'],
     },
 }
 
