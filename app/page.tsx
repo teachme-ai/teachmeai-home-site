@@ -19,32 +19,30 @@ export default function Home() {
       <Navbar />
       <Hero />
 
-      {/* AI Diagnostic — flattened to reduce depth */}
-      <section id="quiz" className="py-20 px-4 bg-slate-50 max-w-full">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-xs font-bold tracking-wide uppercase text-slate-700 mb-3">
-              Free in 2 Minutes
-            </p>
-            <h2 className="text-4xl font-bold text-brand-dark mb-4">
-              Discover Your AI Learning DNA
-            </h2>
-            <p className="text-lg text-slate-700 font-medium max-w-2xl mx-auto mb-8">
-              Chat with our AI to map your goals in 2 minutes. We&apos;ll generate a
-              <strong className="text-brand-primary"> Free Personalized Report</strong> revealing your learning style,
-              cognitive strengths, and a custom roadmap.
-            </p>
-            <div className="text-sm text-slate-700 mb-8 flex flex-wrap justify-center gap-4 items-center font-bold">
-              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">✨ 2-min Chat</span>
-              <span className="text-slate-400">→</span>
-              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">📩 Email Link</span>
-              <span className="text-slate-300">→</span>
-              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">📊 Deep Analysis</span>
-            </div>
+      {/* AI Diagnostic — Aggressively flattened to reduce depth below 10 */}
+      <section id="quiz" className="py-20 px-4 bg-slate-50">
+        <div className="max-w-7xl mx-auto text-center mb-12">
+          <p className="text-xs font-bold tracking-wide uppercase text-slate-700 mb-3">
+            Free in 2 Minutes
+          </p>
+          <h2 className="text-4xl font-bold text-brand-dark mb-4">
+            Discover Your AI Learning DNA
+          </h2>
+          <p className="text-lg text-slate-700 font-medium max-w-2xl mx-auto mb-8">
+            Chat with our AI to map your goals in 2 minutes. We&apos;ll generate a
+            <strong className="text-brand-primary"> Free Personalized Report</strong> revealing your learning style,
+            cognitive strengths, and a custom roadmap.
+          </p>
+          <div className="text-sm text-slate-700 flex flex-wrap justify-center gap-4 items-center font-bold">
+            <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">✨ 2-min Chat</span>
+            <span className="text-slate-400">→</span>
+            <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">📩 Email Link</span>
+            <span className="text-slate-300">→</span>
+            <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">📊 Deep Analysis</span>
           </div>
-
-          <LeadForm />
         </div>
+
+        <LeadForm />
       </section>
 
       <Programs />

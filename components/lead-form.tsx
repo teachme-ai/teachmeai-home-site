@@ -119,7 +119,7 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
     }
 
     return (
-        <div className="w-full max-w-2xl mx-auto backdrop-blur-sm bg-white/90 rounded-3xl shadow-2xl border border-slate-200/60 overflow-hidden">
+        <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto backdrop-blur-sm bg-white/90 rounded-3xl shadow-2xl border border-slate-200/60 overflow-hidden">
             <div className="bg-gradient-to-r from-brand-primary to-blue-700 p-8 text-white relative overflow-hidden">
                 <div className="relative z-10">
                     <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
@@ -127,81 +127,70 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                     </h3>
                     <p className="text-white/90 font-bold">Get a personalized AI roadmap in 30 seconds.</p>
                 </div>
-                {/* Decorative Pattern */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl" />
             </div>
 
-            <form onSubmit={handleSubmit} className="p-8 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Name */}
-                    <label className="block">
-                        <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
-                            <UserCircle className="w-4 h-4 text-brand-primary" /> Full Name
-                        </span>
-                        <input
-                            required
-                            type="text"
-                            placeholder="John Doe"
-                            className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
-                            value={formData.name}
-                            onChange={e => setFormData({ ...formData, name: e.target.value })}
-                        />
-                    </label>
+            <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Name */}
+                <label className="block text-sm font-bold text-slate-800">
+                    <UserCircle className="inline-block w-4 h-4 text-brand-primary mr-2 mb-1" /> Full Name
+                    <input
+                        required
+                        type="text"
+                        placeholder="John Doe"
+                        className="mt-2 w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
+                        value={formData.name}
+                        onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    />
+                </label>
 
-                    {/* Email */}
-                    <label className="block">
-                        <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
-                            <Mail className="w-4 h-4 text-brand-primary" /> Email Address
-                        </span>
-                        <input
-                            required
-                            type="email"
-                            placeholder="john@example.com"
-                            className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
-                            value={formData.email}
-                            onChange={e => setFormData({ ...formData, email: e.target.value })}
-                        />
-                    </label>
-                </div>
+                {/* Email */}
+                <label className="block text-sm font-bold text-slate-800">
+                    <Mail className="inline-block w-4 h-4 text-brand-primary mr-2 mb-1" /> Email Address
+                    <input
+                        required
+                        type="email"
+                        placeholder="john@example.com"
+                        className="mt-2 w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
+                        value={formData.email}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
+                    />
+                </label>
 
                 {/* Role */}
-                <label className="block">
-                    <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
-                        <Briefcase className="w-4 h-4 text-brand-primary" /> Professional Role
-                    </span>
+                <label className="block text-sm font-bold text-slate-800 md:col-span-2">
+                    <Briefcase className="inline-block w-4 h-4 text-brand-primary mr-2 mb-1" /> Professional Role
                     <input
                         required
                         type="text"
                         placeholder="e.g. Marketing Manager, Educator, Founder"
-                        className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
+                        className="mt-2 w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500"
                         value={formData.role}
                         onChange={e => setFormData({ ...formData, role: e.target.value })}
                     />
                 </label>
 
                 {/* Goal */}
-                <label className="block">
-                    <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
-                        <Target className="w-4 h-4 text-brand-primary" /> Primary AI Goal
-                    </span>
+                <label className="block text-sm font-bold text-slate-800 md:col-span-2">
+                    <Target className="inline-block w-4 h-4 text-brand-primary mr-2 mb-1" /> Primary AI Goal
                     <textarea
                         required
                         placeholder="What do you want to achieve with AI?"
                         rows={3}
-                        className="w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500 resize-none"
+                        className="mt-2 w-full px-5 py-4 bg-slate-50 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all outline-none font-bold text-slate-900 placeholder:text-slate-500 resize-none"
                         value={formData.goal}
                         onChange={e => setFormData({ ...formData, goal: e.target.value })}
                     />
                 </label>
 
                 {error && (
-                    <p className="text-red-600 text-sm font-bold animate-pulse">{error}</p>
+                    <p className="text-red-600 text-sm font-bold animate-pulse md:col-span-2">{error}</p>
                 )}
 
                 <button
                     disabled={isLoading}
                     type="submit"
-                    className="w-full bg-brand-primary hover:bg-blue-700 text-white font-bold py-5 rounded-2xl shadow-xl shadow-brand-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:bg-slate-300"
+                    className="w-full bg-brand-primary hover:bg-blue-700 text-white font-bold py-5 rounded-2xl shadow-xl shadow-brand-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:bg-slate-300 md:col-span-2"
                 >
                     {isLoading ? (
                         <Loader2 className="w-6 h-6 animate-spin" />
@@ -212,10 +201,10 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                     )}
                 </button>
 
-                <p className="text-[11px] text-slate-600 text-center font-bold uppercase tracking-widest">
+                <p className="text-[11px] text-slate-600 text-center font-bold uppercase tracking-widest md:col-span-2">
                     Your privacy matters. No spam, just value.
                 </p>
-            </form>
-        </div>
+            </div>
+        </form>
     )
 }
