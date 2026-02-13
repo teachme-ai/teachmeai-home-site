@@ -5,10 +5,10 @@ import Link from "next/link"
 import programsData from "@/content/programs.json"
 
 export const metadata: Metadata = {
-    title: "AI Coaching Programs — Clarity Call, 30-Day Starter, 90-Day Growth | TeachMeAI",
+    title: "AI Coaching Programs — Clarity Call, 30-Day Starter, 90-Day Growth | teachmeai",
     description: "Choose your AI learning pathway: 70-minute Clarity Call (₹2,600), 30-Day Starter Program, or 90-Day Growth Package with hands-on mentorship. Personalized AI coaching for professionals.",
     openGraph: {
-        title: "AI Coaching Programs | TeachMeAI",
+        title: "AI Coaching Programs | teachmeai",
         description: "Personalized AI training programs from a single clarity call to a 90-day growth package. Start your AI journey today.",
         url: "https://teachmeai.in/programs",
     },

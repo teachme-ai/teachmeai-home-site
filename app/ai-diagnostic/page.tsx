@@ -4,10 +4,10 @@ import { Footer } from "@/components/footer"
 import { LeadForm } from "@/components/lead-form"
 
 export const metadata: Metadata = {
-    title: "Free AI Skills Diagnostic — Discover Your AI Learning DNA | TeachMeAI",
+    title: "Free AI Skills Diagnostic — Discover Your AI Learning DNA | teachmeai",
     description: "Take the free 2-minute AI Skills Diagnostic. Chat with our AI to map your goals and get a personalized report revealing your learning style, cognitive strengths, and a custom roadmap.",
     openGraph: {
-        title: "Free AI Skills Diagnostic | TeachMeAI",
+        title: "Free AI Skills Diagnostic | teachmeai",
         description: "Chat with our AI in 2 minutes to discover your AI learning style, cognitive strengths, and get a custom roadmap.",
         url: "https://teachmeai.in/ai-diagnostic",
     },
@@ -17,7 +17,7 @@ export default function AIDiagnosticPage() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        name: "TeachMeAI AI Skills Diagnostic",
+        name: "teachmeai AI Skills Diagnostic",
         description: "Free 2-minute AI-powered diagnostic chat that generates a personalized learning report.",
         url: "https://teachmeai.in/ai-diagnostic",
         applicationCategory: "EducationalApplication",

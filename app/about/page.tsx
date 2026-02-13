@@ -4,8 +4,8 @@ import { Footer } from "@/components/footer"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-    title: "About Khalid Irfan — AI Coach & Mentor | TeachMeAI",
-    description: "Meet Khalid Irfan, founder of TeachMeAI. 19+ years in enterprise IT, 7+ years in academia. IBM Certified, Google Certified Teacher, Agile Coach. Personalized AI coaching for professionals, educators, and students.",
+    title: "About Khalid Irfan — AI Coach & Mentor | teachmeai",
+    description: "Meet Khalid Irfan, founder of teachmeai. 19+ years in enterprise IT, 7+ years in academia. IBM Certified, Google Certified Teacher, Agile Coach. Personalized AI coaching for professionals, educators, and students.",
     openGraph: {
         title: "About Khalid Irfan — AI Coach & Mentor",
         description: "19+ years in IT, 7+ years in academia. Personalized AI coaching using the IMPACT & ADAPT frameworks.",

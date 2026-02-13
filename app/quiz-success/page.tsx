@@ -55,7 +55,7 @@ export default function QuizSuccessPage() {
                             Return to Home <ArrowRight className="w-5 h-5" />
                         </Link>
                         <p className="text-[10px] text-slate-400 uppercase font-bold tracking-[0.2em] mt-2">
-                            <Sparkles className="w-3 h-3 inline-block mr-1 mb-0.5" /> TeachMeAI Precision Diagnostic
+                            <Sparkles className="w-3 h-3 inline-block mr-1 mb-0.5" /> teachmeai Precision Diagnostic
                         </p>
                     </div>
                 </div>

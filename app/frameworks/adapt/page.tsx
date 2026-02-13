@@ -3,10 +3,10 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-    title: "ADAPT Framework — 5-Step AI Capability Building Model | TeachMeAI",
-    description: "The ADAPT framework is TeachMeAI's 5-step methodology for building individual AI capabilities: Assess, Design, Apply, Practice, Transform. From AI-curious to AI-confident.",
+    title: "ADAPT Framework — 5-Step AI Capability Building Model | teachmeai",
+    description: "The ADAPT framework is teachmeai's 5-step methodology for building individual AI capabilities: Assess, Design, Apply, Practice, Transform. From AI-curious to AI-confident.",
     openGraph: {
-        title: "The ADAPT Framework | TeachMeAI",
+        title: "The ADAPT Framework | teachmeai",
         description: "5-step methodology for building individual AI capabilities and lasting competence.",
         url: "https://teachmeai.in/frameworks/adapt",
     },

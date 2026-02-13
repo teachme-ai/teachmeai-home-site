@@ -108,7 +108,7 @@ export const getIntakeEmailHtml = (data: {
         <p style="margin-top: 30px;">
           Best,<br>
           <strong>Khalid Irfan</strong><br>
-          <span style="color: #64748B;">Founder, TeachMeAI</span>
+          <span style="color: #64748B;">Founder, teachmeai</span>
         </p>
         
         <div class="footer">

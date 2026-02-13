@@ -30,8 +30,8 @@ export function TeachMeAIFrameworks() {
   return (
     <section className="py-20 bg-gradient-to-br from-brand-primary/5 via-sky-50 to-brand-light">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-8 text-center">TeachMeAI Frameworks</h2>
-        
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-8 text-center">teachmeai Frameworks</h2>
+
         {/* Brand Values */}
         <div className="mb-12">
           <h3 className="text-xl font-semibold text-brand-primary mb-4">Brand Values</h3>

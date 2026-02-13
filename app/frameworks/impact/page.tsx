@@ -3,10 +3,10 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-    title: "IMPACT Framework — 6-Step AI Adoption Methodology | TeachMeAI",
-    description: "The IMPACT framework is TeachMeAI's 6-step coaching methodology for systematic AI adoption: Initiate, Map, Prioritize, Act, Consolidate, Transition. Measurable results for professionals and organizations.",
+    title: "IMPACT Framework — 6-Step AI Adoption Methodology | teachmeai",
+    description: "The IMPACT framework is teachmeai's 6-step coaching methodology for systematic AI adoption: Initiate, Map, Prioritize, Act, Consolidate, Transition. Measurable results for professionals and organizations.",
     openGraph: {
-        title: "The IMPACT Framework | TeachMeAI",
+        title: "The IMPACT Framework | teachmeai",
         description: "6-step coaching methodology for systematic AI adoption and measurable results.",
         url: "https://teachmeai.in/frameworks/impact",
     },

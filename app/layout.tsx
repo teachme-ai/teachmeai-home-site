@@ -10,12 +10,12 @@ validateEnv() // Fail fast if secrets are missing
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "TeachMeAI - Build Real AI Capability in 30-90 Days",
+  title: "teachmeai - Build Real AI Capability in 30-90 Days",
   description: "1-to-1 Personalised AI Coaching. Personalized roadmaps, hands-on practice, and measurable outcomes for working professionals and learners. Skip the hype, build real AI skills.",
   keywords: "AI training, AI education, AI mentorship, AI coaching, AI skills, professional development, AI tools, machine learning, artificial intelligence",
   authors: [{ name: "Khalid Irfan" }],
   creator: "Khalid Irfan",
-  publisher: "TeachMeAI",
+  publisher: "teachmeai",
   metadataBase: new URL('https://teachmeai.in'),
   alternates: {
     canonical: 'https://teachmeai.in',
@@ -30,22 +30,22 @@ export const metadata: Metadata = {
     'ICBM': '20.5937, 78.9629',
   },
   openGraph: {
-    title: "TeachMeAI - Build Real AI Capability in 30-90 Days",
+    title: "teachmeai - Build Real AI Capability in 30-90 Days",
     description: "1-to-1 Personalised AI Coaching. Personalized roadmaps, hands-on practice, and measurable outcomes for working professionals and learners.",
     url: 'https://teachmeai.in',
-    siteName: 'TeachMeAI',
+    siteName: 'teachmeai',
     type: "website",
     locale: "en_US",
     images: [{
       url: '/images/logo.png',
       width: 1200,
       height: 630,
-      alt: 'TeachMeAI - AI Coaching and Training',
+      alt: 'teachmeai - AI Coaching and Training',
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TeachMeAI - Build Real AI Capability in 30-90 Days",
+    title: "teachmeai - Build Real AI Capability in 30-90 Days",
     description: "1-to-1 Personalised AI Coaching. Personalized roadmaps, hands-on practice, and measurable outcomes for working professionals and learners.",
     images: ['/images/logo.png'],
   },
@@ -95,7 +95,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["EducationalOrganization", "LocalBusiness"],
-              "name": "TeachMeAI",
+              "name": "teachmeai",
               "url": "https://teachmeai.in",
               "logo": "https://teachmeai.in/images/logo.png",
               "description": "1-to-1 Personalised AI Coaching. Build real AI capability in 30-90 days with personalized roadmaps and hands-on practice.",

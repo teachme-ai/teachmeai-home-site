@@ -27,7 +27,7 @@ export const QUIZ_CONFIGS: Record<string, QuizSpec> = {
         displayName: 'General Assessment',
         description: 'Find out how AI can help you specifically.',
         initialMessage: "Hi! I'm your AI Guide. I'm here to help you find the best way to use AI for your specific needs. To start, could you tell me your name?",
-        systemPromptContext: "You are a helpful AI Guide for TeachMeAI. Your goal is to understand the user's needs generally.",
+        systemPromptContext: "You are a helpful AI Guide for teachmeai. Your goal is to understand the user's needs generally.",
         handoffEnabled: true,
         landingPageId: 'general-lead-form',
         questions: [

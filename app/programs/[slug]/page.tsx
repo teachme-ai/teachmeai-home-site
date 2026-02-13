@@ -131,10 +131,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!program) return {}
 
     return {
-        title: `${program.title} — AI Coaching | TeachMeAI`,
+        title: `${program.title} — AI Coaching | teachmeai`,
         description: `${program.subtitle} ${program.price !== "Custom" ? `Starting at ${program.price}.` : ""} Personalized AI coaching with Khalid Irfan.`,
         openGraph: {
-            title: `${program.title} | TeachMeAI`,
+            title: `${program.title} | teachmeai`,
             description: program.subtitle,
             url: `https://teachmeai.in/programs/${slug}`,
         },
