@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from '@vercel/analytics/react'
+import Script from 'next/script'
 import "./globals.css"
 import { validateEnv } from "../lib/env-check"
 
@@ -155,6 +156,18 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <Analytics />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1GFLW2WR22"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1GFLW2WR22');
+          `}
+        </Script>
       </body>
     </html>
   )
