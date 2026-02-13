@@ -1,13 +1,19 @@
 "use client"
 
+import Link from "next/link"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+import { Zap, Users, Target, BarChart3, RefreshCw, Shield, ArrowRight } from "lucide-react"
+
 export function TeachMeAIFrameworks() {
+  const { ref, isVisible } = useScrollAnimation()
+
   const brandValues = [
-    { icon: "🎯", title: "Clarity Over Hype" },
-    { icon: "👤", title: "Personalization" },
-    { icon: "⚡", title: "Action-Based Learning" },
-    { icon: "🤝", title: "Ethical AI" },
-    { icon: "🔄", title: "Agility" },
-    { icon: "📊", title: "Measurable Impact" }
+    { icon: Target, title: "Clarity Over Hype", color: "text-brand-primary", bg: "bg-brand-primary/10" },
+    { icon: Users, title: "Personalization", color: "text-sky-500", bg: "bg-sky-500/10" },
+    { icon: Zap, title: "Action-Based Learning", color: "text-amber-500", bg: "bg-amber-500/10" },
+    { icon: Shield, title: "Ethical AI", color: "text-emerald-500", bg: "bg-emerald-500/10" },
+    { icon: RefreshCw, title: "Agility", color: "text-violet-500", bg: "bg-violet-500/10" },
+    { icon: BarChart3, title: "Measurable Impact", color: "text-rose-500", bg: "bg-rose-500/10" }
   ]
 
   const impact = [
@@ -28,70 +34,108 @@ export function TeachMeAIFrameworks() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-brand-primary/5 via-sky-50 to-brand-light">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-8 text-center">teachmeai Frameworks</h2>
+    <section className="py-20 bg-white">
+      <div ref={ref} className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
 
-        {/* Brand Values */}
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold text-brand-primary mb-4">Brand Values</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {brandValues.map((value, idx) => (
-              <div key={idx} className="bg-white border-2 border-brand-primary/20 rounded-lg p-4 text-center hover:border-brand-primary hover:shadow-lg hover:shadow-brand-primary/20 transition-all duration-150">
-                <div className="text-3xl mb-2">{value.icon}</div>
-                <p className="text-sm font-medium text-brand-dark">{value.title}</p>
-              </div>
-            ))}
-          </div>
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <p className="text-xs font-semibold tracking-wide uppercase text-slate-500 mb-3">
+            Our Methodology
+          </p>
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-sky-600 bg-clip-text text-transparent mb-3">
+            Two frameworks. One goal.
+          </h2>
+          <p className="text-base text-slate-600 max-w-2xl mx-auto">
+            Whether you're an organization adopting AI or an individual building skills — we have a structured, proven path for you.
+          </p>
         </div>
 
-        {/* IMPACT & ADAPT */}
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold text-brand-primary mb-4">IMPACT for adoption, ADAPT for capability</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* IMPACT */}
-            <div>
-              <h4 className="text-lg font-semibold text-brand-primary mb-3">IMPACT</h4>
-              <div className="space-y-2">
-                {impact.map((item, idx) => (
-                  <div key={idx} className="bg-gradient-to-r from-white to-brand-primary/5 border-2 border-brand-primary/30 rounded-full px-4 py-2 flex items-center gap-3 hover:border-brand-primary transition-all duration-150">
-                    <span className="w-8 h-8 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-sm">{item.letter}</span>
-                    <div className="flex-1">
-                      <span className="font-semibold text-brand-dark text-sm">{item.title}</span>
-                      <span className="text-slate-500 text-xs"> – {item.subtitle}</span>
-                    </div>
-                  </div>
-                ))}
+        {/* Brand Values — compact horizontal strip */}
+        <div className="flex flex-wrap justify-center gap-3 mb-14">
+          {brandValues.map((value, idx) => {
+            const IconComponent = value.icon
+            return (
+              <div key={idx} className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-sm">
+                <div className={`w-7 h-7 rounded-full ${value.bg} flex items-center justify-center`}>
+                  <IconComponent className={`w-3.5 h-3.5 ${value.color}`} />
+                </div>
+                <span className="font-medium text-slate-700">{value.title}</span>
               </div>
-            </div>
-
-            {/* ADAPT */}
-            <div>
-              <h4 className="text-lg font-semibold text-brand-secondary mb-3">ADAPT</h4>
-              <div className="space-y-2">
-                {adapt.map((item, idx) => (
-                  <div key={idx} className="bg-gradient-to-r from-white to-sky-50 border-2 border-sky-400/30 rounded-full px-4 py-2 flex items-center gap-3 hover:border-sky-500 transition-all duration-150">
-                    <span className="w-8 h-8 rounded-full bg-brand-secondary text-white flex items-center justify-center font-bold text-sm">{item.letter}</span>
-                    <div className="flex-1">
-                      <span className="font-semibold text-brand-dark text-sm">{item.title}</span>
-                      <span className="text-slate-500 text-xs"> – {item.subtitle}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+            )
+          })}
         </div>
 
-        {/* Why they work */}
+        {/* IMPACT & ADAPT side-by-side cards */}
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white border-2 border-brand-primary/20 rounded-lg p-5 hover:border-brand-primary transition-all duration-150">
-            <h4 className="font-semibold text-brand-primary mb-2">Why IMPACT Works</h4>
-            <p className="text-sm text-slate-600">IMPACT ensures organizational AI adoption is strategic, not reactive. It aligns stakeholders, prioritizes high-value use cases, and tracks measurable outcomes from day one.</p>
+
+          {/* IMPACT */}
+          <div className="bg-gradient-to-br from-brand-primary/5 to-white rounded-2xl border border-brand-primary/20 p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+                <Target className="w-5 h-5 text-brand-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-brand-dark">IMPACT</h3>
+                <p className="text-xs text-slate-500">For organizations & teams</p>
+              </div>
+            </div>
+            <p className="text-sm text-slate-600 mb-5">
+              Strategic AI adoption — aligns stakeholders, prioritizes high-value use cases, and tracks measurable outcomes from day one.
+            </p>
+            <div className="space-y-2 mb-5">
+              {impact.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 group">
+                  <span className="w-8 h-8 rounded-lg bg-brand-primary text-white flex items-center justify-center font-bold text-sm shrink-0 group-hover:scale-110 transition-transform">
+                    {item.letter}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <span className="font-semibold text-brand-dark text-sm">{item.title}</span>
+                    <span className="text-slate-400 text-xs ml-1.5">— {item.subtitle}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/frameworks/impact"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-sky-600 transition-colors"
+            >
+              Learn more <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
-          <div className="bg-white border-2 border-sky-400/20 rounded-lg p-5 hover:border-sky-500 transition-all duration-150">
-            <h4 className="font-semibold text-brand-secondary mb-2">Why ADAPT Works</h4>
-            <p className="text-sm text-slate-600">ADAPT builds individual capability through systematic skill development. Each phase creates lasting competence rather than surface-level familiarity, ensuring sustainable AI fluency.</p>
+
+          {/* ADAPT */}
+          <div className="bg-gradient-to-br from-sky-50 to-white rounded-2xl border border-sky-200/50 p-6 md:p-8">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center">
+                <RefreshCw className="w-5 h-5 text-sky-500" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-brand-dark">ADAPT</h3>
+                <p className="text-xs text-slate-500">For individuals & learners</p>
+              </div>
+            </div>
+            <p className="text-sm text-slate-600 mb-5">
+              Personal AI capability — builds lasting competence through systematic skill development, not surface-level familiarity.
+            </p>
+            <div className="space-y-2 mb-5">
+              {adapt.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 group">
+                  <span className="w-8 h-8 rounded-lg bg-sky-500 text-white flex items-center justify-center font-bold text-sm shrink-0 group-hover:scale-110 transition-transform">
+                    {item.letter}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <span className="font-semibold text-brand-dark text-sm">{item.title}</span>
+                    <span className="text-slate-400 text-xs ml-1.5">— {item.subtitle}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/frameworks/adapt"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-500 hover:text-brand-primary transition-colors"
+            >
+              Learn more <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </div>
