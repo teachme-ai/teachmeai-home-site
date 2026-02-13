@@ -1,11 +1,11 @@
 export default function Privacy() {
   return (
     <div className="container mx-auto px-4 py-20 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8">🔒 Privacy Policy – TeachMeAI.in</h1>
-      
+      <h1 className="text-4xl font-bold mb-8">🔒 Privacy Policy – teachmeai.in</h1>
+
       <div className="prose max-w-none space-y-6">
-        <p>Your privacy matters to us. This policy explains how TeachMeAI.in collects, uses, and protects your personal information when you book or use our services.</p>
-        
+        <p>Your privacy matters to us. This policy explains how teachmeai.in collects, uses, and protects your personal information when you book or use our services.</p>
+
         <section>
           <h2 className="text-xl font-semibold mb-3">1. Information We Collect</h2>
           <p>We may collect:</p>
@@ -16,7 +16,7 @@ export default function Privacy() {
             <li>Technical data: basic analytics (browser type, usage time) to improve our site.</li>
           </ul>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">2. How We Use Your Data</h2>
           <p>Your data is used to:</p>
@@ -28,7 +28,7 @@ export default function Privacy() {
           </ul>
           <p>We do not sell or rent your personal data to third parties.</p>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">3. Confidentiality of Sessions</h2>
           <ul className="list-disc ml-6 space-y-1">
@@ -37,16 +37,16 @@ export default function Privacy() {
             <li>Group workshops may use anonymized insights, but never identify individual participants.</li>
           </ul>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">4. Data Storage & Security</h2>
           <ul className="list-disc ml-6 space-y-1">
             <li>Intake responses may be stored in Google Sheets or secure databases for tracking and mentoring purposes.</li>
-            <li>Access is restricted to TeachMeAI.in only.</li>
+            <li>Access is restricted to teachmeai.in only.</li>
             <li>We take reasonable steps to protect your data from unauthorized access, disclosure, or misuse.</li>
           </ul>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">5. Payments & Third-Party Platforms</h2>
           <ul className="list-disc ml-6 space-y-1">
@@ -54,7 +54,7 @@ export default function Privacy() {
             <li>If you interact with external tools or resources (e.g., Google Forms, AI tools, third-party links), their privacy terms also apply.</li>
           </ul>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">6. Your Rights</h2>
           <p>You may:</p>
@@ -64,20 +64,20 @@ export default function Privacy() {
             <li>Withdraw consent for us to store notes or materials at any time.</li>
           </ul>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">7. Legal Basis & Compliance</h2>
           <ul className="list-disc ml-6 space-y-1">
-            <li>TeachMeAI.in follows Indian data protection laws.</li>
+            <li>teachmeai.in follows Indian data protection laws.</li>
             <li>For international clients, we aim to align with GDPR principles (lawful use, transparency, data minimization).</li>
           </ul>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">8. Updates</h2>
           <p>We may update this Privacy Policy. Any changes will be posted here with a new "last updated" date.</p>
         </section>
-        
+
         <section>
           <h2 className="text-xl font-semibold mb-3">9. Contact</h2>
           <p>If you have questions about your privacy, email: reachirfan@gmail.com</p>

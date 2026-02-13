@@ -61,7 +61,7 @@ export default function AboutPage() {
                         <div className="bg-white rounded-2xl shadow-lg border border-brand-primary/20 p-8 mb-10">
                             <h2 className="text-2xl font-bold text-brand-dark mb-4">My Story</h2>
                             <p className="text-base text-slate-700 mb-4 leading-relaxed">
-                                I'm Khalid Irfan, founder of TeachMeAI.in and Ai4Education.in. With 19+ years in IT and 7+ years in academia, I help professionals, educators, and entrepreneurs adopt AI with clarity, confidence, and measurable impact.
+                                I'm Khalid Irfan, founder of teachmeai.in and Ai4Education.in. With 19+ years in IT and 7+ years in academia, I help professionals, educators, and entrepreneurs adopt AI with clarity, confidence, and measurable impact.
                             </p>
                             <p className="text-base text-slate-700 mb-4 leading-relaxed">
                                 Struggling to make sense of AI? You're not alone. Many feel overwhelmed by the hype yet uncertain about how to use AI meaningfully in their work. I help you cut through the AI noise — and grow your career with confidence.

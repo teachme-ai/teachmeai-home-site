@@ -23,7 +23,7 @@ export function About() {
         </div>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-base text-slate-700 mb-4 leading-relaxed">
-            I'm Khalid Irfan, founder of TeachMeAI.in and Ai4Education.in. With 19+ years in IT and 7+ years in academia, I help professionals, educators, and entrepreneurs adopt AI with clarity, confidence, and measurable impact.
+            I'm Khalid Irfan, founder of teachmeai.in and Ai4Education.in. With 19+ years in IT and 7+ years in academia, I help professionals, educators, and entrepreneurs adopt AI with clarity, confidence, and measurable impact.
           </p>
           <p className="text-base text-slate-700 mb-6 leading-relaxed">
             Struggling to make sense of AI? You're not alone. Many feel overwhelmed by the hype yet uncertain about how to use AI meaningfully in their work. I help you cut through the AI noise — and grow your career with confidence.
