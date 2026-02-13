@@ -47,6 +47,9 @@ export function Navbar() {
           <Link href="/about" className="hover:text-brand-primary transition-all duration-150">
             About
           </Link>
+          <Link href="/blog" className="hover:text-brand-primary transition-all duration-150">
+            Blog
+          </Link>
           {isHome ? (
             <button onClick={() => scrollToSection('quiz')} className="hover:text-brand-primary transition-all duration-150">
               AI Diagnostic
@@ -89,6 +92,9 @@ export function Navbar() {
             </Link>
             <Link href="/about" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
               About
+            </Link>
+            <Link href="/blog" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
+              Blog
             </Link>
             <Link href="/ai-diagnostic" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
               AI Diagnostic
