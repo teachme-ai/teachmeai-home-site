@@ -19,11 +19,11 @@ export default function Home() {
       <Navbar />
       <Hero />
 
-      {/* AI Diagnostic — moved up for higher visibility */}
-      <section id="quiz" className="py-20 px-4 bg-slate-50">
+      {/* AI Diagnostic — flattened to reduce depth */}
+      <section id="quiz" className="py-20 px-4 bg-slate-50 max-w-full">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">
+            <p className="text-xs font-bold tracking-wide uppercase text-slate-700 mb-3">
               Free in 2 Minutes
             </p>
             <h2 className="text-4xl font-bold text-brand-dark mb-4">
@@ -34,12 +34,12 @@ export default function Home() {
               <strong className="text-brand-primary"> Free Personalized Report</strong> revealing your learning style,
               cognitive strengths, and a custom roadmap.
             </p>
-            <div className="text-sm text-slate-700 mb-8 flex justify-center gap-4 items-center font-bold">
-              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100">✨ 2-min Chat</span>
+            <div className="text-sm text-slate-700 mb-8 flex flex-wrap justify-center gap-4 items-center font-bold">
+              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">✨ 2-min Chat</span>
               <span className="text-slate-400">→</span>
-              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100">📩 Email Link</span>
+              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">📩 Email Link</span>
               <span className="text-slate-300">→</span>
-              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100">📊 Deep Analysis</span>
+              <span className="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100 whitespace-nowrap">📊 Deep Analysis</span>
             </div>
           </div>
 

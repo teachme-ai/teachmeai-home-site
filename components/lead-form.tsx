@@ -134,10 +134,10 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
             <form onSubmit={handleSubmit} className="p-8 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
-                    <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                    <label className="block">
+                        <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
                             <UserCircle className="w-4 h-4 text-brand-primary" /> Full Name
-                        </label>
+                        </span>
                         <input
                             required
                             type="text"
@@ -146,13 +146,13 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                             value={formData.name}
                             onChange={e => setFormData({ ...formData, name: e.target.value })}
                         />
-                    </div>
+                    </label>
 
                     {/* Email */}
-                    <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                    <label className="block">
+                        <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
                             <Mail className="w-4 h-4 text-brand-primary" /> Email Address
-                        </label>
+                        </span>
                         <input
                             required
                             type="email"
@@ -161,14 +161,14 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                             value={formData.email}
                             onChange={e => setFormData({ ...formData, email: e.target.value })}
                         />
-                    </div>
+                    </label>
                 </div>
 
                 {/* Role */}
-                <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                <label className="block">
+                    <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
                         <Briefcase className="w-4 h-4 text-brand-primary" /> Professional Role
-                    </label>
+                    </span>
                     <input
                         required
                         type="text"
@@ -177,13 +177,13 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                         value={formData.role}
                         onChange={e => setFormData({ ...formData, role: e.target.value })}
                     />
-                </div>
+                </label>
 
                 {/* Goal */}
-                <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                <label className="block">
+                    <span className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
                         <Target className="w-4 h-4 text-brand-primary" /> Primary AI Goal
-                    </label>
+                    </span>
                     <textarea
                         required
                         placeholder="What do you want to achieve with AI?"
@@ -192,7 +192,7 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                         value={formData.goal}
                         onChange={e => setFormData({ ...formData, goal: e.target.value })}
                     />
-                </div>
+                </label>
 
                 {error && (
                     <p className="text-red-600 text-sm font-bold animate-pulse">{error}</p>
