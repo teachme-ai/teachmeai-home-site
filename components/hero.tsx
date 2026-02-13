@@ -17,15 +17,15 @@ export function Hero() {
   const audienceContent = {
     professionals: {
       start: "I'm unsure where to begin and everything feels confusing.",
-      end: "You'll have a simple, comfortable way to use AI in your daily work, plus one or two small projects that prove to you that you can do this."
+      end: "You'll pick the tools that fit your goals — from no-code platforms like n8n and Lovable to deep tech like Vertex AI and Genkit — and build small projects that prove you can do this."
     },
     educators: {
       start: "I want to bring AI into my teaching, but I'm not sure what's useful or where to start.",
-      end: "You'll gain clarity on the tools that matter, practical ways to use them in your subject, and more confidence creating engaging learning experiences with AI."
+      end: "You'll gain clarity on tools that matter for your subject — from AI assistants to custom learning apps — and build practical demos you can use in class."
     },
     students: {
       start: "I'm unsure how AI fits into my future, and the job market feels unpredictable.",
-      end: "You'll have a clearer understanding of where AI fits in your field, a simple skill path you can follow, and the confidence to explain your strengths to employers."
+      end: "You'll build portfolio-ready projects using real tools — from code assistants to cloud AI platforms — and gain the confidence to stand out to employers."
     }
   }
 
@@ -40,7 +40,7 @@ export function Hero() {
             Go from AI-curious to <span className="bg-gradient-to-r from-brand-primary to-sky-500 bg-clip-text text-transparent">AI-capable</span> in 30–90 days.
           </h1>
           <p className="text-base text-slate-600 mb-3">
-            Skip the hype. Get a personalized roadmap, hands-on practice, and measurable outcomes — not another generic course.
+            Skip the hype. Pick the tools you want to learn — from ChatGPT to Vertex AI to no-code builders — and build real projects with 1-to-1 guidance.
           </p>
           <div className="flex items-center gap-4 mb-6 text-sm text-slate-500">
             <span className="flex items-center gap-1.5">

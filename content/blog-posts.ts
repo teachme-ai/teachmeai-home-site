@@ -166,15 +166,20 @@ This is where career acceleration happens:
 
 ## The Tools You Actually Need in 2026
 
-Don't fall into the trap of trying every new tool. Here's a focused stack:
+Don't fall into the trap of trying every new tool. Instead, pick the ones that match your goals. Here's a categorized stack:
 
-| Category | Best For Most People | Why |
-|----------|---------------------|-----|
-| **General AI** | ChatGPT Plus or Claude Pro | Versatile, good at writing, analysis, and coding |
-| **Research** | Perplexity Pro | Real-time web search with citations |
-| **Image/Design** | Canva AI or Midjourney | Quick visuals without design skills |
-| **Automation** | Zapier or Make | Connect tools without coding |
-| **Note-taking** | NotebookLM | AI-powered research synthesis |
+| Category | Tools | Who It's For |
+|----------|-------|-------------|
+| **General AI** | ChatGPT, Claude, Gemini | Everyone — writing, analysis, brainstorming |
+| **Research** | Perplexity, NotebookLM | Researchers, educators, analysts |
+| **No-Code Automation** | n8n, Zapier, Make | Professionals who want to automate without coding |
+| **No-Code App Building** | Lovable, Bolt, v0 | Anyone who wants to build apps or prototypes fast |
+| **Cloud AI Platforms** | Google AI Studio, Vertex AI | Tech professionals, developers |
+| **AI Frameworks** | Google Genkit, Google ADK | Developers building AI-powered applications |
+| **Code Assistants** | Antigravity, Gemini Code Assist | Developers and technical professionals |
+| **Image/Design** | Canva AI, Midjourney | Quick visuals without design skills |
+
+The key isn't learning all of these — it's picking the 2-3 tools that fit your role and building small projects with them until you're confident.
 
 ## Common Mistakes (And How to Avoid Them)
 
@@ -188,9 +193,13 @@ Don't fall into the trap of trying every new tool. Here's a focused stack:
 
 ### Mistake 3: Going Solo
 **The trap**: Learning in isolation without feedback or accountability.
-**The fix**: Find a mentor, join a community, or get an [AI coach](/programs) who keeps you on track.
+**The fix**: Find a mentor, join a community, or get an [AI coach](/programs) who helps you pick the right tools and build real projects.
 
-### Mistake 4: Ignoring Ethics
+### Mistake 4: Learning Without Building
+**The trap**: Watching tutorials but never applying what you've learned to a real project.
+**The fix**: For every new tool or concept, build a small project or POC within a week. Even a simple automation or prototype counts.
+
+### Mistake 5: Ignoring Ethics
 **The trap**: Using AI outputs without verification or consideration of bias.
 **The fix**: Always fact-check AI outputs. Disclose AI use when appropriate. Understand limitations.
 

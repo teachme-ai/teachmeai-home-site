@@ -2,41 +2,41 @@
   {
     "id": "single",
     "title": "Single (70-minute) Clarity Call",
-    "description": "Rapid diagnosis, quick-win tactics, and a one-page action sheet.",
+    "description": "Rapid diagnosis, tool recommendations tailored to your goals, and a one-page action sheet.",
     "price": "₹2,100",
     "cta": "Book now",
     "includes": [
       "Personalized AI readiness assessment",
+      "Tool recommendations: popular, no-code, or deep tech",
       "Quick-win tactics for immediate impact",
-      "One-page action sheet with next steps",
-      "Tool recommendations based on your goals"
+      "One-page action sheet with next steps"
     ]
   },
   {
     "id": "starter",
     "title": "Starter (30 days)",
-    "description": "Compact evaluation, weekly milestones, and a curated tool/prompt list.",
+    "description": "Pick your tools, build small projects, and gain confidence with weekly milestones.",
     "price": "₹3,600",
     "cta": "Start your 30-day plan",
     "includes": [
-      "Weekly milestone tracking",
+      "Choose your track: popular AI, no-code, or developer tools",
+      "Build 1-2 hands-on mini-projects or POCs",
       "Curated tool and prompt library",
-      "Progress check-ins",
-      "Email support for questions",
+      "Weekly milestone tracking & check-ins",
       "30-day roadmap with clear objectives"
     ]
   },
   {
     "id": "growth",
     "title": "Growth (90 days / 4 sessions)",
-    "description": "Deeper mentorship, hands-on practice, KPIs, and an ROI review.",
+    "description": "Deeper mentorship, hands-on projects with tools you choose, KPIs, and an ROI review.",
     "price": "₹7,100",
     "cta": "Build your 90-day roadmap",
     "includes": [
       "4 one-on-one mentorship sessions",
-      "Hands-on practice with real projects",
-      "KPI tracking and measurement",
-      "ROI review and optimization",
+      "Build 3-5 real projects with your chosen tools",
+      "Full tool stack: from n8n & Lovable to Vertex AI & Genkit",
+      "KPI tracking and ROI measurement",
       "Custom AI implementation strategy",
       "Ongoing support throughout 90 days"
     ]
