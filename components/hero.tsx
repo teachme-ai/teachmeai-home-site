@@ -30,7 +30,7 @@ export function Hero() {
   }
 
   return (
-    <section className="bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5 py-20">
+    <section id="hero" className="bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5 py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
         <div>
           <p className="text-xs font-semibold tracking-wide uppercase text-slate-500 mb-3">

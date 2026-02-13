@@ -7,19 +7,34 @@ export function StickyCTA() {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
-        const handleScroll = () => {
-            const quizSection = document.getElementById('quiz')
-            if (quizSection) {
-                const rect = quizSection.getBoundingClientRect()
-                // Show when scrolled past hero, hide when quiz section is in view
-                setIsVisible(window.scrollY > 400 && rect.top > window.innerHeight)
-            } else {
-                setIsVisible(window.scrollY > 400)
-            }
+        // Use IntersectionObserver instead of scroll listeners to avoid forced reflows
+        const observerOptions = {
+            root: null,
+            threshold: 0,
+            rootMargin: '-100px 0px 0px 0px' // Offset slightly from the top
         }
 
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        return () => window.removeEventListener('scroll', handleScroll)
+        const handleObserve = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach(entry => {
+                if (entry.target.id === 'hero') {
+                    // Show CTA if Hero is NOT intersecting (scrolled past it)
+                    setIsVisible(!entry.isIntersecting)
+                } else if (entry.target.id === 'quiz') {
+                    // Hide CTA if Quiz IS intersecting (it's in view)
+                    if (entry.isIntersecting) setIsVisible(false)
+                }
+            })
+        }
+
+        const observer = new IntersectionObserver(handleObserve, observerOptions)
+
+        const heroSection = document.getElementById('hero')
+        const quizSection = document.getElementById('quiz')
+
+        if (heroSection) observer.observe(heroSection)
+        if (quizSection) observer.observe(quizSection)
+
+        return () => observer.disconnect()
     }, [])
 
     const scrollToQuiz = () => {
