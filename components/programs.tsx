@@ -57,7 +57,6 @@ export function Programs() {
                 {index === 0 && <span className="text-xs text-slate-700 font-bold ml-1">/ session</span>}
                 {index === 1 && <span className="text-xs text-slate-700 font-bold ml-1">/ 30 days</span>}
                 {index === 2 && <span className="text-xs text-slate-700 font-bold ml-1">/ 90 days</span>}
-                Refactor: updated price scale labels to slate-700
               </div>
 
               <p className="text-sm text-slate-800 font-medium mb-4">{program.description}</p>
