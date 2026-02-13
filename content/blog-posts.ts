@@ -47,7 +47,7 @@ Think of it as having a personal trainer, but for AI skills. A trainer doesn't g
 | **Accountability** | None | Low — completion rates average 5-15% | High — regular check-ins & milestones |
 | **Relevance** | Hit or miss | General — may not apply to your work | Specific — directly tied to your projects |
 | **Speed to Results** | Months of trial and error | Weeks, but often surface-level | Days to first wins, deep competence in 30-90 days |
-| **Cost** | Free (but time-expensive) | ₹500-5,000 | ₹2,600-39,999 |
+| **Cost** | Free (but time-expensive) | ₹500-5,000 | ₹2,600-7,100 |
 
 ## Who Benefits from AI Coaching?
 

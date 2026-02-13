@@ -54,7 +54,7 @@ const programs: Record<string, {
         title: "Starter Program (30 Days)",
         subtitle: "Compact evaluation, weekly milestones, and a curated tool list.",
         description: "A structured 30-day program to take you from AI-curious to AI-capable. With weekly milestones, curated tools, and regular check-ins, you'll build real skills and confidence in just one month.",
-        price: "Custom",
+        price: "₹3,600",
         duration: "30 days",
         format: "Weekly check-ins + async support",
         topmate: "https://topmate.io/khalidirfan/1622786",
@@ -88,7 +88,7 @@ const programs: Record<string, {
         title: "Growth Package (90 Days)",
         subtitle: "Deeper mentorship, hands-on practice, KPIs, and an ROI review.",
         description: "A comprehensive 90-day mentorship program for those who want hands-on practice and accountability. Includes a discovery session, 3 weekly mentorship sessions with guided practice, and an AI Pathway Template with curated tools and use-cases relevant to your work.",
-        price: "Custom",
+        price: "₹7,100",
         duration: "90 days",
         format: "1 Discovery + 3 Weekly Mentorship Sessions",
         topmate: "https://topmate.io/khalidirfan/1697252",
@@ -156,14 +156,12 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
             name: "Khalid Irfan",
             url: "https://teachmeai.in/about",
         },
-        ...(program.price !== "Custom" && {
-            offers: {
-                "@type": "Offer",
-                price: "2600",
-                priceCurrency: "INR",
-                availability: "https://schema.org/InStock",
-            },
-        }),
+        offers: {
+            "@type": "Offer",
+            price: slug === "clarity-call" ? "2600" : slug === "starter-30-day" ? "3600" : "7100",
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+        },
     }
 
     const faqSchema = {
@@ -262,7 +260,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all duration-150"
                         >
-                            {program.price !== "Custom" ? `Book Now — ${program.price}` : "Book Now"}
+                            Book Now — {program.price}
                         </a>
                         <p className="text-xs text-slate-400 mt-4">Payments handled securely via Topmate</p>
                     </div>
