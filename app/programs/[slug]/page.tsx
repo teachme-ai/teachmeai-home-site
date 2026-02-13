@@ -21,7 +21,7 @@ const programs: Record<string, {
         title: "70-Minute Clarity Call",
         subtitle: "Rapid diagnosis, quick-win tactics, and a one-page action sheet.",
         description: "Are you a professional seeking to transition from AI curiosity to career-defining confidence? This is not a one-size-fits-all course — it's a personalized session designed to build your unique AI adoption pathway. We start by deeply understanding your career aspirations and domain expertise, then identify immediate opportunities to optimize your current role.",
-        price: "₹2,600",
+        price: "₹2,100",
         duration: "70 minutes",
         format: "1-on-1 video call",
         topmate: "https://topmate.io/khalidirfan/1622786",
@@ -158,7 +158,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
         },
         offers: {
             "@type": "Offer",
-            price: slug === "clarity-call" ? "2600" : slug === "starter-30-day" ? "3600" : "7100",
+            price: slug === "clarity-call" ? "2100" : slug === "starter-30-day" ? "3600" : "7100",
             priceCurrency: "INR",
             availability: "https://schema.org/InStock",
         },

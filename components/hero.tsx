@@ -69,7 +69,7 @@ export function Hero() {
               }}
               className="border-2 border-brand-primary text-brand-primary hover:bg-gradient-to-r hover:from-brand-primary hover:to-sky-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-150"
             >
-              Book a Clarity Call — ₹2,600
+              Book a Clarity Call — ₹2,100
             </button>
           </div>
         </div>

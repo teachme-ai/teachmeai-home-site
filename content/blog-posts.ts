@@ -47,7 +47,7 @@ Think of it as having a personal trainer, but for AI skills. A trainer doesn't g
 | **Accountability** | None | Low — completion rates average 5-15% | High — regular check-ins & milestones |
 | **Relevance** | Hit or miss | General — may not apply to your work | Specific — directly tied to your projects |
 | **Speed to Results** | Months of trial and error | Weeks, but often surface-level | Days to first wins, deep competence in 30-90 days |
-| **Cost** | Free (but time-expensive) | ₹500-5,000 | ₹2,600-7,100 |
+| **Cost** | Free (but time-expensive) | ₹500-5,000 | ₹2,100-7,100 |
 
 ## Who Benefits from AI Coaching?
 
@@ -93,7 +93,7 @@ You can also take our [free AI Skills Diagnostic](/ai-diagnostic) — a 2-minute
 
 {{cta}}
 [Start Free AI Diagnostic](/ai-diagnostic)
-[Book a Clarity Call — ₹2,600](/programs/clarity-call)
+[Book a Clarity Call — ₹2,100](/programs/clarity-call)
 {{/cta}}
     `
     },
@@ -208,7 +208,7 @@ Don't fall into the trap of trying every new tool. Here's a focused stack:
 Learning AI doesn't have to be overwhelming. If you want a structured approach with personalized guidance:
 
 - **Quick clarity**: Take our [free AI Skills Diagnostic](/ai-diagnostic) (2 minutes)
-- **Single session**: Book a [Clarity Call](/programs/clarity-call) for a personalized roadmap (₹2,600)
+- **Single session**: Book a [Clarity Call](/programs/clarity-call) for a personalized roadmap (₹2,100)
 - **30-day sprint**: Join the [Starter Program](/programs/starter-30-day) with weekly milestones
 - **Full transformation**: The [90-Day Growth Package](/programs/growth-90-day) with hands-on mentorship
 
