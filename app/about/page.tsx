@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
+import Link from "next/link"
 
 export const metadata: Metadata = {
     title: "About Khalid Irfan — AI Coach & Mentor | teachmeai",
@@ -146,6 +147,29 @@ export default function AboutPage() {
                                     Start Free AI Diagnostic →
                                 </a>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Cross-links */}
+                    <div className="max-w-3xl mx-auto mt-12">
+                        <h2 className="text-xl font-bold text-brand-dark mb-4 text-center">Explore More</h2>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            <Link href="/programs" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow">
+                                <h3 className="font-semibold text-brand-dark mb-1">View Programs →</h3>
+                                <p className="text-sm text-slate-600">Compare Clarity Call, Starter, and Growth packages</p>
+                            </Link>
+                            <Link href="/frameworks/impact" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow">
+                                <h3 className="font-semibold text-brand-dark mb-1">IMPACT Framework →</h3>
+                                <p className="text-sm text-slate-600">The methodology behind every coaching engagement</p>
+                            </Link>
+                            <Link href="/blog" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow">
+                                <h3 className="font-semibold text-brand-dark mb-1">Read the Blog →</h3>
+                                <p className="text-sm text-slate-600">Guides on AI coaching, career growth, and learning AI the right way</p>
+                            </Link>
+                            <Link href="/ai-diagnostic" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow">
+                                <h3 className="font-semibold text-brand-dark mb-1">Free AI Diagnostic →</h3>
+                                <p className="text-sm text-slate-600">2-minute assessment to discover your AI learning path</p>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { FAQ } from "@/components/faq"
 import { notFound } from "next/navigation"
+import Link from "next/link"
 
 const programs: Record<string, {
     title: string
@@ -264,6 +265,21 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                             Book Now — {program.price}
                         </a>
                         <p className="text-xs text-slate-400 mt-4">Payments handled securely via Topmate</p>
+                    </div>
+                    {/* Cross-links */}
+                    <div className="mt-8 grid sm:grid-cols-3 gap-4">
+                        <Link href="/programs" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
+                            <h3 className="font-semibold text-brand-dark mb-1">Compare All Programs →</h3>
+                            <p className="text-sm text-slate-600">See pricing and features side by side</p>
+                        </Link>
+                        <Link href="/about" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
+                            <h3 className="font-semibold text-brand-dark mb-1">Meet Your Coach →</h3>
+                            <p className="text-sm text-slate-600">19+ years IT, 7+ years academia</p>
+                        </Link>
+                        <Link href="/blog" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
+                            <h3 className="font-semibold text-brand-dark mb-1">Read the Blog →</h3>
+                            <p className="text-sm text-slate-600">AI coaching guides and insights</p>
+                        </Link>
                     </div>
                 </div>
             </section>

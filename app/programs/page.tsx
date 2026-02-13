@@ -141,12 +141,28 @@ export default function ProgramsPage() {
                     {/* CTA */}
                     <div className="text-center">
                         <p className="text-slate-600 mb-4">Not ready to commit? Try our free AI diagnostic first.</p>
-                        <a
+                        <Link
                             href="/ai-diagnostic"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all duration-150"
                         >
                             Start Free AI Diagnostic →
-                        </a>
+                        </Link>
+                    </div>
+
+                    {/* Cross-links */}
+                    <div className="mt-12 grid sm:grid-cols-3 gap-4">
+                        <Link href="/about" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
+                            <h3 className="font-semibold text-brand-dark mb-1">Meet Your Coach →</h3>
+                            <p className="text-sm text-slate-600">19+ years IT, 7+ years academia</p>
+                        </Link>
+                        <Link href="/frameworks/impact" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
+                            <h3 className="font-semibold text-brand-dark mb-1">IMPACT Framework →</h3>
+                            <p className="text-sm text-slate-600">Our coaching methodology</p>
+                        </Link>
+                        <Link href="/blog" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
+                            <h3 className="font-semibold text-brand-dark mb-1">Read the Blog →</h3>
+                            <p className="text-sm text-slate-600">AI coaching guides and tips</p>
+                        </Link>
                     </div>
                 </div>
             </section>
