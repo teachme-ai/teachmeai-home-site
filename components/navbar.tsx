@@ -47,7 +47,7 @@ export function Navbar() {
             <span className="text-xl font-extrabold text-brand-primary">teachmeai</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 text-sm text-slate-600">
+          <nav className="hidden md:flex items-center gap-6 text-sm text-slate-700 font-bold">
             <Link href="/programs" className="hover:text-brand-primary transition-all duration-150">
               Programs
             </Link>
@@ -75,7 +75,7 @@ export function Navbar() {
                 FAQ
               </Link>
             )}
-            <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-150">
+            <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-700 hover:from-sky-800 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-bold transition-all duration-150 shadow-sm">
               Book Call
             </a>
           </nav>
@@ -98,22 +98,22 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden bg-white border-t border-brand-border">
             <div className="px-4 py-4 space-y-3">
-              <Link href="/programs" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
+              <Link href="/programs" onClick={() => setIsOpen(false)} className="block text-sm text-slate-700 font-bold hover:text-brand-primary w-full text-left">
                 Programs
               </Link>
-              <Link href="/about" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
+              <Link href="/about" onClick={() => setIsOpen(false)} className="block text-sm text-slate-700 font-bold hover:text-brand-primary w-full text-left">
                 About
               </Link>
-              <Link href="/blog" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
+              <Link href="/blog" onClick={() => setIsOpen(false)} className="block text-sm text-slate-700 font-bold hover:text-brand-primary w-full text-left">
                 Blog
               </Link>
-              <Link href="/ai-diagnostic" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
+              <Link href="/ai-diagnostic" onClick={() => setIsOpen(false)} className="block text-sm text-slate-700 font-bold hover:text-brand-primary w-full text-left">
                 AI Diagnostic
               </Link>
-              <Link href="/#faq" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 hover:text-brand-primary w-full text-left">
+              <Link href="/#faq" onClick={() => setIsOpen(false)} className="block text-sm text-slate-700 font-bold hover:text-brand-primary w-full text-left">
                 FAQ
               </Link>
-              <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-semibold text-center transition-all duration-150">
+              <a href="https://topmate.io/khalidirfan/1622786" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-brand-primary to-sky-700 hover:from-sky-800 hover:to-brand-primary text-white px-4 py-2 rounded-lg text-sm font-bold text-center transition-all duration-150">
                 Book Call
               </a>
             </div>

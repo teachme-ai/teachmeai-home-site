@@ -54,9 +54,10 @@ export function Programs() {
               {/* Pricing */}
               <div className="mb-3">
                 <span className="text-2xl font-bold text-brand-primary">{program.price}</span>
-                {index === 0 && <span className="text-xs text-slate-600 font-bold ml-1">/ session</span>}
-                {index === 1 && <span className="text-xs text-slate-600 font-bold ml-1">/ 30 days</span>}
-                {index === 2 && <span className="text-xs text-slate-600 font-bold ml-1">/ 90 days</span>}
+                {index === 0 && <span className="text-xs text-slate-700 font-bold ml-1">/ session</span>}
+                {index === 1 && <span className="text-xs text-slate-700 font-bold ml-1">/ 30 days</span>}
+                {index === 2 && <span className="text-xs text-slate-700 font-bold ml-1">/ 90 days</span>}
+                Refactor: updated price scale labels to slate-700
               </div>
 
               <p className="text-sm text-slate-800 font-medium mb-4">{program.description}</p>
@@ -86,7 +87,7 @@ export function Programs() {
                 </button>
                 <Link
                   href={`/programs/${programSlugs[index]}`}
-                  className="text-center text-xs text-slate-500 hover:text-brand-primary transition-colors"
+                  className="text-center text-xs text-slate-700 font-bold hover:text-brand-primary transition-colors"
                 >
                   View full details →
                 </Link>

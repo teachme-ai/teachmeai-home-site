@@ -197,7 +197,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                     <div className="mb-12">
                         <a href="/programs" className="text-sm text-brand-primary hover:underline mb-4 inline-block">← All Programs</a>
                         <h1 className="text-4xl md:text-5xl font-bold text-brand-dark leading-tight mb-4">{program.title}</h1>
-                        <p className="text-lg text-slate-600 mb-6">{program.subtitle}</p>
+                        <p className="text-lg text-slate-700 font-medium mb-6">{program.subtitle}</p>
                         <div className="flex flex-wrap gap-4 text-sm">
                             <span className="bg-brand-primary/10 text-brand-primary px-4 py-2 rounded-full font-semibold">{program.price}</span>
                             <span className="bg-slate-100 text-slate-700 px-4 py-2 rounded-full">{program.duration}</span>
@@ -255,8 +255,8 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                         <h2 className="text-2xl font-bold text-brand-dark mb-6">Frequently Asked Questions</h2>
                         {program.faq.map((item, idx) => (
                             <div key={idx} className="mb-6 last:mb-0">
-                                <h3 className="font-semibold text-brand-dark mb-2">{item.q}</h3>
-                                <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
+                                <h3 className="font-bold text-brand-dark mb-2">{item.q}</h3>
+                                <p className="text-sm text-slate-700 font-medium leading-relaxed">{item.a}</p>
                             </div>
                         ))}
                     </div>
@@ -264,12 +264,12 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                     {/* CTA */}
                     <div className="text-center bg-white rounded-2xl shadow-lg border-2 border-brand-primary/30 p-8">
                         <h2 className="text-2xl font-bold text-brand-dark mb-4">Ready to get started?</h2>
-                        <p className="text-slate-600 mb-6">Book your {program.title} and begin your AI journey today.</p>
+                        <p className="text-slate-700 font-medium mb-6">Book your {program.title} and begin your AI journey today.</p>
                         <a
                             href={program.topmate}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all duration-150"
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary to-sky-700 hover:from-sky-800 hover:to-brand-primary text-white font-bold py-3 px-8 rounded-lg shadow-md transition-all duration-150"
                         >
                             Book Now — {program.price}
                         </a>
@@ -278,16 +278,16 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                     {/* Cross-links */}
                     <div className="mt-8 grid sm:grid-cols-3 gap-4">
                         <Link href="/programs" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
-                            <h3 className="font-semibold text-brand-dark mb-1">Compare All Programs →</h3>
-                            <p className="text-sm text-slate-600">See pricing and features side by side</p>
+                            <h3 className="font-bold text-brand-dark mb-1">Compare All Programs →</h3>
+                            <p className="text-sm text-slate-700 font-medium">See pricing and features side by side</p>
                         </Link>
                         <Link href="/about" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
-                            <h3 className="font-semibold text-brand-dark mb-1">Meet Your Coach →</h3>
-                            <p className="text-sm text-slate-600">19+ years IT, 7+ years academia</p>
+                            <h3 className="font-bold text-brand-dark mb-1">Meet Your Coach →</h3>
+                            <p className="text-sm text-slate-700 font-medium">19+ years IT, 7+ years academia</p>
                         </Link>
                         <Link href="/blog" className="block bg-white rounded-xl border border-brand-primary/20 p-5 hover:shadow-md transition-shadow text-center">
-                            <h3 className="font-semibold text-brand-dark mb-1">Read the Blog →</h3>
-                            <p className="text-sm text-slate-600">AI coaching guides and insights</p>
+                            <h3 className="font-bold text-brand-dark mb-1">Read the Blog →</h3>
+                            <p className="text-sm text-slate-700 font-medium">AI coaching guides and insights</p>
                         </Link>
                     </div>
                 </div>

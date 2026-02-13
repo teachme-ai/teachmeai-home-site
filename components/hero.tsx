@@ -42,7 +42,7 @@ export function Hero() {
           <p className="text-base text-slate-700 font-medium mb-3">
             Skip the hype. Pick the tools you want to learn — from ChatGPT to Vertex AI to no-code builders — and build real projects with 1-to-1 guidance.
           </p>
-          <div className="flex items-center gap-4 mb-6 text-sm text-slate-600 font-bold">
+          <div className="flex items-center gap-4 mb-6 text-sm text-slate-700 font-bold">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 bg-emerald-600 rounded-full" />
               500+ professionals coached
@@ -76,7 +76,7 @@ export function Hero() {
         <div className="flex justify-end">
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border-2 border-brand-primary/30 w-full space-y-4 md:space-y-5">
             <div>
-              <p className="text-xs md:text-sm font-bold text-slate-600 uppercase mb-2">Your Starting Point</p>
+              <p className="text-xs md:text-sm font-bold text-slate-700 uppercase mb-2">Your Starting Point</p>
               <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">"{audienceContent[selectedAudience as keyof typeof audienceContent].start}"</p>
             </div>
             <div className="w-full h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent" />

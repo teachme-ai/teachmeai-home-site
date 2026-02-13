@@ -50,13 +50,13 @@ export function StickyCTA() {
             <div className="bg-white/95 backdrop-blur-lg border-t border-brand-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
                 <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
                     <div className="hidden sm:block">
-                        <p className="text-sm font-semibold text-brand-dark">Get your free AI roadmap</p>
-                        <p className="text-xs text-slate-500">2-min chat → personalized report</p>
+                        <p className="text-sm font-bold text-brand-dark">Get your free AI roadmap</p>
+                        <p className="text-xs text-slate-700 font-bold">2-min chat → personalized report</p>
                     </div>
                     <p className="sm:hidden text-sm font-semibold text-brand-dark">Free AI roadmap →</p>
                     <button
                         onClick={scrollToQuiz}
-                        className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-500 hover:from-sky-600 hover:to-brand-primary text-white font-semibold py-2.5 px-6 rounded-lg text-sm transition-all duration-150 whitespace-nowrap shadow-md"
+                        className="btn-shimmer bg-gradient-to-r from-brand-primary to-sky-700 hover:from-sky-800 hover:to-brand-primary text-white font-bold py-2.5 px-6 rounded-lg text-sm transition-all duration-150 whitespace-nowrap shadow-md"
                     >
                         Start AI Diagnostic
                     </button>

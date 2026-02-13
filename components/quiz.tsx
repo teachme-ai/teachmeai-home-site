@@ -57,7 +57,7 @@ export function Quiz() {
             <h3 className="text-2xl font-semibold text-brand-dark mb-4">
               Thanks! You'll get a short summary in your inbox.
             </h3>
-            <p className="text-slate-600 mb-6">Want to fast-track your AI journey?</p>
+            <p className="text-slate-700 font-bold mb-6">Want to fast-track your AI journey?</p>
             <button
               onClick={() => window.open('https://topmate.io/khalidirfan/1622786', '_blank', 'noopener,noreferrer')}
               className="bg-brand-primary text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-sky-600 transition-all duration-150"
@@ -76,7 +76,7 @@ export function Quiz() {
         <h2 className="text-3xl font-bold text-brand-dark mb-3">
           Not sure where to start? Take the 3-minute AI readiness check.
         </h2>
-        <p className="text-base text-slate-600 mb-6">
+        <p className="text-base text-slate-700 font-medium mb-6">
           Answer a few questions and I'll help you see where you are today and what a realistic 30–90 day plan can look like.
         </p>
 
@@ -156,7 +156,7 @@ export function Quiz() {
           <div>
             <label className="block text-sm font-medium text-brand-dark mb-3">Current AI tool confidence *</label>
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-slate-500 w-16">Beginner</span>
+              <span className="text-xs text-slate-700 font-bold w-16 text-left">Beginner</span>
               <div className="flex gap-4 flex-1 justify-center">
                 {[1, 2, 3, 4, 5].map((num) => (
                   <label key={num} className="flex flex-col items-center cursor-pointer group">
@@ -168,11 +168,11 @@ export function Quiz() {
                       onChange={(e) => setFormData({ ...formData, confidence: parseInt(e.target.value) })}
                       className="w-5 h-5 text-brand-primary focus:ring-brand-primary focus:ring-2 cursor-pointer"
                     />
-                    <span className="text-xs text-slate-500 mt-1 group-hover:text-brand-primary transition-colors">{num}</span>
+                    <span className="text-xs text-slate-700 font-bold mt-1 group-hover:text-brand-primary transition-colors">{num}</span>
                   </label>
                 ))}
               </div>
-              <span className="text-xs text-slate-500 w-16 text-right">Advanced</span>
+              <span className="text-xs text-slate-700 font-bold w-16 text-right">Advanced</span>
             </div>
           </div>
 
@@ -183,7 +183,7 @@ export function Quiz() {
           >
             {isSubmitting ? 'Submitting...' : 'Submit & See Next Steps'}
           </button>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-700 font-bold">
             I'll keep your responses private and only use them to personalize your recommendations.
           </p>
         </form>
