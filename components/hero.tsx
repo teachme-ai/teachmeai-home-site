@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { track } from '@vercel/analytics'
 
 export function Hero() {
-  const [selectedAudience, setSelectedAudience] = useState('entrepreneurs')
+  const [selectedAudience, setSelectedAudience] = useState('professionals')
 
   const scrollToQuiz = () => {
     try {
@@ -15,6 +15,21 @@ export function Hero() {
   }
 
   const audienceContent = {
+    professionals: {
+      label: "Working Professionals",
+      start: "I'm unsure where to begin and everything feels confusing.",
+      end: "You'll pick the tools that fit your goals — from no-code platforms like n8n and Lovable to deep tech like Vertex AI and Genkit — and build small projects that prove you can do this."
+    },
+    educators: {
+      label: "Educators",
+      start: "I want to bring AI into my teaching, but I'm not sure what's useful or where to start.",
+      end: "You'll gain clarity on tools that matter for your subject — from AI assistants to custom learning apps — and build practical demos you can use in class."
+    },
+    students: {
+      label: "Students",
+      start: "I'm unsure how AI fits into my future, and the job market feels unpredictable.",
+      end: "You'll build portfolio-ready projects using real tools — from code assistants to cloud AI platforms — and gain the confidence to stand out to employers."
+    },
     entrepreneurs: {
       label: "Founders",
       start: "I know AI is important for my business, but I don’t know where to apply it or what will actually move the needle.",
@@ -25,7 +40,7 @@ export function Hero() {
       start: "My team keeps talking about AI, but I don’t have a structured way to evaluate or implement it.",
       end: "You’ll gain clarity on where AI fits in your team’s workflow, define priority use cases, and implement small, practical initiatives that build confidence and momentum across your team."
     },
-    career_changers: {
+    job_seekers: {
       label: "Job Seekers",
       start: "I want to transition into AI-enabled roles, but I’m not sure what skills actually matter.",
       end: "You’ll build foundational AI capability, complete real-world projects aligned to target roles, and develop the confidence to position yourself for AI-driven opportunities."
