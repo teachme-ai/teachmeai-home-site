@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 
 // Below-the-fold components loaded dynamically to reduce TBT
 const LeadForm = dynamic(() => import("@/components/lead-form").then(mod => mod.LeadForm))
+const AgenticFlow = dynamic(() => import("@/components/agentic-flow").then(mod => mod.AgenticFlow))
 const Programs = dynamic(() => import("@/components/programs").then(mod => mod.Programs))
 const Testimonials = dynamic(() => import("@/components/testimonials").then(mod => mod.Testimonials))
 const About = dynamic(() => import("@/components/about").then(mod => mod.About))
@@ -43,6 +44,7 @@ export default function Home() {
         </div>
 
         <LeadForm />
+        <AgenticFlow />
       </section>
 
       <Programs />
