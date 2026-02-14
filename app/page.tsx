@@ -45,7 +45,7 @@ export default function Home() {
         </div>
 
 
-        <div className="w-full max-w-[96%] mx-auto grid lg:grid-cols-3 gap-8 items-start">
+        <div className="w-full max-w-[96%] mx-auto grid lg:grid-cols-3 gap-8">
           {/* Column 1: Image */}
           <AgenticFlow />
 
