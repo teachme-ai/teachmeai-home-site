@@ -60,7 +60,7 @@ function HandoffContent() {
                 <div className="p-10">
                     <div className="flex justify-center mb-6">
                         <Image
-                            src="/images/logo.png"
+                            src="/images/logo-brand.png"
                             alt="teachmeai"
                             width={180}
                             height={60}

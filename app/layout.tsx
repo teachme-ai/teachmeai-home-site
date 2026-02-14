@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     images: [{
-      url: '/images/logo.png',
+      url: '/images/logo-brand.png',
       width: 1200,
       height: 630,
       alt: 'teachmeai - AI Coaching and Training',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "teachmeai - Build Real AI Capability in 30-90 Days",
     description: "1-to-1 Personalised AI Coaching. Personalized roadmaps, hands-on practice, and measurable outcomes for working professionals and learners.",
-    images: ['/images/logo.png'],
+    images: ['/images/logo-brand.png'],
   },
   robots: {
     index: true,
@@ -110,7 +110,7 @@ export default function RootLayout({
               "@type": ["EducationalOrganization", "LocalBusiness"],
               "name": "teachmeai",
               "url": "https://teachmeai.in",
-              "logo": "https://teachmeai.in/images/logo.png",
+              "logo": "https://teachmeai.in/images/logo-brand.png",
               "description": "1-to-1 Personalised AI Coaching. Build real AI capability in 30-90 days with personalized roadmaps and hands-on practice.",
               "founder": {
                 "@type": "Person",
