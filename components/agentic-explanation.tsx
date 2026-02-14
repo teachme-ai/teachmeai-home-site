@@ -17,7 +17,7 @@ export function AgenticExplanation() {
                 </p>
 
                 <p>
-                    The result is a <strong className="text-brand-dark">personalized AI roadmap</strong> grounded in your psychology, career direction, and real-world schedule.
+                    The result is a <strong className="text-brand-dark">personalized AI roadmap</strong> grounded in your psychology, career direction, and real-world schedule. This roadmap becomes the foundation of our 1:1 mentoring conversation — ensuring we begin with clarity, not guesswork, and build momentum from day one.
                 </p>
             </div>
         </div>
