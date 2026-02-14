@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 // Below-the-fold components loaded dynamically to reduce TBT
 const LeadForm = dynamic(() => import("@/components/lead-form").then(mod => mod.LeadForm))
 const AgenticFlow = dynamic(() => import("@/components/agentic-flow").then(mod => mod.AgenticFlow))
+const AgenticExplanation = dynamic(() => import("@/components/agentic-explanation").then(mod => mod.AgenticExplanation))
 const Programs = dynamic(() => import("@/components/programs").then(mod => mod.Programs))
 const Testimonials = dynamic(() => import("@/components/testimonials").then(mod => mod.Testimonials))
 const About = dynamic(() => import("@/components/about").then(mod => mod.About))
@@ -44,11 +45,14 @@ export default function Home() {
         </div>
 
 
-        <div className="w-full max-w-[96%] mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column: Image & Description */}
+        <div className="w-full max-w-[96%] mx-auto grid lg:grid-cols-3 gap-8 items-start">
+          {/* Column 1: Image */}
           <AgenticFlow />
 
-          {/* Right Column: Quiz Module */}
+          {/* Column 2: Explanation */}
+          <AgenticExplanation />
+
+          {/* Column 3: Quiz Module */}
           <LeadForm />
         </div>
       </section>
