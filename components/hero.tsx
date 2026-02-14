@@ -77,8 +77,8 @@ export function Hero() {
           <h1 className="text-4xl md:text-5xl font-bold text-brand-dark leading-tight mb-4">
             Go from AI-curious to <span className="bg-gradient-to-r from-brand-primary to-sky-700 bg-clip-text text-transparent">AI-capable</span> in 30–90 days.
           </h1>
-          <p className="text-base text-slate-700 font-medium mb-3">
-            <span className="font-bold text-brand-dark">Stop figuring AI out on your own. Discover your direction with guided support.</span> Build real-world projects step by step and grow the confidence to use AI meaningfully in your work.
+          <p className="text-base text-slate-700 font-medium mb-6 leading-relaxed">
+            <span className="font-bold text-brand-dark">Stop figuring AI out on your own. Discover your direction with guided support.</span> The result is a personalized AI roadmap grounded in your psychology, career direction, and real-world schedule. This roadmap becomes the foundation of our 1:1 mentoring conversation — ensuring we begin with clarity, not guesswork, and build momentum from day one.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <button
@@ -118,8 +118,8 @@ export function Hero() {
                   key={key}
                   onClick={() => setSelectedAudience(key)}
                   className={`px-3 py-2 rounded-full transition-all duration-150 font-bold ${selectedAudience === key
-                      ? 'bg-brand-primary text-white'
-                      : 'bg-brand-primary/10 text-brand-primary hover:bg-brand-primary/20'
+                    ? 'bg-brand-primary text-white'
+                    : 'bg-brand-primary/10 text-brand-primary hover:bg-brand-primary/20'
                     }`}
                 >
                   {data.label}
