@@ -5,11 +5,11 @@ import Image from "next/image";
 
 export function AgenticFlow() {
     return (
-        <div className="w-full max-w-[96%] mx-auto mt-16 px-4">
+        <div className="w-full h-full flex flex-col justify-center">
             {/* Image Container */}
             <div className="relative w-full aspect-[16/9] md:aspect-[21/9] mb-12 rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60">
                 <Image
-                    src="/images/agenticflow-teachmeai.png"
+                    src="/images/agenticflow_teachmeai.png"
                     alt="TeachMeAI Agentic Diagnosis Flow"
                     fill
                     className="object-cover"
@@ -19,7 +19,7 @@ export function AgenticFlow() {
             </div>
 
             {/* Text Content */}
-            <div className="max-w-3xl mx-auto text-center space-y-6">
+            <div className="space-y-6 text-left">
                 <h3 className="text-2xl md:text-3xl font-bold text-brand-dark">
                     How It Works
                 </h3>

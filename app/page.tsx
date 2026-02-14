@@ -43,8 +43,14 @@ export default function Home() {
           </div>
         </div>
 
-        <LeadForm />
-        <AgenticFlow />
+
+        <div className="w-full max-w-[96%] mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column: Image & Description */}
+          <AgenticFlow />
+
+          {/* Right Column: Quiz Module */}
+          <LeadForm />
+        </div>
       </section>
 
       <Programs />
@@ -55,6 +61,6 @@ export default function Home() {
       <Newsletter />
       <Footer />
       <StickyCTA />
-    </main>
+    </main >
   )
 }
