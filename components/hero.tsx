@@ -42,16 +42,6 @@ export function Hero() {
           <p className="text-base text-slate-700 font-medium mb-3">
             Skip the hype. Pick the tools you want to learn — from ChatGPT to Vertex AI to no-code builders — and build real projects with 1-to-1 guidance.
           </p>
-          <div className="flex items-center gap-4 mb-6 text-sm text-slate-700 font-bold">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-emerald-600 rounded-full" />
-              500+ professionals coached
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-brand-primary rounded-full" />
-              4.9★ average rating
-            </span>
-          </div>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <button
               onClick={() => {
