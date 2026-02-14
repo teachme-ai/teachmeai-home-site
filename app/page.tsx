@@ -46,11 +46,11 @@ export default function Home() {
 
 
         <div className="w-full max-w-[96%] mx-auto grid lg:grid-cols-3 gap-8">
-          {/* Column 1: Image */}
-          <AgenticFlow />
-
-          {/* Column 2: Explanation */}
+          {/* Column 1: Explanation */}
           <AgenticExplanation />
+
+          {/* Column 2: Image */}
+          <AgenticFlow />
 
           {/* Column 3: Quiz Module */}
           <LeadForm />
