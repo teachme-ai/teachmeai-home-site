@@ -24,7 +24,7 @@ export function Newsletter() {
   if (isSubmitted) {
     return (
       <section className="py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-2xl font-bold text-brand-dark mb-2">Thanks for subscribing!</h3>
           <p className="text-sm text-slate-600">You'll receive your first AI tactic on Monday.</p>
         </div>
@@ -34,7 +34,7 @@ export function Newsletter() {
 
   return (
     <section className="py-16">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-2xl font-bold text-brand-dark mb-2">
           Get one practical AI tactic each week.
         </h2>

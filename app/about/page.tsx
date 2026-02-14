@@ -46,7 +46,7 @@ export default function AboutPage() {
         <main>
             <Navbar />
             <section className="py-20 bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}
                     <div className="flex flex-col items-center text-center mb-12">
                         <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-brand-light border-4 border-brand-primary/30 overflow-hidden mb-6">

@@ -22,7 +22,7 @@ export default function Home() {
 
       {/* AI Diagnostic — Aggressively flattened to reduce depth below 10 */}
       <section id="quiz" className="py-20 px-4 bg-slate-50">
-        <div className="max-w-7xl mx-auto text-center mb-12">
+        <div className="w-full max-w-[96%] mx-auto text-center mb-12">
           <p className="text-xs font-bold tracking-wide uppercase text-slate-700 mb-3">
             Free in 2 Minutes
           </p>

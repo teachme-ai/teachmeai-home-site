@@ -1,7 +1,7 @@
 export function Footer() {
   return (
     <footer className="border-t border-brand-border py-8 px-4">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-6 text-sm text-slate-700 font-medium">
+      <div className="w-full max-w-[96%] mx-auto flex flex-col md:flex-row justify-between gap-6 text-sm text-slate-700 font-medium">
         <div className="space-y-1">
           <p className="font-bold text-brand-dark">teachmeai</p>
           <p>© {new Date().getFullYear()} Irfan Khalid. All rights reserved.</p>

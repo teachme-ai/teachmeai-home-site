@@ -41,7 +41,7 @@ export default function AIDiagnosticPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
             <section className="py-20 bg-gradient-to-br from-brand-primary/10 via-white to-sky-50">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}
                     <div className="text-center mb-12">
                         <h1 className="text-4xl md:text-5xl font-bold text-brand-dark leading-tight mb-4">

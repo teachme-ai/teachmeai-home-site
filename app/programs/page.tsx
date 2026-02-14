@@ -44,7 +44,7 @@ export default function ProgramsPage() {
         <main>
             <Navbar />
             <section className="py-20 bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h1 className="text-4xl md:text-5xl font-bold text-brand-dark leading-tight mb-4">
                             AI Training Programs

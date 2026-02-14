@@ -31,7 +31,7 @@ export function Hero() {
 
   return (
     <section id="hero" className="bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5 py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+      <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
         <div>
           <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">
             1-to-1 Personalised AI Coaching

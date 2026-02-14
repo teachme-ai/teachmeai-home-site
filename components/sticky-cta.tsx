@@ -48,7 +48,7 @@ export function StickyCTA() {
                 }`}
         >
             <div className="bg-white/95 backdrop-blur-lg border-t border-brand-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
-                <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+                <div className="w-full max-w-[96%] mx-auto px-4 py-3 flex items-center justify-between gap-4">
                     <div className="hidden sm:block">
                         <p className="text-sm font-bold text-brand-dark">Get your free AI roadmap</p>
                         <p className="text-xs text-slate-700 font-bold">2-min chat → personalized report</p>

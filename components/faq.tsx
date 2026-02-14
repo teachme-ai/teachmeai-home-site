@@ -26,7 +26,7 @@ export function FAQ() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-brand-dark mb-6">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="w-full">
           {faqData.map((faq, index) => (

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function AgenticFlow() {
     return (
-        <div className="max-w-5xl mx-auto mt-16 px-4">
+        <div className="w-full max-w-[96%] mx-auto mt-16 px-4">
             {/* Image Container */}
             <div className="relative w-full aspect-[16/9] md:aspect-[21/9] mb-12 rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60">
                 <Image

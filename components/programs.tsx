@@ -18,7 +18,7 @@ export function Programs() {
 
   return (
     <section id="programs" className="py-20">
-      <div ref={ref} className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
+      <div ref={ref} className={`w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-10">
           <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">
             Flexible Options

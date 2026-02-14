@@ -82,7 +82,7 @@ export default function AdaptFrameworkPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
             <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}
                     <div className="text-center mb-16">
                         <a href="/frameworks/impact" className="text-sm text-blue-600 hover:underline mb-4 inline-block">Also see: IMPACT Framework →</a>

@@ -53,7 +53,7 @@ export default function BlogPage() {
             <div className="min-h-screen bg-white">
                 {/* Header */}
                 <div className="bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5 py-16">
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
                         <Link href="/" className="text-sm text-brand-primary hover:text-sky-600 transition-colors mb-6 inline-block">
                             ← Back to home
                         </Link>
@@ -70,7 +70,7 @@ export default function BlogPage() {
                 </div>
 
                 {/* Posts grid */}
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <div className="space-y-8">
                         {posts.map((post, index) => (
                             <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
@@ -102,7 +102,7 @@ export default function BlogPage() {
 
                 {/* CTA at bottom */}
                 <div className="bg-slate-50 py-12">
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 className="text-2xl font-bold text-brand-dark mb-3">
                             Ready to put these insights into practice?
                         </h2>
