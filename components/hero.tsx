@@ -30,25 +30,40 @@ export function Hero() {
       start: "I'm unsure how AI fits into my future, and the job market feels unpredictable.",
       end: "You'll build portfolio-ready projects using real tools — from code assistants to cloud AI platforms — and gain the confidence to stand out to employers."
     },
+    job_seekers: {
+      label: "Job Seekers",
+      start: "I want to transition into AI-enabled roles, but I’m not sure what skills actually matter.",
+      end: "You’ll build foundational AI capability, complete real-world projects aligned to target roles, and develop the confidence to position yourself for AI-driven opportunities."
+    },
     entrepreneurs: {
-      label: "Founders",
-      start: "I know AI is important for my business, but I don’t know where to apply it or what will actually move the needle.",
-      end: "You’ll identify high-leverage use cases for your business, design practical AI workflows, and build early prototypes that create measurable impact — not experiments."
+      label: "Startup Founders",
+      start: "I know AI could give my startup an edge, but I’m unsure where to focus or how to avoid chasing the wrong ideas.",
+      end: "You’ll identify high-leverage AI opportunities for your product or operations, build practical prototypes or workflows, and gain the clarity to integrate AI strategically — not experimentally."
+    },
+    consultants: {
+      label: "Consultants",
+      start: "I want to use AI in my business or client work, but I don’t know how to integrate it practically.",
+      end: "You’ll design and implement AI-supported workflows that improve efficiency, reduce manual effort, and create tangible value for your business or clients."
     },
     managers: {
       label: "Managers",
       start: "My team keeps talking about AI, but I don’t have a structured way to evaluate or implement it.",
       end: "You’ll gain clarity on where AI fits in your team’s workflow, define priority use cases, and implement small, practical initiatives that build confidence and momentum across your team."
     },
-    job_seekers: {
-      label: "Job Seekers",
-      start: "I want to transition into AI-enabled roles, but I’m not sure what skills actually matter.",
-      end: "You’ll build foundational AI capability, complete real-world projects aligned to target roles, and develop the confidence to position yourself for AI-driven opportunities."
+    product: {
+      label: "Product Leaders",
+      start: "AI is becoming essential to product strategy, but I’m unsure how to evaluate, design, or prioritize AI features.",
+      end: "You’ll define AI-driven product opportunities, build early validation experiments, and develop the confidence to integrate AI into your roadmap with clarity and strategic intent."
     },
-    consultants: {
-      label: "Consultants",
-      start: "I want to use AI in my business or client work, but I don’t know how to integrate it practically.",
-      end: "You’ll design and implement AI-supported workflows that improve efficiency, reduce manual effort, and create tangible value for your business or clients."
+    marketing: {
+      label: "Growth Marketers",
+      start: "Everyone is using AI in marketing, but I don’t know how to move beyond content generation into real performance impact.",
+      end: "You’ll design AI-powered workflows for campaigns, personalization, and analytics, build measurable experiments, and apply AI consistently to drive growth outcomes."
+    },
+    operations: {
+      label: "Ops Leaders",
+      start: "We want to improve efficiency with AI, but I don’t know where it fits into our existing workflows.",
+      end: "You’ll pinpoint priority processes for AI integration, design realistic automation pilots, and build structured execution plans that improve performance without disrupting operations."
     }
   }
 
