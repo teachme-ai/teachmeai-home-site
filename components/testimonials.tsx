@@ -34,7 +34,7 @@ export function Testimonials() {
     const { ref, isVisible } = useScrollAnimation()
 
     return (
-        <section className="py-20 bg-gradient-to-br from-brand-primary/5 via-white to-sky-50">
+        <section className="py-12 bg-gradient-to-br from-brand-primary/5 via-white to-sky-50">
             <div ref={ref} className={`w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
                 <div className="text-center mb-12">
                     <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">

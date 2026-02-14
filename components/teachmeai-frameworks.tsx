@@ -34,7 +34,7 @@ export function TeachMeAIFrameworks() {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 bg-white">
       <div ref={ref} className={`w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
 
         {/* Section header */}

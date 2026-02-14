@@ -17,7 +17,7 @@ export function Programs() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section id="programs" className="py-20">
+    <section id="programs" className="py-12">
       <div ref={ref} className={`w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-10">
           <p className="text-xs font-bold tracking-wide uppercase text-slate-600 mb-3">

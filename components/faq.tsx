@@ -21,7 +21,7 @@ export function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-20 bg-brand-light">
+    <section id="faq" className="py-12 bg-brand-light">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
