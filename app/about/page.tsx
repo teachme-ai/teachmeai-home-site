@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 export const metadata: Metadata = {
     title: "About Khalid Irfan — AI Coach & Mentor | teachmeai",
@@ -44,6 +45,12 @@ const companies = [
 export default function AboutPage() {
     return (
         <main>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://teachmeai.in/" },
+                    { name: "About", url: "https://teachmeai.in/about" }
+                ]}
+            />
             <Navbar />
             <section className="py-20 bg-gradient-to-br from-brand-primary/10 via-white to-brand-primary/5">
                 <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">

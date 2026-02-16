@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer"
 import { FAQ } from "@/components/faq"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 const programs: Record<string, {
     title: string
@@ -187,6 +188,13 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
 
     return (
         <main>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://teachmeai.in/" },
+                    { name: "Programs", url: "https://teachmeai.in/programs" },
+                    { name: program.title, url: `https://teachmeai.in/programs/${slug}` }
+                ]}
+            />
             <Navbar />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -293,6 +301,6 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                 </div>
             </section>
             <Footer />
-        </main>
+        </main >
     )
 }

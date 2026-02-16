@@ -3,6 +3,9 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { MarkdownRenderer } from "@/components/markdown-renderer"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 
 export async function generateStaticParams() {
     const posts = getAllPosts()
@@ -69,7 +72,15 @@ export default async function BlogPostPage({
     }
 
     return (
-        <>
+        <main>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://teachmeai.in/" },
+                    { name: "Blog", url: "https://teachmeai.in/blog" },
+                    { name: post.title, url: `https://teachmeai.in/blog/${post.slug}` }
+                ]}
+            />
+            <Navbar />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -168,6 +179,7 @@ export default async function BlogPostPage({
                     </div>
                 )}
             </div>
-        </>
+            <Footer />
+        </main>
     )
 }

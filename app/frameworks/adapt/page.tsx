@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 export const metadata: Metadata = {
     title: "ADAPT Framework — 5-Step AI Capability Building Model | teachmeai",
@@ -78,6 +79,12 @@ export default function AdaptFrameworkPage() {
 
     return (
         <main>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://teachmeai.in/" },
+                    { name: "ADAPT Framework", url: "https://teachmeai.in/frameworks/adapt" }
+                ]}
+            />
             <Navbar />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

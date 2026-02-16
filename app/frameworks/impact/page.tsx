@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 export const metadata: Metadata = {
     title: "IMPACT Framework — 6-Step AI Adoption Methodology | teachmeai",
@@ -86,6 +87,12 @@ export default function ImpactFrameworkPage() {
 
     return (
         <main>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://teachmeai.in/" },
+                    { name: "IMPACT Framework", url: "https://teachmeai.in/frameworks/impact" }
+                ]}
+            />
             <Navbar />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 

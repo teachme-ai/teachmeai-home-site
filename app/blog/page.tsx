@@ -1,6 +1,9 @@
 import { getAllPosts } from "@/content/blog-posts"
 import Link from "next/link"
 import type { Metadata } from "next"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
     title: "Blog — AI Coaching Insights & Frameworks | teachmeai",
@@ -45,7 +48,14 @@ export default function BlogPage() {
     }
 
     return (
-        <>
+        <main>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://teachmeai.in/" },
+                    { name: "Blog", url: "https://teachmeai.in/blog" }
+                ]}
+            />
+            <Navbar />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -118,6 +128,7 @@ export default function BlogPage() {
                     </div>
                 </div>
             </div>
-        </>
+            <Footer />
+        </main>
     )
 }

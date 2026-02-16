@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { LeadForm } from "@/components/lead-form"
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 export const metadata: Metadata = {
     title: "Free AI Skills Diagnostic — Discover Your AI Learning DNA | teachmeai",
@@ -37,6 +38,12 @@ export default function AIDiagnosticPage() {
 
     return (
         <main>
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://teachmeai.in/" },
+                    { name: "AI Diagnostic", url: "https://teachmeai.in/ai-diagnostic" }
+                ]}
+            />
             <Navbar />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
