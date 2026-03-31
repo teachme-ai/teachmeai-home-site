@@ -6,6 +6,23 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
+const BOOKING_APP_URL = process.env.NEXT_PUBLIC_BOOKING_APP_URL || "https://topmate.io/khalidirfan"
+const useCustomBooking = process.env.NEXT_PUBLIC_BOOKING_MODE === "custom"
+
+// Maps home site slugs to booking app slugs
+const bookingSlugMap: Record<string, string> = {
+    "clarity-call": "clarity-call",
+    "starter-30-day": "starter",
+    "growth-90-day": "growth",
+}
+
+function getBookingUrl(slug: string, topmateUrl: string): string {
+    if (useCustomBooking) {
+        return `${BOOKING_APP_URL}/${bookingSlugMap[slug] ?? slug}`
+    }
+    return topmateUrl
+}
+
 const programs: Record<string, {
     title: string
     subtitle: string
@@ -274,14 +291,16 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                         <h2 className="text-2xl font-bold text-brand-dark mb-4">Ready to get started?</h2>
                         <p className="text-slate-700 font-medium mb-6">Book your {program.title} and begin your AI journey today.</p>
                         <a
-                            href={program.topmate}
+                            href={getBookingUrl(slug, program.topmate)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary to-sky-700 hover:from-sky-800 hover:to-brand-primary text-white font-bold py-3 px-8 rounded-lg shadow-md transition-all duration-150"
                         >
                             Book Now — {program.price}
                         </a>
-                        <p className="text-xs text-slate-400 mt-4">Payments handled securely via Topmate</p>
+                        <p className="text-xs text-slate-400 mt-4">
+                            {useCustomBooking ? "Payments handled securely via Razorpay" : "Payments handled securely via Topmate"}
+                        </p>
                     </div>
                     {/* Cross-links */}
                     <div className="mt-8 grid sm:grid-cols-3 gap-4">
