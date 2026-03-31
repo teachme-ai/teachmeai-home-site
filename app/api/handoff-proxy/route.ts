@@ -7,7 +7,7 @@ export async function POST(req: Request) {
 
         // FORCE Cloud Run (Bypassing Vercel WAF entirely)
         // We hardcode this because environment variables on Vercel are likely still pointing to the blocked URL
-        const INTAKE_API = 'https://teachmeai-agent-service-584680412286.us-central1.run.app/handoff';
+        const INTAKE_API = 'https://agent-service-hxgspfir6q-uc.a.run.app/handoff';
 
         console.log(`📡 [Handoff Proxy] CRITICAL: Calling Cloud Run at ${INTAKE_API}`);
 
