@@ -3,28 +3,58 @@
 import { useState } from 'react'
 
 export function AudienceBento() {
-  const [selectedAudience, setSelectedAudience] = useState('builder')
+  const [selectedAudience, setSelectedAudience] = useState('professionals')
 
   const audienceContent = {
-    builder: {
-      label: "The Builder",
-      start: "I see AI's potential to create, but getting past basic prompting to actually building autonomous agents and real workflows feels overwhelming.",
-      end: "You'll move beyond chat interfaces to orchestrating multi-agent systems, deploying AI pipelines, and architecting solutions that execute complex tasks autonomously."
+    professionals: {
+      label: "Working Professionals",
+      start: "I'm overwhelmed by AI hype and don't know how to turn it into an actual 'team member' for my daily work.",
+      end: "You'll adopt a collaborator mindset, orchestrating AI agents to handle routine workflows so you can focus on high-impact problem-solving."
     },
-    solver: {
-      label: "The Problem Solver",
-      start: "My operations are bottlenecked, but deploying AI feels like chasing hype rather than solving actual systemic issues.",
-      end: "You'll learn to decompose complex business bottlenecks and map them to targeted AI capabilities—building high-leverage, reliable automations that drastically reduce manual friction."
+    educators: {
+      label: "Educators",
+      start: "I want to bring AI into my teaching to scale my impact, but I worry about losing authenticity and genuine connection.",
+      end: "You'll embrace the empath mindset, building context-aware AI assistants that personalize learning while maintaining deep ethical boundaries and the human touch."
     },
-    collaborator: {
-      label: "The Collaborator",
-      start: "I want to lead my team into the AI era, but I don't know how to integrate AI as a true 'team member' rather than just a shiny tool.",
-      end: "You'll design human-in-the-loop workflows where AI agents augment your team’s capabilities, accelerating execution without replacing the human touch."
+    students: {
+      label: "Students",
+      start: "I'm unsure how AI fits into my future, and just prompting ChatGPT doesn't feel like a real differentiator.",
+      end: "You'll adopt a builder spirit, moving beyond chat interfaces to orchestrating real AI pipelines and deploying portfolio projects that prove your autonomy."
     },
-    empath: {
-      label: "The Empath",
-      start: "I want to use AI to scale personalized education, coaching, or customer care, but I worry about losing authenticity and empathy.",
-      end: "You'll master the art of designing context-aware, highly personalized AI interactions that scale your presence while maintaining deep ethical boundaries and genuine human connection."
+    job_seekers: {
+      label: "Job Seekers",
+      start: "I want to transition into AI-enabled roles, but listing 'prompt engineering' on my resume isn't opening doors.",
+      end: "You’ll become a true problem solver, learning to decompose complex business bottlenecks and mapping them to targeted AI capabilities that employers actually value."
+    },
+    entrepreneurs: {
+      label: "Startup Founders",
+      start: "I know AI could give my startup an edge, but getting past basic prompting to building autonomous agents feels overwhelming.",
+      end: "You’ll channel the builder spirit to architect multi-agent systems and deploy AI pipelines that execute complex tasks and scale your product autonomously."
+    },
+    consultants: {
+      label: "Consultants",
+      start: "I want to use AI to deliver faster results for clients, but deploying it feels like chasing hype rather than solving systemic issues.",
+      end: "You’ll become a strategic problem solver, designing human-in-the-loop workflows that drastically reduce manual friction and create tangible value for your clients."
+    },
+    managers: {
+      label: "Managers",
+      start: "My team keeps talking about AI, but I don't know how to integrate it as a true 'team member' rather than just a shiny tool.",
+      end: "You’ll adopt the collaborator mindset, designing workflows where AI agents augment your team’s capabilities without replacing the human touch."
+    },
+    product: {
+      label: "Product Leaders",
+      start: "AI is essential to our roadmap, but I’m unsure how to design AI features that actually understand and respect our users.",
+      end: "Combining the empath and builder mindsets, you’ll design context-aware, highly personalized AI interactions that scale your product's value authentically."
+    },
+    marketing: {
+      label: "Growth Marketers",
+      start: "Everyone uses AI to generate generic content, but I don't know how to move beyond that into real systemic growth.",
+      end: "You’ll adopt a problem-solving mindset, orchestrating high-leverage AI-powered workflows for campaigns, personalization, and analytics to drive measurable outcomes."
+    },
+    operations: {
+      label: "Ops Leaders",
+      start: "Our operations are bottlenecked, but applying AI feels like an experimental distraction rather than a robust solution.",
+      end: "You’ll channel the builder spirit to decompose complex bottlenecks, deploying reliable, targeted AI automations that drastically reduce friction."
     }
   }
 
@@ -33,7 +63,7 @@ export function AudienceBento() {
       <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-fade-in visible">
           <h2 className="text-3xl md:text-5xl font-extrabold text-brand-dark mb-4">Who is this for?</h2>
-          <p className="text-lg text-slate-600 font-medium">Select your mindset to see how you'll transform in 30–90 days.</p>
+          <p className="text-lg text-slate-600 font-medium">Select your role to see how you'll transform in 30–90 days.</p>
         </div>
         
         <div className="flex flex-col md:flex-row gap-8 items-start max-w-6xl mx-auto">
@@ -55,7 +85,7 @@ export function AudienceBento() {
               </button>
             ))}
             <div className="w-full mt-2 text-center md:text-left text-xs font-bold text-slate-400 uppercase tracking-widest animate-pulse">
-               ↑ Click a mindset to explore
+               ↑ Click a role to explore
             </div>
           </div>
 
