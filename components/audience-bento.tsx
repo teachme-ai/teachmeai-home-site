@@ -3,58 +3,28 @@
 import { useState } from 'react'
 
 export function AudienceBento() {
-  const [selectedAudience, setSelectedAudience] = useState('professionals')
+  const [selectedAudience, setSelectedAudience] = useState('builder')
 
   const audienceContent = {
-    professionals: {
-      label: "Working Professionals",
-      start: "I'm unsure where to begin and everything feels confusing.",
-      end: "You'll pick the tools that fit your goals — from no-code platforms like n8n and Lovable to deep tech like Vertex AI and Genkit — and build small projects that prove you can do this."
+    builder: {
+      label: "The Builder",
+      start: "I see AI's potential to create, but getting past basic prompting to actually building autonomous agents and real workflows feels overwhelming.",
+      end: "You'll move beyond chat interfaces to orchestrating multi-agent systems, deploying AI pipelines, and architecting solutions that execute complex tasks autonomously."
     },
-    educators: {
-      label: "Educators",
-      start: "I want to bring AI into my teaching, but I'm not sure what's useful or where to start.",
-      end: "You'll gain clarity on tools that matter for your subject — from AI assistants to custom learning apps — and build practical demos you can use in class."
+    solver: {
+      label: "The Problem Solver",
+      start: "My operations are bottlenecked, but deploying AI feels like chasing hype rather than solving actual systemic issues.",
+      end: "You'll learn to decompose complex business bottlenecks and map them to targeted AI capabilities—building high-leverage, reliable automations that drastically reduce manual friction."
     },
-    students: {
-      label: "Students",
-      start: "I'm unsure how AI fits into my future, and the job market feels unpredictable.",
-      end: "You'll build portfolio-ready projects using real tools — from code assistants to cloud AI platforms — and gain the confidence to stand out to employers."
+    collaborator: {
+      label: "The Collaborator",
+      start: "I want to lead my team into the AI era, but I don't know how to integrate AI as a true 'team member' rather than just a shiny tool.",
+      end: "You'll design human-in-the-loop workflows where AI agents augment your team’s capabilities, accelerating execution without replacing the human touch."
     },
-    job_seekers: {
-      label: "Job Seekers",
-      start: "I want to transition into AI-enabled roles, but I’m not sure what skills actually matter.",
-      end: "You’ll build foundational AI capability, complete real-world projects aligned to target roles, and develop the confidence to position yourself for AI-driven opportunities."
-    },
-    entrepreneurs: {
-      label: "Startup Founders",
-      start: "I know AI could give my startup an edge, but I’m unsure where to focus or how to avoid chasing the wrong ideas.",
-      end: "You’ll identify high-leverage AI opportunities for your product or operations, build practical prototypes or workflows, and gain the clarity to integrate AI strategically — not experimentally."
-    },
-    consultants: {
-      label: "Consultants",
-      start: "I want to use AI in my business or client work, but I don’t know how to integrate it practically.",
-      end: "You’ll design and implement AI-supported workflows that improve efficiency, reduce manual effort, and create tangible value for your business or clients."
-    },
-    managers: {
-      label: "Managers",
-      start: "My team keeps talking about AI, but I don’t have a structured way to evaluate or implement it.",
-      end: "You’ll gain clarity on where AI fits in your team’s workflow, define priority use cases, and implement small, practical initiatives that build confidence and momentum across your team."
-    },
-    product: {
-      label: "Product Leaders",
-      start: "AI is becoming essential to product strategy, but I’m unsure how to evaluate, design, or prioritize AI features.",
-      end: "You’ll define AI-driven product opportunities, build early validation experiments, and develop the confidence to integrate AI into your roadmap with clarity and strategic intent."
-    },
-    marketing: {
-      label: "Growth Marketers",
-      start: "Everyone is using AI in marketing, but I don’t know how to move beyond content generation into real performance impact.",
-      end: "You’ll design AI-powered workflows for campaigns, personalization, and analytics, build measurable experiments, and apply AI consistently to drive growth outcomes."
-    },
-    operations: {
-      label: "Ops Leaders",
-      start: "We want to improve efficiency with AI, but I don’t know where it fits into our existing workflows.",
-      end: "You’ll pinpoint priority processes for AI integration, design realistic automation pilots, and build structured execution plans that improve performance without disrupting operations."
+    empath: {
+      label: "The Empath",
+      start: "I want to use AI to scale personalized education, coaching, or customer care, but I worry about losing authenticity and empathy.",
+      end: "You'll master the art of designing context-aware, highly personalized AI interactions that scale your presence while maintaining deep ethical boundaries and genuine human connection."
     }
   }
 
@@ -63,7 +33,7 @@ export function AudienceBento() {
       <div className="w-full max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-fade-in visible">
           <h2 className="text-3xl md:text-5xl font-extrabold text-brand-dark mb-4">Who is this for?</h2>
-          <p className="text-lg text-slate-600 font-medium">Select your role to see how you'll transform in 30–90 days.</p>
+          <p className="text-lg text-slate-600 font-medium">Select your mindset to see how you'll transform in 30–90 days.</p>
         </div>
         
         <div className="flex flex-col md:flex-row gap-8 items-start max-w-6xl mx-auto">
@@ -85,7 +55,7 @@ export function AudienceBento() {
               </button>
             ))}
             <div className="w-full mt-2 text-center md:text-left text-xs font-bold text-slate-400 uppercase tracking-widest animate-pulse">
-               ↑ Click a role to explore
+               ↑ Click a mindset to explore
             </div>
           </div>
 
