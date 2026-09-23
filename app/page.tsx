@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
+import { AudienceBento } from "@/components/audience-bento"
 import dynamic from 'next/dynamic'
 
 // Below-the-fold components loaded dynamically to reduce TBT
@@ -20,6 +21,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <AudienceBento />
 
       {/* AI Diagnostic — Aggressively flattened to reduce depth below 10 */}
       <section id="quiz" className="py-12 px-4 bg-slate-50">

@@ -130,3 +130,48 @@
     transition-delay: 0.3s;
   }
 }
+/* Hero scroll animations (Modern CSS Scrollytelling) */
+@supports (animation-timeline: scroll()) {
+  .hero-scroll-container {
+    animation: hero-shrink linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 500px;
+    transform-origin: top center;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .hero-content {
+    animation: hero-fade-out linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 400px;
+  }
+
+  .hero-scroll-indicator {
+    animation: hero-fade-out linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+  }
+
+  @keyframes hero-shrink {
+    0% { transform: scale(1); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    100% { transform: scale(0.95); border-bottom-left-radius: 3rem; border-bottom-right-radius: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  }
+
+  @keyframes hero-fade-out {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-50px); }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  @keyframes reveal-up {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
