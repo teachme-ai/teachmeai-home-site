@@ -159,15 +159,15 @@ export function AudienceBento() {
           </div>
 
           {/* Dynamic Content Reveal */}
-          <div className="w-full md:w-1/2 bg-white rounded-3xl shadow-xl p-8 md:p-10 border-2 border-slate-100 transition-all duration-300 md:sticky md:top-32 flex flex-col justify-center min-h-[400px]">
+          <div className="w-full md:w-1/2 bg-white rounded-3xl shadow-xl p-8 md:p-14 border-2 border-slate-100 transition-all duration-300 md:sticky md:top-32 flex flex-col justify-center min-h-[500px]">
              <div>
-                <p className="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Your Starting Point</p>
-                <p className="text-xl text-slate-800 leading-relaxed font-medium mb-8">"{allContent[selectedAudience as keyof typeof allContent].start}"</p>
+                <p className="text-sm md:text-base font-bold text-slate-400 uppercase tracking-widest mb-4">Your Starting Point</p>
+                <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed font-medium mb-10">"{allContent[selectedAudience as keyof typeof allContent].start}"</p>
               </div>
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-2" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-4" />
               <div>
-                <p className="text-xs md:text-sm font-bold text-brand-primary uppercase tracking-widest mt-8 mb-3">In 30–90 Days ✦</p>
-                <p className="text-xl text-slate-800 leading-relaxed font-medium">{allContent[selectedAudience as keyof typeof allContent].end}</p>
+                <p className="text-sm md:text-base font-bold text-brand-primary uppercase tracking-widest mt-10 mb-4">In 30–90 Days ✦</p>
+                <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed font-medium">{allContent[selectedAudience as keyof typeof allContent].end}</p>
               </div>
           </div>
         </div>
