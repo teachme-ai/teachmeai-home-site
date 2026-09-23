@@ -7,7 +7,7 @@ import { BreadcrumbSchema } from "@/components/breadcrumb-schema"
 
 export const metadata: Metadata = {
     title: "AI Coaching Programs — Clarity Call, 30-Day Starter, 90-Day Growth | teachmeai",
-    description: "Choose your AI learning pathway: 70-minute Clarity Call (₹2,100), 30-Day Starter Program (₹3,600), or 90-Day Growth Package (₹7,100). Personalized AI coaching for professionals.",
+    description: "Choose your AI learning pathway: 70-minute Clarity Call, 30-Day Starter Program, or 90-Day Growth Package. Personalized AI coaching for professionals.",
     openGraph: {
         title: "AI Coaching Programs — Personalized 1:1 Mentorship | teachmeai",
         description: "Choose from our Clarity Call, Starter (30-day), or Growth (90-day) programs to master AI tools and frameworks.",
@@ -29,9 +29,9 @@ const programSlugs: Record<string, string> = {
 }
 
 const programPricing: Record<string, string> = {
-    single: "₹2,100",
-    starter: "₹3,600",
-    growth: "₹7,100",
+    single: "Digital Payment",
+    starter: "Digital Payment",
+    growth: "Digital Payment",
 }
 
 const programIcons: Record<string, string> = {
@@ -142,10 +142,10 @@ export default function ProgramsPage() {
                                         <td className="py-3 px-4">✅</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-left py-3 px-4 font-medium">Price</td>
-                                        <td className="py-3 px-4 font-bold text-brand-primary">₹2,100</td>
-                                        <td className="py-3 px-4 font-bold text-brand-primary">₹3,600</td>
-                                        <td className="py-3 px-4 font-bold text-brand-primary">₹7,100</td>
+                                        <td className="text-left py-3 px-4 font-medium">Payment</td>
+                                        <td className="py-3 px-4 font-bold text-brand-primary">Digital Payment</td>
+                                        <td className="py-3 px-4 font-bold text-brand-primary">Digital Payment</td>
+                                        <td className="py-3 px-4 font-bold text-brand-primary">Digital Payment</td>
                                     </tr>
                                 </tbody>
                             </table>

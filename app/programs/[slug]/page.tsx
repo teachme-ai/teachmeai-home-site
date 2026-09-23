@@ -40,7 +40,7 @@ const programs: Record<string, {
         title: "70-Minute Clarity Call",
         subtitle: "Rapid diagnosis, quick-win tactics, and a one-page action sheet.",
         description: "Are you a professional seeking to transition from AI curiosity to career-defining confidence? This is not a one-size-fits-all course — it's a personalized session designed to build your unique AI adoption pathway. We start by deeply understanding your career aspirations and domain expertise, then recommend tools from across the spectrum — popular AI assistants, no-code platforms, or developer tools — based on what fits your goals.",
-        price: "₹2,100",
+        price: "Digital Payment",
         duration: "70 minutes",
         format: "1-on-1 video call",
         topmate: "https://topmate.io/khalidirfan/1622786",
@@ -73,7 +73,7 @@ const programs: Record<string, {
         title: "Starter Program (30 Days)",
         subtitle: "Pick your tools, build small projects, and gain confidence in 30 days.",
         description: "A structured 30-day program where you choose the tools that matter to you — whether that's no-code platforms like n8n and Lovable, popular AI assistants, or developer tools — and build 1-2 hands-on mini-projects. With weekly milestones and regular check-ins, you'll move from experimenting to confidently applying AI in your work.",
-        price: "₹3,600",
+        price: "Digital Payment",
         duration: "30 days",
         format: "Weekly check-ins + async support",
         topmate: "https://topmate.io/khalidirfan/1622786",
@@ -107,7 +107,7 @@ const programs: Record<string, {
         title: "Growth Package (90 Days)",
         subtitle: "Deeper mentorship, 3-5 real projects with tools you choose, KPIs, and an ROI review.",
         description: "A comprehensive 90-day mentorship program where you build 3-5 real projects using the tools that matter to your career — from no-code automation (n8n, Lovable) to deep tech (AI Studio, Vertex AI, Google ADK, Genkit) to code assistants and research tools. Includes a discovery session, 3 weekly mentorship sessions with guided practice, and an AI Pathway Template.",
-        price: "₹7,100",
+        price: "Digital Payment",
         duration: "90 days",
         format: "1 Discovery + 3 Weekly Mentorship Sessions",
         topmate: "https://topmate.io/khalidirfan/1697252",
@@ -187,8 +187,6 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
         },
         offers: {
             "@type": "Offer",
-            price: slug === "clarity-call" ? "2100" : slug === "starter-30-day" ? "3600" : "7100",
-            priceCurrency: "INR",
             availability: "https://schema.org/InStock",
         },
     }
@@ -296,10 +294,10 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary to-sky-700 hover:from-sky-800 hover:to-brand-primary text-white font-bold py-3 px-8 rounded-lg shadow-md transition-all duration-150"
                         >
-                            Book Now — {program.price}
+                            Book Now
                         </a>
                         <p className="text-xs text-slate-400 mt-4">
-                            {useCustomBooking ? "Payments handled securely via Razorpay" : "Payments handled securely via Topmate"}
+                            Payment can be done digitally
                         </p>
                     </div>
                     {/* Cross-links */}

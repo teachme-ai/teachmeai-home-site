@@ -3,7 +3,7 @@
     "id": "single",
     "title": "Single (70-minute) Clarity Call",
     "description": "Rapid diagnosis, tool recommendations tailored to your goals, and a one-page action sheet.",
-    "price": "₹2,100",
+    "price": "Digital Payment",
     "cta": "Book now",
     "includes": [
       "Personalized AI readiness assessment",
@@ -16,7 +16,7 @@
     "id": "starter",
     "title": "Starter (30 days)",
     "description": "Pick your tools, build small projects, and gain confidence with weekly milestones.",
-    "price": "₹3,600",
+    "price": "Digital Payment",
     "cta": "Start your 30-day plan",
     "includes": [
       "Choose your track: popular AI, no-code, or developer tools",
@@ -30,7 +30,7 @@
     "id": "growth",
     "title": "Growth (90 days / 4 sessions)",
     "description": "Deeper mentorship, hands-on projects with tools you choose, KPIs, and an ROI review.",
-    "price": "₹7,100",
+    "price": "Digital Payment",
     "cta": "Build your 90-day roadmap",
     "includes": [
       "4 one-on-one mentorship sessions",
