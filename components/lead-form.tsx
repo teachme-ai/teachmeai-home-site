@@ -196,13 +196,13 @@ export function LeadForm({ quizConfig = QUIZ_CONFIGS.default }: LeadFormProps) {
                         <Loader2 className="w-6 h-6 animate-spin" />
                     ) : (
                         <>
-                            Get My Free Analysis <Send className="w-5 h-5" />
+                            Start 3-Min AI Chat <Send className="w-5 h-5" />
                         </>
                     )}
                 </button>
 
                 <p className="text-[11px] text-slate-600 text-center font-bold uppercase tracking-widest md:col-span-2">
-                    Your privacy matters. No spam, just value.
+                    Takes just 3 minutes. You will instantly enter the multi-agent chat.
                 </p>
             </div>
         </form>

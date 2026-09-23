@@ -30,7 +30,6 @@ const certifications = [
 ]
 
 const companies = [
-    { name: "RBI", color: "bg-blue-800" },
     { name: "NPCI", color: "bg-orange-500" },
     { name: "TCS", color: "bg-slate-800" },
     { name: "Vodafone", color: "bg-red-600" },
@@ -116,7 +115,7 @@ export default function AboutPage() {
                                     <span className="text-2xl">🏢</span>
                                     <div>
                                         <h3 className="font-semibold text-brand-dark mb-1">Enterprise Experience</h3>
-                                        <p className="text-sm text-slate-600">Real-world AI implementation across RBI, NPCI, TCS, Flipkart, Vodafone, and more.</p>
+                                        <p className="text-sm text-slate-600">Real-world AI implementation across NPCI, TCS, Flipkart, Vodafone, and more.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-3">

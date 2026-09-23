@@ -68,19 +68,25 @@ export function AudienceBento() {
         
         <div className="flex flex-col md:flex-row gap-8 items-start max-w-6xl mx-auto">
           {/* Roles Grid (Bento style) */}
-          <div className="w-full md:w-1/2 flex flex-wrap gap-3">
+          <div className="w-full md:w-1/2 flex flex-wrap gap-3 relative">
             {Object.entries(audienceContent).map(([key, data]) => (
               <button
                 key={key}
                 onClick={() => setSelectedAudience(key)}
-                className={`px-4 py-3 rounded-xl transition-all duration-300 font-bold text-sm shadow-sm border-2 ${selectedAudience === key
+                className={`px-4 py-3 rounded-xl transition-all duration-300 font-bold text-sm shadow-sm border-2 group relative overflow-hidden ${selectedAudience === key
                   ? 'bg-brand-primary text-white border-brand-primary scale-105'
                   : 'bg-white text-slate-700 border-slate-200 hover:border-brand-primary/50 hover:shadow-md'
                   }`}
               >
-                {data.label}
+                <span className="relative z-10 flex items-center gap-2">
+                  {data.label}
+                  {selectedAudience !== key && <span className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-primary/60">→</span>}
+                </span>
               </button>
             ))}
+            <div className="w-full mt-2 text-center md:text-left text-xs font-bold text-slate-400 uppercase tracking-widest animate-pulse">
+               ↑ Click a role to explore
+            </div>
           </div>
 
           {/* Dynamic Content Reveal */}

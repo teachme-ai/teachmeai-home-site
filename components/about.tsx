@@ -49,10 +49,9 @@ export function About() {
 
             {/* Experience Trust Strip */}
             <div className="pt-8 border-t border-slate-200">
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Trusted expertise across</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Clients I've worked with</p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                 {[
-                  { name: 'RBI', color: 'bg-blue-900' },
                   { name: 'NPCI', color: 'bg-orange-800' },
                   { name: 'TCS', color: 'bg-slate-900' },
                   { name: 'Vodafone', color: 'bg-red-800' },
